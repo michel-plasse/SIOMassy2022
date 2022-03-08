@@ -1,11 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SIOMassy2022</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>SIOMassy2022</h1>
-    </body>
-</html>
+<%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
+<p:header title="SIO Massy 2022"/>
+<h1>SIOMassy2022</h1>
+<p:footer />
