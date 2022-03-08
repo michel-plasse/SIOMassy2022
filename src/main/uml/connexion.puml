@@ -1,0 +1,24 @@
+@startuml
+participant Navigateur
+participant Vue
+
+== Demander le formulaire de connexion ==
+Navigateur -> Controleur: GET /connexion
+Controleur -> Vue: connexion.jsp
+Vue --> Navigateur: formulaire vierge
+
+== Soumettre ses données de connexion ==
+Navigateur -> Controleur: POST /connexion\avec login, pwd
+Controleur -> Controleur: vérifie paramètres\nfournis
+Controleur -> Dao: PersonneDao.\ngetByLoginPassword(login, pwd)
+Dao -> SGBD: SELECT ...\nFROM personne\nWHERE ...
+SGBD -> Dao: 1 ou 0 lignes
+Dao -> Controleur: 1 Personne ou null, ou SQLException
+== si trouvé ==
+Controleur -> Navigateur: redirige vers /index.jsp
+Navigateur -> Controleur: GET /index.jsp
+== si pas trouvé ==
+Controleur -> Vue: connexion.jsp
+Vue --> Navigateur: formulaire avec\nerreurs affichées
+
+@enduml
