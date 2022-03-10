@@ -8,7 +8,7 @@ Controleur -> Vue: connexion.jsp
 Vue --> Navigateur: formulaire vierge
 
 == Soumettre ses données de connexion ==
-Navigateur -> Controleur: POST /connexion\avec login, pwd
+Navigateur -> Controleur: POST /connexion\navec login, pwd
 Controleur -> Controleur: vérifie paramètres\nfournis
 Controleur -> Dao: PersonneDao.\ngetByLoginPassword(login, pwd)
 Dao -> SGBD: SELECT ...\nFROM personne\nWHERE ...
