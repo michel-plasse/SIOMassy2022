@@ -8,6 +8,7 @@ package controleur;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +17,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Abdillahi
  */
+@WebServlet(name = "ConnexionServlet", urlPatterns = {"/connexion"})
 public class InscriptionServlet extends HttpServlet {
 
+    
+    private static final String VUE_FORM ="inscription.jsp";
+    private static final String VUE_OK = "index.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,7 +61,9 @@ public class InscriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher(VUE_FORM).forward(request, response);
+         
+       
     }
 
     /**
