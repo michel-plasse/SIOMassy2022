@@ -1,0 +1,13 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur:GET /EFGs?idCanal=...
+Controleur -> Controleur: idCanal entier ?
+Controleur -> DAO: EFGDao.getAll(idCanal)
+DAO -> SGBD: SELECT... 
+SGBD --> DAO: lignes ou échec
+DAO --> Controleur: List<EFG> ou SQLException
+Controleur -> Vue: EFGs.jsp
+Vue -> Navigateur: liste des EFGs
+@enduml
