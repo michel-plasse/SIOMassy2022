@@ -1,22 +1,26 @@
 @startuml
 participant Navigateur
+participant JS
 participant Vue
 
-Navigateur->Controleur: POST/entrer une  note
+== Afficher le formulaire ==
+Navigateur -> Controleur: GET /saisirNotes?idEvaluation=...
+Controleur -> Controleur: vérifier que\nidEvaluation est entier
+Controleur -> DAO: EvaluationDao.getNotes(idEvaluation)
+DAO -> SGBD: SELECT ...
+SGBD --> DAO: lignes
+DAO --> Controleur: List<Note>
+Controleur -> Vue: editNotes.jsp
+Vue --> Navigateur: formulaire prérempli
 
-Controleur->Controleur:verifier parametres
-
-Controleur->DAO: noteEvalDao.insert(note)
-
-DAO->SGBD: INSERT INTO noteEval
-
-SGBD-->DAO: ok ou échec
-
-DAO-->Controleur: ok SQLException
-
-Controleur->Vue:noteEval.jsp
-
-Vue->Navigateur:noter Eval avec erreurs
-
-
+== Saisir note ==
+JS -> Controleur: POST /saisirNotes\navec idEvaluation, idEtudiant, note
+Controleur -> Controleur: vérifie le type\ndes paramètres\netque 0 <= 0 <= 20\nou est ABS
+Controleur -> Controleur: note = new Note(...)
+Controleur -> DAO: EvaluationDao.update(note)
+DAO -> SGBD: UPDATE note_evaluation...
+SGBD --> DAO: ok ou exception
+DAO --> Controleur: ok ou SQLException
+Controleur --> JS: 204 si ok,\nou code erreur sinon
+JS --> Navigateur: ok ou message erreur
 @enduml
