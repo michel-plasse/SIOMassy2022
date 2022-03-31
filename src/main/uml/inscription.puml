@@ -1,0 +1,23 @@
+@startuml
+participant Navigateur
+participant Vue
+
+== Demander le formulaire de inscription ==
+Navigateur -> Controleur: GET /inscription
+Controleur -> Vue: inscription.jsp
+Vue --> Navigateur: formulaire vierge
+
+== Soumettre ses données d'inscription ==
+Navigateur -> Controleur: POST /inscription\navec nom, prenom,\n email, mdp, dmp2
+Controleur -> Controleur: verifier parametres
+Controleur -> DAO: PersonneDao.insert(nom, ...)
+DAO -> SGBD: INSERT INTO personne...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+== si souci (email dupliqué par ex) ==
+Controleur -> Vue: inscription.jsp
+Vue -> Navigateur: formulaire avec erreurs
+== confirmation de mail ==
+Controleur --> Vue: confirmation.jsp
+Vue -> Navigateur: MESSAGE \nvous venez\nde recevoir un mail \nde confirmation
+@enduml
