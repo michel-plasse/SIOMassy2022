@@ -2,7 +2,7 @@
 participant Navigateur
 participant Vue
 
-== Demander le formulaire de inscription ==
+== Demander le formulaire d'inscription ==
 Navigateur -> Controleur: GET /inscription
 Controleur -> Vue: inscription.jsp
 Vue --> Navigateur: formulaire vierge
