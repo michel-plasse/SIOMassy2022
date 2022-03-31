@@ -8,7 +8,7 @@ Controleur -> Vue: inscription.jsp
 Vue --> Navigateur: formulaire vierge
 
 == Soumettre ses données d'inscription ==
-Navigateur -> Controleur: POST /inscription\navec nom, prenom,\n email, mdp, dmp2
+Navigateur -> Controleur: POST /inscription\navec nom, prenom,\n email, email2, \nmdp, dmp2
 Controleur -> Controleur: verifier parametres
 Controleur -> DAO: PersonneDao.insert(nom, ...)
 DAO -> SGBD: INSERT INTO personne...
