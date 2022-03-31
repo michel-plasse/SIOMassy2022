@@ -1,0 +1,16 @@
+@startuml
+participant Navigateur
+participant Vue
+
+
+== Demander la list des canaux ==
+Navigateur -> Controleur: GET /canaux
+Controleur -> DAO: CanalDao.getAll()
+DAO -> SGBD: select* From canal
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: List<Canal> ou SQLException
+Controleur -> Vue: canaux.jsp
+Vue --> Navigateur: liste de canaux
+
+
+@enduml

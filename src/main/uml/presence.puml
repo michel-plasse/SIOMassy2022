@@ -1,0 +1,14 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST / signale ma présence
+Controleur -> Controleur: verifier parametres
+Controleur -> DAO: pesence_séanceDao.select* From membre_canal
+DAO -> SGBD: SELECT * from membre_canal ...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+
+Controleur -> Vue: canal.jsp
+Vue -> Navigateur: affiche  présent sur la feuille de présence de la séance.
+@enduml
