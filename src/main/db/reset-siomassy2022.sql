@@ -12,7 +12,7 @@ BEGIN
     BEGIN
       -- Annuler la transaction
       ROLLBACK;
-			-- Propager l'exception
+        -- Propager l'exception
       RESIGNAL;
     END;  
     -- Demarrer une transaction : si une erreur se produit,
@@ -82,14 +82,18 @@ BEGIN
 			(2, 3, date_effet - INTERVAL 1 MONTH),
 			(2, 4, date_effet - INTERVAL 1 MONTH),
 			(2, 5, date_effet - INTERVAL 1 MONTH);
-		INSERT INTO questionnaire(id_questionnaire, id_createur, libelle) VALUES
-			(1, 1, 'Bases de Java'),
-      (2, 1, 'Fruits et légumes');
-		INSERT INTO seance(id_seance, debute_a, id_canal) VALUES
-			(1, DATE(date_effet) - INTERVAL 1 MONTH + INTERVAL 9 HOUR, 1),
-			(2, DATE(date_effet) - INTERVAL 20 DAY + INTERVAL 9 HOUR, 1),
-			(3, DATE(date_effet) - INTERVAL 10 DAY + INTERVAL 9 HOUR, 1),
-			(4, DATE(date_effet) + INTERVAL 9 HOUR, 1);
+		INSERT INTO questionnaire(id_questionnaire, id_createur, libelle, nb_minutes, cree_a) VALUES
+			(1, 1, 'Bases de Java', 10, date_effet),
+      (2, 1, 'Fruits et légumes', 5, date_effet - INTERVAL 1 DAY);
+		INSERT INTO seance(id_seance, debute_a, finit_a, id_canal) VALUES
+			(1, DATE(date_effet) - INTERVAL 1 MONTH + INTERVAL 9 HOUR, 
+          DATE(date_effet) - INTERVAL 1 MONTH + INTERVAL 13 HOUR, 1),
+			(2, DATE(date_effet) - INTERVAL 20 DAY + INTERVAL 9 HOUR, 
+          DATE(date_effet) - INTERVAL 20 DAY + INTERVAL 13 HOUR, 1),
+			(3, DATE(date_effet) - INTERVAL 10 DAY + INTERVAL 9 HOUR,
+          DATE(date_effet) - INTERVAL 10 DAY + INTERVAL 13 HOUR, 1),
+			(4, DATE(date_effet) + INTERVAL 9 HOUR,
+          DATE(date_effet) + INTERVAL 13 HOUR, 1);
 
 		-- tableaux ne dépendant que des groupes 1 et 2
     INSERT INTO entrainement(id_entrainement, id_questionnaire, id_canal) VALUES
@@ -138,12 +142,12 @@ BEGIN
       (4, 5, NULL),
       (4, 6, NULL),
       (4, 7, NULL);
-		INSERT INTO qcm(id_qcm, id_questionnaire, libelle, id_canal) VALUES
+		INSERT INTO qcm(id_qcm, id_questionnaire, libelle) VALUES
 			-- 2 questions dans les 2 questionnaires (1= Java, 2=fruits et légumes)
-      (1, 1, "Chassez l'intrus", 1), -- portée
-      (2, 1, 'Que vaut s, avec String s = "0" + 1 ?', 1),
-      (3, 2, "Quel fruit est un fruit d'hiver ?", 1),
-      (4, 2, "Quel légume est le plus riche en vitamine C ?", 1);
+      (1, 1, "Chassez l'intrus"), -- portée
+      (2, 1, 'Que vaut s, avec String s = "0" + 1 ?'),
+      (3, 2, "Quel fruit est un fruit d'hiver ?"),
+      (4, 2, "Quel légume est le plus riche en vitamine C ?");
 		INSERT INTO reponse_question(id_question, id_personne, libelle) VALUES
 			-- question 1 avez-vous fini
       (1, 3, 1),

@@ -1,0 +1,15 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST / affiche les membres par ordres alphabétique du nnom
+Controleur -> Controleur: verifier parametres
+Controleur -> DAO: membre_canalDao.select* From membre_canal
+DAO -> SGBD: SELECT * from membre_canal ...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+
+Controleur -> Vue: index.jsp
+Vue -> Navigateur: chaque membre avec nom, prénom , email, et un bouton supprime
+
+@enduml
