@@ -9,8 +9,7 @@ import java.util.Objects;
 public class Personne {
 
     private int id, id_groupe;
-    String prenom;
-    private String nom, email, tel, pwd;
+    private String prenom, nom, email, tel, pwd;
 
     /**
      * Constructeur
