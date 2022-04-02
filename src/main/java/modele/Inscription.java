@@ -93,37 +93,6 @@ public class Inscription {
     public String getTel() {
         return tel;
     }
-     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Personne other = (Personne) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.prenom, other.prenom)) {
-            return false;
-        }
-        if (!Objects.equals(this.nom, other.nom)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.tel, other.tel)) {
-            return false;
-        }
-        if (!Objects.equals(this.pwd, other.pwd)) {
-            return false;
-        }
-        return true;
-    }
+    
     
 }
