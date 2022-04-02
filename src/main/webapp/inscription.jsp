@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <form action="action" method="inscription"></form>
     </body>
 </html>
