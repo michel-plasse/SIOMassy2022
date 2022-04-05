@@ -13,7 +13,14 @@
     </head>
     <body>
         <h1>OK</h1>
-       <!-- <form action="/InscriptionServlet.java" method="POST"></form> -->
+        <form action="/InscriptionServlet.java" method="POST">
+            Nom <input type="text" name="nom">
+            Prenom <input type="text" name="prenom"> 
+            Password <input type="password" name="psw">
+            Confirmation de Mot de passe <input type="password" name="psw">
+            Email <input type="email" name="email"> 
+            Confirmation de Email <input type="email" name="email">
+        </form> 
        
        
       
