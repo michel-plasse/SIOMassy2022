@@ -1,0 +1,15 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /participations?idCanal=...
+Controleur -> Controleur: verifier\nidCanal entier
+Controleur -> DAO: CanalDao.\ngetMembresByIdCanal(idCanal)
+DAO -> SGBD: SELECT *\nFROM membre_canal ...
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: Print<Participations> ou SQLException
+Controleur -> Vue: participaionsMembresCanal.jsp
+Vue -> Navigateur: les participations de chaque étudiant à la séance (et au total des séances)
+
+@enduml
+
