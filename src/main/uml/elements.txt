@@ -1,0 +1,56 @@
+canaux
+creerSondage
+EFG
+entrainements
+inscription
+participations
+presences
+questionnaires
+signalerPresence
+sondages
+
+
+PersonneDao
+  insert(Personne personne)
+CanalDao
+  List<Canal> getAll()
+  List<Personne> getMembresByIdCanal(int idCanal)
+  insert(Canal canal)
+EFGDao
+  EFG getById(int idEFG)
+  insert(GroupeEfg groupe)
+QuestionnaireDao
+  List<Questionnaire> getByIdFormateur(int idPersonne)
+  insertEntrainement(int idQuestionnaire, int idCanal)
+SeanceDao
+  List<Participation> getAllParticipationsbyIdSeance(int idSeance)
+  List<Presence> getPresencesByIdSeance(int idSeance)
+  insert(Seance)
+  setParticipation(Participation participation)
+  setPresent(int idSeance, int idPersonne, boolean estPresent)
+SondageDao
+  List<Sondage> getByIdCanal(int idCanal)
+  insert(Sondage sondage)
+  List<Sondage> getByIdSeance(int idSeance)
+  Sondage getById(int idSondage)
+  
+
+canaux.jsp  
+confirmationInscription.jsp
+EFG.jsp
+inscription.jsp
+membresCanal.jsp
+presences.jsp
+questionnairesFormateur.jsp
+sondages.jsp
+sondage.jsp
+
+
+Canal
+EFG
+GroupeEFG
+Personne
+Participation
+Presence
+Questionnaire
+Sondage
