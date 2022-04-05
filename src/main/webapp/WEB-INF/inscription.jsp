@@ -45,11 +45,7 @@
           <div class="erreur">${inscririreMsg}</div>
         </c:if>
       </c:if>
-      <c:if test="${sessionScope['user'] != null}">
-        <button name="action" value="deconnecter">
-          Déconnecter ${sessionScope["user"].getLogin()}
-        </button>
-      </c:if>
+     
     </form>
        
        
