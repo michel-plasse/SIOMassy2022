@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1> inscription.jsp</h1>
-        <!<!--  <form method="POST">
+        <!--  <form method="POST">
       <c:if test="${sessionScope['user'] == null}">
         Nom :
         <input type="text" name="nom" value="${param['nom']}"/>
