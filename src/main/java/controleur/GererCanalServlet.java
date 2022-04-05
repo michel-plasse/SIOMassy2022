@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author https://github.com/ilyessehamcherif
+ * @author https://github.com/ilyessehamcherif/
  */
 @WebServlet(name = "DemoServlet", urlPatterns = {"/demo"})
 public class GererCanalServlet extends HttpServlet {
