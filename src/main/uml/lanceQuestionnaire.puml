@@ -2,13 +2,13 @@
 participant Navigateur
 participant Vue
 
-Navigateur -> Controleur: GET /questionnaire?id_Questionnaire=...
-Controleur -> Controleur: id_questionnaire entier ?
+Navigateur -> Controleur: POST /questionnaire?idQuestionnaire=...
+Controleur -> Controleur: idquestionnaire entier ?
 Controleur -> DAO: QuestionnaireDao.\ngetById(idQuestionnaire)
-DAO -> SGBD: SELECT id_Questionnaire form questionnaire...
+DAO -> SGBD: SELECT id_Questionnaire, id_canal from questionnaire...
 SGBD --> DAO: ligne ou échec
 DAO --> Controleur: Questionnaire ou SQLException
-Controleur -> Vue: Questionnaire.jsp
-Vue -> Navigateur: Questionnaire avec id_ seance et id questionnaire
+Controleur -> Vue: lanceQuestionnaire.jsp
+Vue -> Navigateur: Questionnaire avec idCanal et idQuestionnaire
 
 @enduml
