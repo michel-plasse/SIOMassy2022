@@ -4,7 +4,7 @@ participant Vue
 
 Navigateur -> Controleur: POST /signalerPresence\navec idCanal
 Controleur -> Controleur: verifier id_canal est entier
-Controleur -> DAO: pesence_séanceDao.select* From membre_canal
+Controleur -> DAO: pesence_séanceDao.select* From presence_seance
 DAO -> SGBD: SELECT * from membre_canal ...
 SGBD --> DAO: List<Presence> ou échec
 DAO --> Controleur:  List<Presence> ou SQLException
