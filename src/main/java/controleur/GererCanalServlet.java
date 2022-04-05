@@ -44,7 +44,7 @@ public class GererCanalServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté.");
+        request.setAttribute("message", "Pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
