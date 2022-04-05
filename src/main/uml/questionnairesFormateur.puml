@@ -1,7 +1,7 @@
 @startuml
 participant Navigateur
 participant Vue
-Navigateur -> Controleur: GET /qestionnaires
+Navigateur -> Controleur: GET /questionnaires
 Controleur -> Controleur: récupère le idPersonne\nde l'utilisateur connecté
 Controleur -> DAO: QuestionnaireDao.\ngetByIdFormateur(idPersonne)
 DAO -> SGBD: SELECT ...\nFROM questionnaire...
