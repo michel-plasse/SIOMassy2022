@@ -1,12 +1,10 @@
 <%-- 
-    Document   : membre
-    Created on : 31 mars 2022, 16:54:11
+    Document   : signalerPresence
+    Created on : 5 avr. 2022, 13:53:27
     Author     : SALL Mouhamadou
 --%>
 <%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
-<p:header title="SIO Massy 2022"/>
-<h1>SIOMassy2022</h1>
-<p:footer />
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,15 +14,15 @@
     </head>
     <body>
         <p:header title="SIO Massy 2022"/>
-        <h1>OK</h1>
-        <form action="Membre" method="post">
-            input
-            <input type="submit" name="" value="test" />
+        <c:out value ="Ok"/>
+        <h1>Je suis sur SignalerPresence.jsp</h1>
+        <form action="/signalerPresence" method="post">
+            
+            <input type="submite" value="test">
         </form>
         
-        
-        <p:header title="SIO Massy 2022"/>
 
 <p:footer />
+
     </body>
 </html>
