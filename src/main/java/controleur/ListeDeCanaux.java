@@ -21,7 +21,7 @@ public class ListeDeCanaux extends HttpServlet {
 
     
     
-    private static final String VUE_FORM ="WEB-INF/listeDeCanuax.jsp";
+    private static final String VUE ="WEB-INF/listeDeCanaux.jsp";
     private static final String VUE_ERREUR= "WEB-INF/message.jsp";
     
     
@@ -67,7 +67,7 @@ public class ListeDeCanaux extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher(VUE_FORM).forward(request, response);
+        request.getRequestDispatcher(VUE).forward(request, response);
 
     }
 
