@@ -2,14 +2,15 @@
 
 participant Navigateur
 participant Vue
-Navigateur -> Controleur: GET /participants
-Controleur -> Controleur: récupère le idPersonne\nde l'utilisateur connecté
-Controleur -> DAO: ParticipantsDao.\ngetByIdFormateur(idPersonne)
-DAO -> SGBD: SELECT ...\nFROM Participants...
-SGBD --> DAO: lignes
-DAO --> Controleur: List<Participants> ou SQLException
-Controleur -> Vue: ParticipantsFormateur.jsp
-Vue -> Navigateur: liste@enduml
+
+Navigateur -> Controleur: GET /niveauParticipations?idSeance=...
+Controleur -> Controleur: verifier\nidPresence_seance
+Controleur -> DAO: CanalDao.\ngetMembresByIdSeance(idSeance)
+DAO -> SGBD: SELECT *\nFROM membre_seance ...
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: Print<Participations> ou SQLException
+Controleur -> Vue: participaionsMembresCanal.jsp
+Vue -> Navigateur: les participations de chaque étudiant à la séance 
 @enduml
 
 
