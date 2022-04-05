@@ -6,6 +6,6 @@
         <title>Les participations de chaque étudiant à la séance (et au total des séances)</title>
     </head>
     <body>
-        <h1>Titre (Test)</h1>
+        <h1>Titre (Test Participations)</h1>
     </body>
 </html>
