@@ -1,0 +1,13 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST /entrainements\navec idQuestionnaire, idCanal
+Controleur -> Controleur: idQuestionnaire\net idCanal entier ?
+Controleur -> DAO: QuestionnaireDao.\ninsertEntrainement(\nidQuestionnaire, idCanal)
+DAO -> SGBD: INSERT INTO entrainement ...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+Controleur -> Navigateur: redirect(questionnaires)
+
+@enduml

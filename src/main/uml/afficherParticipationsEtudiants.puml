@@ -1,0 +1,15 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /presence?idSeance=...
+Controleur -> Controleur: verifier\nidSeance entier
+Controleur -> DAO: SeanceDao.\ngetPresenceByIdSeanec(idSeance)
+DAO -> SGBD: SELECT *\nFROM presence_seance ...
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: List<Presence> getByIdSeance(int idSeance) ou SQLException
+Controleur -> Vue: participaionsMembresCanal.jsp
+Vue -> Navigateur: les participations de chaque étudiant à la séance (et au total des séances)
+
+@enduml
+
