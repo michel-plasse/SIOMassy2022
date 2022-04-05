@@ -1,0 +1,11 @@
+@startuml
+== Création d'un groupe ==
+Navigateur -> Contrôleur: GET/groupes?nomGroupe=&champ1=
+Contrôleur -> Dao: GroupeDao\createGroupe(nomGroupe,...)
+Dao -> SGBD: insert into groupe values ('NomGroupe',...)
+SGBD --> Dao: résultat
+Dao --> Contrôleur: Groupe ou SQLException
+Contôleur --> Vue: groupe.jsp
+Vue --> Navigateur: Fiche du groupe
+== ajouter des étudiants ==
+@enduml
