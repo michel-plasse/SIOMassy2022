@@ -2,14 +2,13 @@
 participant Navigateur
 participant Vue
 
-Navigateur -> Controleur: POST / Le participant affiche un EFG, en listant ses groupes et leurs membres
-Controleur -> Controleur: verifier parametres
-Controleur -> DAO: efgDao.\ngetGroupByIdGroup_efg(id_group)
-DAO -> SGBD: SELECT intitule,id_group,id_personne from  efg inner join membre_groupe_efg...
-SGBD --> DAO: ok ou échec
-DAO --> Controleur: ok ou SQLException
-
-Controleur -> Vue: EFGMembreGroupe.jsp
-Vue -> Navigateur: un EFG est affiché avec les groupes et les membres qui le compose avec nom, prénom
+Navigateur -> Controleur: GET /EFG?idEFG=...
+Controleur -> Controleur: idEFG entier ?
+Controleur -> DAO: EFGDao.\ngetById(idEFG)
+DAO -> SGBD: SELECT compliqué
+SGBD --> DAO: ligne ou échec
+DAO --> Controleur: EFG ou SQLException
+Controleur -> Vue: EFG.jsp
+Vue -> Navigateur: EFG avec groupes et membres
 
 @enduml
