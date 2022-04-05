@@ -62,6 +62,7 @@ public class InscriptionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher(VUE_FORM).forward(request, response);
+        
          
        
     }
