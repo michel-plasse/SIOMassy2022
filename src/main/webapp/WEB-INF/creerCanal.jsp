@@ -21,7 +21,6 @@
                 <div style="padding: 5px 0px 0px 0px;">
                 <input type="text" name="nom">
             </p>
-            
             <div style="padding: 10px 0px 0px 0px;">
             <input type="submit" value="Valider">
         </form>
