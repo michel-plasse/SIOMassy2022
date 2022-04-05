@@ -20,10 +20,10 @@
         ${nomMsg}
         <br/>
         Prénom :
-        <input type="text" name="prenom" value="${param['prenom']}"/>
-        Mot de passe :
+        <input type="text" name="prenom" value="${param['prenom']}"/>      
         ${prenomMsg}
         <br/>
+        Mot de passe :
         <input type="password" name="pwd"/>
         ${pwdMsg}
         <br/>
@@ -33,12 +33,10 @@
         <br/>
         Email :
         <input type="text" name="email" value="${param['email']}"/>
-        Mot de passe :
         ${emailMsg}
         <br/>
         Confirmation de email :
         <input type="text" name="email" value="${param['email']}"/>
-        Mot de passe :
         ${emailMsg}
         <br/>
         <button type="submit">S'inscrire</button>
