@@ -2,14 +2,19 @@
 participant Navigateur
 participant Vue
 
-Navigateur -> Controleur: POST /canal\navec nom
-Controleur -> Controleur: verifier parametres
-Controleur -> DAO: CanalDao.insert(nom)
+== ajout d'un canal ==
+Navigateur -> Controleur: GET /creerCanal
+Controleur -> Vue: creerCanal.jsp
+Vue --> Navigateur: formulaire vierge
+Navigateur -> Controleur: POST /canaux\navec nom
+Controleur -> Controleur: verifier nom non vide
+Controleur -> DAO: Canal canal = new Canal(...)\nCanalDao.insert(canal)
 DAO -> SGBD: INSERT INTO canal...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur: ok ou SQLException
+== si ok ==
+Controleur -> Navigateur: redirect(canaux)
 == si souci (canal dupliqué par ex) ==
-Controleur -> Vue: --
-Vue -> Navigateur: getCanaux()
-
+Controleur -> Vue: creerCanal.jsp
+Vue --> Navigateur: formulaire avec erreurs
 @enduml
