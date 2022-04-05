@@ -20,7 +20,7 @@ import dao.PersonneDao;
  *
  * @author Abdillahi
  */
-@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription.jsp"})
+@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription"})
 public class InscriptionServlet extends HttpServlet {
 
     
