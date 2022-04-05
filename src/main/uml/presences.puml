@@ -4,7 +4,7 @@ participant Vue
 
 Navigateur -> Controleur: GET /presences?idSeance=...
 Controleur -> Controleur: idSeance entier ?
-Controleur -> DAO: SeanceDao.\ngetByIdSeance(idSeance)
+Controleur -> DAO: SeanceDao.\ngetPresencesByIdSeance(idSeance)
 DAO -> SGBD: SELECT ...
 SGBD --> DAO: ligne ou échec
 DAO --> Controleur: List<Presence> ou SQLException
