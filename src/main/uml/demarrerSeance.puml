@@ -1,0 +1,22 @@
+@startuml
+participant Navigateur
+participant Vue
+
+== formulaire ==
+Navigateur -> Controleur: GET /demarrerSeance?idCanal=...
+Controleur -> Controleur: idCanal entier ?
+Controleur -> Vue: demmarerSeance.jsp
+Vue -> Navigateur: formulaire
+
+== Demarrer ==
+Navigateur -> Controleur: POST /demarrerSeance\navec idCanal, dateDebut, dateFin
+Controleur -> Controleur: idCanal entier ?\ndatesDebut et dateFin dates ?
+Controleur -> Controleur: dateDebut < dateFin ?
+Controleur -> Controleur: Seance seance = new Seance(...)
+Controleur -> Dao: SeanceDao.\ninsert(seance)
+Dao -> SGBD: INSERT INTO seance ...
+SGBD --> Dao: ok ou exception
+Dao --> Controleur: ok ou SQLException
+Controleur -> Vue: message.jsp
+Vue --> Navigateur: "séance créée"
+@enduml
