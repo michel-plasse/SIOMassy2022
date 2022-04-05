@@ -1,0 +1,36 @@
+﻿Le formateur crée un exercice à faire en groupe (EFG). [2];
+Le participant crée un groupe et y ajoute des étudiants. [2] ;Kylian
+Le participant affiche un EFG, en listant ses groupes et leurs membres [3], peut explorer JSON];Karim
+Le participant liste les EFG du canal. [1];Adem
+Le formateur lance un sondage (oui/non, à choix multiples, à saisie libre) [2];Cheick
+Le participant répond à une question [1];Adem
+Le participant affiche les réponses à un sondage [1];Cheick
+Le participant liste les sondages du canal [1];Dieynaba
+L'étudiant signale sa présence à la séance courante. [1];Mouhamadou
+Le membre liste les présences à une séance. [1];Kylian
+Le membre liste la présence d'un étudiant donné à toutes les séances. [1];David
+Le formateur démarre une séance. [1];Dieynaba
+Le formateur affiche les participations de chaque étudiant à la séance (et au total des séances) [1];Ilyesse
+Le formateur met à jour la participation d'un étudiant (absent/aucune/un peu/beaucoup). [1 ou 2 si Ajax];Nadjia
+Le formateur liste ses questionnaires (tous canaux confondus). [1];Nadjia
+Le formateur crée un questionnaire. [2];
+L'étudiant liste ses questionnaires (passés ou à passer). [1];
+L'étudiant répond à un questionnaire. [1];
+Le formateur lance un questionnaire dans une séance. [1];Karim
+Le formateur liste les passages de questionnaire. [2];
+Le formateur affiche les résultats d'un passage de questionnaire. [1];
+Le formateur liste les évaluations qu'il a données ou va donner. [2];Rayanne
+L'étudiant liste les évaluations qu'il a passées ou va passer. [1];
+Le formateur planifie une évaluation (et la modifier ou la supprimer). [1];Rayanne
+Le formateur liste les notes pour une évaluation. [1] ;Abdallah
+Le formateur saisit les notes d'une évaluation. [2];Abdallah
+Le membre peut lister les canaux. [1] ;Abdillahi
+Le membre peut afficher le trombinoscope d'une session. [1];
+L'étudiant s'inscrit sur l'application (confirmation par email). [3];Abdillahi
+Le gestionnaire ou le formateur liste les membres d'un canal [1];Mouhamadou
+L'administrateur gère les canaux (crud). [2];Ilyesse
+L'administrateur gère les membres d'un canal. [2];David
+Le membre liste les membres d'un canal. [1];
+Le membre liste les canaux dont il est membre. [1];
+Le participant peut afficher le kanban (à faire, en cours, fait, bloquant) [2];
+Le participant peut déplacer une tâche [1 simple, 2 par glisser/déposer];
