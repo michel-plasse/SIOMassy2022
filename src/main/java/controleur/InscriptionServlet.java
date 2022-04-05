@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Abdillahi
  */
-@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription"})
+@WebServlet(name = "InscriptionServlet", urlPatterns = {"/inscription.jsp"})
 public class InscriptionServlet extends HttpServlet {
 
     
