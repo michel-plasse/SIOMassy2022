@@ -85,6 +85,7 @@ public class InscriptionServlet extends HttpServlet {
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
+    
 
     /**
      * Returns a short description of the servlet.
