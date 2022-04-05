@@ -1,0 +1,34 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur:GET /EFGs?idCanal=...
+Controleur -> Controleur: idCanal entier ?
+Controleur -> DAO: EFGDao.getAll(idCanal)
+DAO -> SGBD: SELECT... 
+SGBD --> DAO: lignes ou échec
+DAO --> Controleur: List<EFG> ou SQLException
+Controleur -> Vue: EFGs.jsp
+Vue -> Navigateur: liste des EFGs
+@enduml
+/*
+Faire de très petits cycles, avec commit à la fin.
+
+1. Créer EFGsServlet, et dans son doGet, renvoyer
+à la vue + créer EFGs.jsp avec juste "ok"
+2. Créer EFG (modèle) + dans le doGet du contrôleur,
+ instancier (en dur) EFG et le passer à la vue
+request.setAttribute("efgs", efgs) + écrire la vue
+3. Créer la DAO, avec sa méthode getAll, qui
+renvoie les EFGs créés en dur à l étape 2 +
+le controleur appelle la DAO avec le idCanal en dur 
+4. Ecrire le code de la DAO, avec son throws 
+SQLException + contrôler dans le contrôleur
+la SQLException
+5. Controleur récupère le idCanal et le passe à la
+méthode de DAO
+6. Controleur contrôle le paramètre idCanal
+
+
+
+*/

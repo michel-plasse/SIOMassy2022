@@ -1,0 +1,17 @@
+@startuml
+
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST /modifierParticipations\navec idSeance, idPersonne, niveau
+Controleur -> Controleur: idSeance, idPersonne et niveau entiers ?
+Controleur -> Controleur: Participation participation = new ...
+Controleur -> DAO: SeanceDao.\nsetParticipation(\nparticipation)
+DAO -> SGBD: UPDATE (ou INSERT ?)\npresence_seance
+SGBD --> DAO: ok ou exception
+DAO --> Controleur: ok ou SQLException
+Controleur -> Navigateur: redirect(participations?idSeance=...)
+@enduml
+
+
+

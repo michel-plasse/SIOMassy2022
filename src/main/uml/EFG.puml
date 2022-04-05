@@ -1,0 +1,14 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /EFG?idEFG=...
+Controleur -> Controleur: idEFG entier ?
+Controleur -> DAO: EFGDao.\ngetById(idEFG)
+DAO -> SGBD: SELECT compliqué
+SGBD --> DAO: ligne ou échec
+DAO --> Controleur: EFG ou SQLException
+Controleur -> Vue: EFG.jsp
+Vue -> Navigateur: EFG avec groupes et membres
+
+@enduml

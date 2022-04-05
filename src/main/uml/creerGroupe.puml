@@ -1,0 +1,22 @@
+@startuml
+== Création d'un groupe d'EFG ==
+Navigateur -> Controleur: POST /creerGroupe\navec idEFG
+Controleur -> Controleur: idEFG entier ?
+Controleur -> Controleur: récupère idUser\nen session
+Controleur -> Controleur: GroupeEFG groupe = new ...
+Controleur -> Dao: EFGDao.\najouterGroupe(groupe)
+Dao -> SGBD: INSERT INTO groupe ...\nAttn à insérer\ndans membre_groupe\nle créateur
+SGBD --> Dao: ok ou erreur
+Dao --> Controleur: ok ou SQLException
+Controleur --> Navigateur: redirect(EFG?idEFG=...)
+
+== s'ajouter à un groupe ==
+Navigateur -> Controleur: POST /integrerGroupe\navec idGroupe, idEFG
+Controleur -> Controleur: idGroupe et idEFG entiers ?
+Controleur -> Controleur: récupère idUser\nen session
+Controleur -> Dao: EFGDao.\najouterMembreGroupe(\nidEFG, idGroupe, idUser)
+Dao -> SGBD: INSERT INTO membre_groupe_efg ...
+SGBD --> Dao: ok ou exception
+Dao --> Controleur: ok ou SQLException
+Controleur --> Navigateur: redirect(EFG?idEFG=...)
+@enduml
