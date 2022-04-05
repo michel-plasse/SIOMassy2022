@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author https://github.com/ilyessehamcherif
  */
-@WebServlet(name = "GererCanalServlet", urlPatterns = {"/creerCanal"})
-public class GererCanalServlet extends HttpServlet {
-    private static final String VUE = "WEB-INF/creerCanal.jsp";
+@WebServlet(name = "ParticipationsEtudiantsServlet", urlPatterns = {"/participationsMembresCanal"})
+public class ParticipationsEtudiantsServlet extends HttpServlet {
+    private static final String VUE = "WEB-INF/participationsMembresCanal.jsp";
     private static final String VUE_ERREUR= "WEB-INF/message.jsp";
 
     /**
