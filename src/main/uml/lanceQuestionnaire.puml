@@ -1,0 +1,14 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /questionnaire?id_Questionnaire=...
+Controleur -> Controleur: id_questionnaire entier ?
+Controleur -> DAO: QuestionnaireDao.\ngetById(idQuestionnaire)
+DAO -> SGBD: SELECT id_Questionnaire form questionnaire...
+SGBD --> DAO: ligne ou échec
+DAO --> Controleur: Questionnaire ou SQLException
+Controleur -> Vue: Questionnaire.jsp
+Vue -> Navigateur: Questionnaire avec id_ seance et id questionnaire
+
+@enduml

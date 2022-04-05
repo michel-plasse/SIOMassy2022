@@ -1,0 +1,18 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST /canaux\navec nom
+Controleur -> Controleur: verifier parametres
+Controleur -> DAO: PersonneDao.insert(nom)
+DAO -> SGBD: CREATE INTO canaux...
+DAO -> SGBD: READ INTO canaux...
+DAO -> SGBD: UPDATE INTO canaux...
+DAO -> SGBD: DELETE INTO canaux...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+== si souci (canaux dupliqué par ex) ==
+Controleur -> Vue: canaux.jsp
+Vue -> Navigateur: canaux avec erreurs
+
+@enduml

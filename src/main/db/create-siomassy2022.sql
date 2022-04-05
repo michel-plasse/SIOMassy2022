@@ -1,3 +1,18 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema siomassy2022
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `siomassy2022` ;
+
+-- -----------------------------------------------------
+-- Schema siomassy2022
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `siomassy2022` DEFAULT CHARACTER SET utf8 ;
 USE `siomassy2022` ;
 
 -- -----------------------------------------------------
@@ -19,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   PRIMARY KEY (`id_personne`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -29,6 +45,8 @@ CREATE TABLE IF NOT EXISTS `questionnaire` (
   `id_questionnaire` INT NOT NULL AUTO_INCREMENT,
   `id_createur` INT(11) NOT NULL,
   `libelle` VARCHAR(45) NOT NULL,
+  `nb_minutes` TINYINT NOT NULL,
+  `cree_a` DATETIME NOT NULL,
   PRIMARY KEY (`id_questionnaire`),
   INDEX `fk_questionnaire_personne_idx` (`id_createur` ASC),
   CONSTRAINT `fk_questionnaire_personne`
@@ -41,35 +59,17 @@ COMMENT = 'Le questionnaire géré par un formateur => trigger';
 
 
 -- -----------------------------------------------------
--- Table `canal`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `canal` (
-  `id_canal` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_canal`),
-  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `qcm`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qcm` (
   `id_qcm` INT NOT NULL AUTO_INCREMENT,
   `id_questionnaire` INT NULL,
   `libelle` VARCHAR(128) NOT NULL,
-  `id_canal` INT NOT NULL,
   PRIMARY KEY (`id_qcm`),
   INDEX `fk_qcm_questionnaire_idx` (`id_questionnaire` ASC),
-  INDEX `fk_qcm_canal_idx` (`id_canal` ASC),
   CONSTRAINT `fk_qcm_questionnaire`
     FOREIGN KEY (`id_questionnaire`)
     REFERENCES `questionnaire` (`id_questionnaire`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_qcm_canal`
-    FOREIGN KEY (`id_canal`)
-    REFERENCES `canal` (`id_canal`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -92,6 +92,17 @@ CREATE TABLE IF NOT EXISTS `option_qcm` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 COMMENT = 'Réponse possible';
+
+
+-- -----------------------------------------------------
+-- Table `canal`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `canal` (
+  `id_canal` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_canal`),
+  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC))
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -291,6 +302,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `seance` (
   `id_seance` INT NOT NULL,
   `debute_a` DATETIME NOT NULL,
+  `finit_a` DATETIME NOT NULL,
   `id_canal` INT NOT NULL,
   PRIMARY KEY (`id_seance`),
   INDEX `fk_seance_canal1_idx` (`id_canal` ASC),
@@ -421,3 +433,8 @@ CREATE TABLE IF NOT EXISTS `membre_groupe_efg` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
