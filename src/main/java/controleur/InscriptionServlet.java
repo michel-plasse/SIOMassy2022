@@ -22,6 +22,8 @@ public class InscriptionServlet extends HttpServlet {
 
     
     private static final String VUE_FORM ="inscription.jsp";
+    private static final String VUE = "WEB-INF/demo.jsp";
+    private static final String VUE_ERREUR= "WEB-INF/message.jsp";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -61,7 +63,7 @@ public class InscriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher(VUE_FORM).forward(request, response);
+        request.getRequestDispatcher("/.inscription.jsp").forward(request, response);
         
          
        
@@ -77,8 +79,11 @@ public class InscriptionServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+             throws ServletException, IOException {
+        // Mettre en post-it message
+        request.setAttribute("message", "pas encore implémenté");
+        // Passer la main à la vue
+        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
 
     /**
