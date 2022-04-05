@@ -279,10 +279,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `reponse_question` (
   `id_question` INT NOT NULL,
   `id_personne` INT(11) NOT NULL,
-  `libelle` VARCHAR(45) NOT NULL,
+  `libelle` VARCHAR(45) NULL,
+  `id_option_question` INT NULL,
   PRIMARY KEY (`id_question`, `id_personne`),
   INDEX `fk_reponse_quesion_personne_idx` (`id_personne` ASC),
   INDEX `fk_reponse_question_question_idx` (`id_question` ASC),
+  INDEX `fk_reponse_question_option_question1_idx` (`id_option_question` ASC, `id_question` ASC),
   CONSTRAINT `fk_reponse_question_question`
     FOREIGN KEY (`id_question`)
     REFERENCES `question` (`id_question`)
@@ -291,6 +293,11 @@ CREATE TABLE IF NOT EXISTS `reponse_question` (
   CONSTRAINT `fk_reponse_question_personne`
     FOREIGN KEY (`id_personne`)
     REFERENCES `personne` (`id_personne`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reponse_question_option_question`
+    FOREIGN KEY (`id_option_question` , `id_question`)
+    REFERENCES `option_question` (`id_option_question` , `id_question`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
