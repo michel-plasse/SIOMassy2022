@@ -13,6 +13,9 @@
     </head>
     <body>
         <h1>OK</h1>
+       <!-- <form action="/InscriptionServlet.java" method="POST"></form> -->
        
+       
+      
     </body>
 </html>
