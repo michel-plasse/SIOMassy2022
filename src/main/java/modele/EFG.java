@@ -9,6 +9,7 @@ import java.time.LocalDate;
 /**
  *
  * @author adem romdhane
+ * 
  */
 public class EFG {
     private int id_efg;
