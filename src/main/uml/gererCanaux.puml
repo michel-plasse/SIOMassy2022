@@ -1,0 +1,15 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST /canal\navec nom
+Controleur -> Controleur: verifier parametres
+Controleur -> DAO: CanalDao.insert(nom)
+DAO -> SGBD: INSERT INTO canal...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+== si souci (canal dupliqué par ex) ==
+Controleur -> Vue: --
+Vue -> Navigateur: getCanaux()
+
+@enduml
