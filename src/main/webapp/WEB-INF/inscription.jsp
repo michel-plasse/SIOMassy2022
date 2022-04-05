@@ -12,8 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>OK</h1>
-        <form method="POST">
+        <h1> inscription.jsp</h1>
+        <!<!--  <form method="POST">
       <c:if test="${sessionScope['user'] == null}">
         Nom :
         <input type="text" name="nom" value="${param['nom']}"/>
@@ -46,7 +46,8 @@
         </c:if>
       </c:if>
      
-    </form>
+    </form> -->
+       
        
        
       
