@@ -13,14 +13,46 @@
     </head>
     <body>
         <h1>OK</h1>
-        <form action="/InscriptionServlet.java" method="POST">
-            Nom <input type="text" name="nom"> <br>
-            Prenom <input type="text" name="prenom"> <br>
-            Password <input type="password" name="psw"> <br>
-            Confirmation de Mot de passe <input type="password" name="psw"> <br>
-            Email <input type="email" name="email"> <br>
-            Confirmation de Email <input type="email" name="email"> <br>
-        </form> 
+        <form method="POST">
+      <c:if test="${sessionScope['user'] == null}">
+        Nom :
+        <input type="text" name="nom" value="${param['nom']}"/>
+        ${nomMsg}
+        <br/>
+        Prénom :
+        <input type="text" name="prenom" value="${param['prenom']}"/>
+        Mot de passe :
+        ${prenomMsg}
+        <br/>
+        <input type="password" name="pwd"/>
+        ${pwdMsg}
+        <br/>
+        Confirmation de Mot de passe :
+        <input type="password" name="pwd"/>
+        ${pwdMsg}
+        <br/>
+        Email :
+        <input type="text" name="email" value="${param['email']}"/>
+        Mot de passe :
+        ${emailMsg}
+        <br/>
+        Confirmation de email :
+        <input type="text" name="email" value="${param['email']}"/>
+        Mot de passe :
+        ${emailMsg}
+        <br/>
+        <button type="submit">S'inscrire</button>
+        <br/>
+        <c:if test="${inscrireMsg != null}">
+          <div class="erreur">${inscririreMsg}</div>
+        </c:if>
+      </c:if>
+      <c:if test="${sessionScope['user'] != null}">
+        <button name="action" value="deconnecter">
+          Déconnecter ${sessionScope["user"].getLogin()}
+        </button>
+      </c:if>
+    </form>
        
        
       
