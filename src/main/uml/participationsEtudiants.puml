@@ -1,0 +1,16 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /participations?idSeance=...
+Controleur -> Controleur: idSeance entier ?
+
+Controleur -> DAO: SeanceDao.\ngetAllParticipationsbyIdSeance(\nidSeance)\npour toutes les séances\ndu canal
+DAO -> SGBD: SELECT un peu compliqué
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: List<Participation>
+Controleur -> Vue: participationsMembresCanal.jsp
+Vue -> Navigateur: les participations\nde chaque étudiant\nà la séance\n(et au total des séances)
+
+@enduml
+

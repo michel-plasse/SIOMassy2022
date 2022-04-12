@@ -1,0 +1,23 @@
+@startuml
+participant Navigateur
+participant Vue
+== afficher le formulaire ==
+Navigateur -> Controleur: GET /creerEvaluation
+Controleur -> Vue: creerEvaluation.jsp
+Vue --> Navigateur: formulaire vierge
+
+== soumettre les données ==
+Navigateur -> Controleur: POST /creerEvaluation\navec intitule,date,duree,idCanal
+Controleur -> Controleur: verifier parametres
+== si soucis (info manquante par exemple) ==
+Controleur -> Vue: evaluations.jsp
+Vue -> Navigateur: formulaire avec erreurs
+== si ok ==
+Controleur -> Controleur: new Evaluation(...)
+Controleur -> DAO: EvaluationDao.insert(evaluation)
+DAO -> SGBD: INSERT INTO evaluation...
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+Controleur -> Navigateur: redirect evaluationsFormateur
+Navigateur -> Controleur: GET /evaluationsFormateur
+@enduml
