@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -6,6 +7,7 @@ package modele;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -31,8 +33,8 @@ public class EFG {
         this.creeA = creeA;
     }
 
-   
-
+    
+    
     public int getIdEfg() {
         return idEfg;
     }
