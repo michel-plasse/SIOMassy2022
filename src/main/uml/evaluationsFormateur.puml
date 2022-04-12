@@ -1,0 +1,12 @@
+@startuml
+participant Navigateur
+participant Vue
+Navigateur -> Controleur: GET /evaluationFormateur
+Controleur -> Controleur: récuperer idUser en session
+Controleur -> DAO: EvaluationDao.\ngetByIdFormateur(idUser)
+DAO -> SGBD: SELECT ...
+SGBD --> DAO: lignes ou échec
+DAO --> Controleur: List<Evaluation>\nou SQLException
+Controleur -> Vue: evaluations.jsp
+Vue -> Navigateur: évaluations du formateur
+@enduml
