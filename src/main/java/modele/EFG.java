@@ -6,6 +6,7 @@ package modele;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -16,7 +17,7 @@ public class EFG {
     private int idEfg;
     Personne createur;
     private int idCanal;
-    
+    private List<Groupe> groupes;
     private String intitule;
     private LocalDateTime creeA; 
 

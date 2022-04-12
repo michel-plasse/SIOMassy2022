@@ -4,6 +4,7 @@
  */
 package modele;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,9 +16,35 @@ import java.util.Objects;
      * @param idGroupe
      * @param idEFG
  */
-public class Groupe extends Personne{
-      private int idEFG, idGroupe, idPersonne;
-      private String prenom, nom, email;
+public class Groupe {
+      private int idEFG, idGroupe;
+      private  Personne createur;
+      private List<Personne> membres;
+
+    public Groupe(int idEFG, int idGroupe, Personne createur, List<Personne> membres) {
+        this.idEFG = idEFG;
+        this.idGroupe = idGroupe;
+        this.createur = createur;
+        this.membres = membres;
+    }
+
+    public Personne getCreateur() {
+        return createur;
+    }
+
+    public void setCreateur(Personne createur) {
+        this.createur = createur;
+    }
+
+    public List<Personne> getMembres() {
+        return membres;
+    }
+
+    public void setMembres(List<Personne> membres) {
+        this.membres = membres;
+    }
+ 
+    
 
     public int getIdEFG() {
         return idEFG;
@@ -35,47 +62,13 @@ public class Groupe extends Personne{
         this.idGroupe = idGroupe;
     }
 
-    public int getIdPersonne() {
-        return idPersonne;
-    }
-
-    public void setIdPersonne(int idPersonne) {
-        this.idPersonne = idPersonne;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 31 * hash + this.idEFG;
-        hash = 31 * hash + this.idGroupe;
-        hash = 31 * hash + this.idPersonne;
-        hash = 31 * hash + Objects.hashCode(this.prenom);
-        hash = 31 * hash + Objects.hashCode(this.nom);
-        hash = 31 * hash + Objects.hashCode(this.email);
+        hash = 37 * hash + this.idEFG;
+        hash = 37 * hash + this.idGroupe;
+        hash = 37 * hash + Objects.hashCode(this.createur);
+        hash = 37 * hash + Objects.hashCode(this.membres);
         return hash;
     }
 
@@ -91,12 +84,20 @@ public class Groupe extends Personne{
             return false;
         }
         final Groupe other = (Groupe) obj;
-        return true;
+        if (this.idEFG != other.idEFG) {
+            return false;
+        }
+        if (this.idGroupe != other.idGroupe) {
+            return false;
+        }
+        if (!Objects.equals(this.createur, other.createur)) {
+            return false;
+        }
+        return Objects.equals(this.membres, other.membres);
     }
 
-      
-    
-}
+  
+    }
    
      
 
