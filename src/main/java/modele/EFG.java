@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  */
 public class EFG {
     private int idEfg;
-    private int idCreateur;
+    Personne createur;
     private int idCanal;
     
     private String intitule;
@@ -23,13 +23,15 @@ public class EFG {
     public EFG() {
     }
 
-    public EFG(int idEfg, int idCreateur, int idCanal, String intitule) {
+    public EFG(int idEfg, Personne createur, int idCanal, String intitule, LocalDateTime creeA) {
         this.idEfg = idEfg;
-        this.idCreateur = idCreateur;
+        this.createur = createur;
         this.idCanal = idCanal;
         this.intitule = intitule;
-        
+        this.creeA = creeA;
     }
+
+   
 
     public int getIdEfg() {
         return idEfg;
@@ -39,13 +41,15 @@ public class EFG {
         this.idEfg = idEfg;
     }
 
-    public int getIdCreateur() {
-        return idCreateur;
+    public Personne getCreateur() {
+        return createur;
     }
 
-    public void setIdCreateur(int idCreateur) {
-        this.idCreateur = idCreateur;
+    public void setCreateur(Personne createur) {
+        this.createur = createur;
     }
+
+   
 
     public int getIdCanal() {
         return idCanal;
