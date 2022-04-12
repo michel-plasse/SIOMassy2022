@@ -5,6 +5,7 @@
 package modele;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -12,20 +13,46 @@ import java.time.LocalDate;
  * 
  */
 public class EFG {
-    private int id_efg;
-    private int id_createur;
-    private int id_canal;
+    private int idEfg;
+    private int idCreateur;
+    private int idCanal;
     
     private String intitule;
-    private LocalDate cree_a; 
-    
+    private LocalDateTime creeA; 
 
-    public int getId_efg() {
-        return id_efg;
+    public EFG() {
     }
 
-    public void setId_efg(int id_efg) {
-        this.id_efg = id_efg;
+    public EFG(int idEfg, int idCreateur, int idCanal, String intitule) {
+        this.idEfg = idEfg;
+        this.idCreateur = idCreateur;
+        this.idCanal = idCanal;
+        this.intitule = intitule;
+        
+    }
+
+    public int getIdEfg() {
+        return idEfg;
+    }
+
+    public void setIdEfg(int idEfg) {
+        this.idEfg = idEfg;
+    }
+
+    public int getIdCreateur() {
+        return idCreateur;
+    }
+
+    public void setIdCreateur(int idCreateur) {
+        this.idCreateur = idCreateur;
+    }
+
+    public int getIdCanal() {
+        return idCanal;
+    }
+
+    public void setIdCanal(int idCanal) {
+        this.idCanal = idCanal;
     }
 
     public String getIntitule() {
@@ -36,11 +63,14 @@ public class EFG {
         this.intitule = intitule;
     }
 
-    public LocalDate getCree_a() {
-        return cree_a;
+    public LocalDateTime getCreeA() {
+        return creeA;
     }
 
-    public void setCree_a(LocalDate cree_a) {
-        this.cree_a = cree_a;
+    public void setCreeA(LocalDateTime creeA) {
+        this.creeA = creeA;
     }
+    
+
+ 
 }
