@@ -31,10 +31,13 @@
 <% 
     EFG efg1= new EFG();
        request.setAttribute("efg",efg1);
-    
+     ArrayList<Groupe> groupes = efg1.getGroupe();
+for( Groupe nouveauGroupe: groupes )
     
  session.getAttribute("controleurAfficheEfg");
- 	out.println("<tr><td>"+getId_efg()+"</td><td>"+getId_createur()+"</td><td>"+getIntitule()+"</td></tr>");%>
+ 	out.println("<tr><td>"+nouveauGroupe.getId_efg()+"</td><td>"+nouveauGroupe.getId_createur()+"</td><td>"+nouveauGroupe.getIntitule()+"</td></tr>");%>
+       
+	out.println("<tr><td>"+nouvelArticle.getNom()+
 </tbody>
 </table>
  <p:footer />
