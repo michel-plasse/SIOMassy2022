@@ -47,6 +47,7 @@ public class ParticipationsEtudiantsServlet extends HttpServlet {
         request.setAttribute("message", "pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        
     }
 
 }
