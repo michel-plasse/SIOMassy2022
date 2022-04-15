@@ -35,7 +35,7 @@
      List<Groupe> groupes = efg1.getGroupes();
 for( Groupe nouveauGroupe: groupes )
      
- 	out.println("<tr><td>"+nouveauGroupe.getIdEfg()+"</td><td>"+nouveauGroupe.getCreateur()+"</td><td>"+nouveauGroupe.getIntitule()+"</td></tr>");%>
+ 	out.println("<tr><td>"+nouveauGroupe.getIdEFG()+"</td><td>"+nouveauGroupe.getCreateur()+"</td><td>"+nouveauGroupe.getMembres()+"</td></tr>");%>
        session.getAttribute("controleurAfficheEfg");
        
 </tbody>
