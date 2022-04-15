@@ -1,3 +1,4 @@
+<%@page import="modele.Groupe"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -31,13 +32,12 @@
 <% 
     EFG efg1= new EFG();
        request.setAttribute("efg",efg1);
-     ArrayList<Groupe> groupes = efg1.getGroupe();
+     List<Groupe> groupes = efg1.getGroupes();
 for( Groupe nouveauGroupe: groupes )
-    
- session.getAttribute("controleurAfficheEfg");
- 	out.println("<tr><td>"+nouveauGroupe.getId_efg()+"</td><td>"+nouveauGroupe.getId_createur()+"</td><td>"+nouveauGroupe.getIntitule()+"</td></tr>");%>
+     
+ 	out.println("<tr><td>"+nouveauGroupe.getIdEfg()+"</td><td>"+nouveauGroupe.getCreateur()+"</td><td>"+nouveauGroupe.getIntitule()+"</td></tr>");%>
+       session.getAttribute("controleurAfficheEfg");
        
-	out.println("<tr><td>"+nouvelArticle.getNom()+
 </tbody>
 </table>
  <p:footer />
