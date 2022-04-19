@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import modele.Sondage;
 import dao.SondageDao;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "ReponsesSondageServlet", urlPatterns = {"/reponsesSondage"})
 public class ReponsesSondageServlet extends HttpServlet {
@@ -27,6 +29,7 @@ public class ReponsesSondageServlet extends HttpServlet {
       request.setAttribute("idSondage", idSondage);
       request.setAttribute("sondage", sondage);
     } catch (SQLException exc) {
+      Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, exc);
       request.setAttribute("message", "Pb de base de données");
       vue = VUE_ERREUR;
     }

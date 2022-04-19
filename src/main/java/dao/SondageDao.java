@@ -13,8 +13,8 @@ public class SondageDao {
           "FROM\n" +
           "    question q\n" +
           "        INNER JOIN\n" +
-          "    personne p ON q.id_createur = p.id_personne" +
-          "WHERE id_question = ?";
+          "    personne p ON q.id_createur = p.id_personne\n" +
+          "WHERE q.id_question = ?";
 
       PreparedStatement stmt = connection.prepareCall(sql);
       stmt.setInt(1, idSondage);
