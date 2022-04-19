@@ -7,7 +7,6 @@ Controleur -> Vue : signalerPresence.jsp
 Vue --> Navigateur : Bouton pour signaler presence
 Navigateur -> Controleur: POST /signalerPresence\navec idSeance
 Controleur -> Controleur: idSeance entier ?
-Controleur -> Controleur: idSeance entier ?
 Controleur -> Controleur: récupérer idUser dans session
 Controleur -> DAO: SeanceDao.\nsetPresent(idSeance, idPersonne, true)
 
