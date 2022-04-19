@@ -12,15 +12,15 @@ import java.sql.SQLException;
  */
 public class CanalDao {
 
-  public static Canal getById(int idCanal) throws SQLException {
+  public static Canal insert(int idCanal) throws SQLException {
     Canal result = null;
     Connection connection = Database.getConnection();
-    String sql = "SELECT * FROM canal WHERE id_canal = ?";
+    String sql = "INSERT INTO canal(id, nom) VALUES (?,?)";
     PreparedStatement stmt = connection.prepareCall(sql);
     stmt.setInt(1, idCanal);
     ResultSet rs = stmt.executeQuery();
     if (rs.next()) {
-      Canal administrateur = new Canal(23, "testavril");
+      Canal createur = new Canal(23, "testavril");
       result = new Canal(
               rs.getInt("id_canal"),
               rs.getString("nom"));
