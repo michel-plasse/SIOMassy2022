@@ -44,10 +44,10 @@ public class EFGServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    int idEFG = 1;
+    int idEFG = 2;
     String vue = VUE;
     // Appeler la DAO
-    EFG efg;
+    EFG efg = null;
     try {
       efg = EFGDao.getById(idEFG);
       // Ajouter les données à la requête
