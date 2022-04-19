@@ -31,7 +31,6 @@ public class Canal {
     }
 
     public Canal() {
-        
     }
 
     public int getId() {
