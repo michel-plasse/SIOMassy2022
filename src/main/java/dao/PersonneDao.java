@@ -6,12 +6,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author michel
  */
 public class PersonneDao {
+
+    
 
   public static Personne getByLoginPassword(String login, String password) throws SQLException {
     Personne result = null;
@@ -33,4 +36,19 @@ public class PersonneDao {
     return result;
   }
 
+    public static void insert(Personne user) throws SQLException {
+        Connection connexion = Database.getConnection();
+       
+       Statement stmt = connexion.createStatement();
+      String q1 = "insert into userid values(?,?,?,?,?,?)";
+      int x = stmt.executeUpdate(q1);
+      
+      if (x > 0)           
+                System.out.println("Successfully Inserted");           
+            else           
+                System.out.println("Insert Failed");
+             
+            connexion.close();
+       
+}
 }

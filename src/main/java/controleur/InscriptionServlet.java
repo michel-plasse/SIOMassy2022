@@ -4,15 +4,20 @@
  */
 package controleur;
 
+import dao.PersonneDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modele.Personne;
 
 /**
@@ -23,6 +28,8 @@ import modele.Personne;
 public class InscriptionServlet extends HttpServlet {
 
     private final static String VUE = "WEB-INF/inscription.jsp";
+    private final static String VUE_OK = "WEB-INF/index.jsp";
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -34,12 +41,6 @@ public class InscriptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         Personne personne= new Personne(8, "Abdillahi", "Hassan","abdihassan@gmail.com","0612345678","Abdi20158,");
-        List<Personne> membres = new ArrayList<Personne>();
-        membres.add(personne);
-        personne= new Personne(9, "Cheik", "Lanick","mohamedcheikhlanick@gmail.com","0712345678","Cheik258");
-        membres.add(personne);
-        request.setAttribute("membres" , membres);
         request.getRequestDispatcher(VUE).forward(request, response);
     }
 
@@ -54,6 +55,56 @@ public class InscriptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String vue = VUE; // soyons pessimistes :-)
+        boolean isValid = true;
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String pwd = request.getParameter("pwd");
+        String confPwd = request.getParameter("confPwd");
+        String email = request.getParameter("email");
+        String confEmail = request.getParameter("confEmail");
+        if (nom == null || nom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Nom obligatoire");
+        }
+        if (prenom == null || prenom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("prenomMsg", "prenom obligatoire");
+        }
+        if (pwd == null || pwd.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("pwdMsg", "Mot de passe obligatoire");
+        }
+        if (confPwd == null || !confPwd.equals(pwd)) {
+            isValid = false;
+            System.out.println("pwd = '" + pwd + "' conf='" +confPwd + "'");
+            request.setAttribute("confPwdMsg", "Doit être identique au mot de passe");
+        }
+        if (email == null || email.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("emailMsg", "email obligatoire");
+        }
+        if (confEmail == null || !confEmail.equals(email)) {
+            isValid = false;
+                System.out.println("email = '" + email + "' conf='" +confEmail + "'");
+        request.setAttribute("confEmailMsg", "Doit être identique au email");
+        }
+        System.out.println("valide : " + isValid);
+        if (isValid) {
+            try {
+                System.out.println("valide");
+                Personne user = new Personne(0, prenom, nom, email, null, pwd);
+                PersonneDao.insert(user);
+                request.setAttribute("inscriptionMsg", "Vous êtes inscrit");
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("inscriptionMsg", ex.getMessage());
+            }
+        } else {
+            System.out.println("invalide");
+        }
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 
     /**
