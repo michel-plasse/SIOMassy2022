@@ -1,6 +1,3 @@
-package controleur;
-
-
 import dao.CanalDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -78,7 +75,7 @@ public class CreerCanalServlet extends HttpServlet {
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
         */
-        request.setAttribute("message", "Pas encore implémenté");
+        request.setAttribute("message", "pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
