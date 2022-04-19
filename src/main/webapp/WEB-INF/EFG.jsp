@@ -3,4 +3,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <p:header title="EFG n° ${idEFG}"/>
 <h1>EFG n° ${idEFG} : ${efg.intitule}</h1>
+<p>Créé le ${efg.creeA} par ${efg.createur.prenom}
+${efg.createur.nom}</p>
 

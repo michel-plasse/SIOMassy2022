@@ -11,8 +11,11 @@ package controleur;
 import dao.EFGDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,12 +45,20 @@ public class EFGServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     int idEFG = 1;
+    String vue = VUE;
     // Appeler la DAO
-    EFG efg = EFGDao.getById(idEFG);
-    // Ajouter les données à la requête
-    request.setAttribute("efg", efg);
-    request.setAttribute("idEFG", idEFG);
+    EFG efg;
+    try {
+      efg = EFGDao.getById(idEFG);
+      // Ajouter les données à la requête
+      request.setAttribute("efg", efg);
+      request.setAttribute("idEFG", idEFG);
+    } catch (SQLException ex) {
+      Logger.getLogger(EFGServlet.class.getName()).log(Level.SEVERE, null, ex);
+      vue = VUE_ERREUR;
+      request.setAttribute("message", "Pb avec la base de données");
+    }
     // Passer la main à la vue
-    request.getRequestDispatcher(VUE).forward(request, response);
+    request.getRequestDispatcher(vue).forward(request, response);
   }
 }
