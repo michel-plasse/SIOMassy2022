@@ -5,8 +5,10 @@
  */
 package modele;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,8 +23,37 @@ public class EFG {
     private List<Groupe> groupes;
     private String intitule;
     private LocalDateTime creeA; 
+private List<EFG> liste =new ArrayList<EFG>();
 
+    public List<EFG> getListe() {
+        return liste;
+    }
+
+    public void setListe(List<EFG> liste) {
+        this.liste = liste;
+    }
     public EFG() {
+    }
+
+   public List<Groupe> getGroupes() {
+        return groupes;
+    }
+
+    public void setGroupes(List<Groupe> groupes) {
+        this.groupes = groupes;
+    }
+    public void afficheListe(){
+		for (EFG NouveauEFG:liste)
+			System.out.println(liste);
+	}
+
+    public EFG(int idEfg, Personne createur, int idCanal, List<Groupe> groupes, String intitule, LocalDateTime creeA) {
+        this.idEfg = idEfg;
+        this.createur = createur;
+        this.idCanal = idCanal;
+        this.groupes = groupes;
+        this.intitule = intitule;
+        this.creeA = creeA;
     }
 
     public EFG(int idEfg, Personne createur, int idCanal, String intitule, LocalDateTime creeA) {
@@ -33,7 +64,13 @@ public class EFG {
         this.creeA = creeA;
     }
 
-    
+      public EFG(int idEfg, int idCanal, String intitule) {
+        this.idEfg = idEfg;
+        this.createur = createur;
+        this.idCanal = idCanal;
+        this.intitule = intitule;
+     
+    }
     
     public int getIdEfg() {
         return idEfg;
@@ -75,6 +112,14 @@ public class EFG {
 
     public void setCreeA(LocalDateTime creeA) {
         this.creeA = creeA;
+    }
+/* ajouté à partir de efgdao*/
+    public String getEFGId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void afficheListe(EFG efgs) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 
