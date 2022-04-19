@@ -148,24 +148,24 @@ BEGIN
       (2, 1, 'Que vaut s, avec String s = "0" + 1 ?'),
       (3, 2, "Quel fruit est un fruit d'hiver ?"),
       (4, 2, "Quel légume est le plus riche en vitamine C ?");
-		INSERT INTO reponse_question(id_question, id_personne, libelle) VALUES
+		INSERT INTO reponse_question(id_question, id_personne, libelle, id_option_question) VALUES
 			-- question 1 avez-vous fini
-      (1, 3, 1),
-      (1, 4, 1),
-      (1, 5, 0),
-      (1, 6, 1),
-      (1, 7, 0),
+      (1, 3, 1, NULL),
+      (1, 4, 1, NULL),
+      (1, 5, 0, NULL),
+      (1, 6, 1, NULL),
+      (1, 7, 0, NULL),
 			-- question 2 Combien de temps voulez-vous pour ce TP (choix de 1 à 3)
-      (2, 3, 1),
-      (2, 4, 2),
-      (2, 5, 2),
-      (2, 6, 3),
-      (2, 7, 2),
+      (2, 3, NULL, 1),
+      (2, 4, NULL, 2),
+      (2, 5, NULL, 2),
+      (2, 6, NULL, 3),
+      (2, 7, NULL, 2),
       -- question 3 Donnez un exemple de classe abstraite
-      (3, 3, 'java.util.List'),
-      (3, 4, 'ArrayList'),
-      (3, 5, 'java.sql.Connection'),
-      (3, 6, 'je sais pas');
+      (3, 3, 'java.util.List', NULL),
+      (3, 4, 'ArrayList', NULL),
+      (3, 5, 'java.sql.Connection', NULL),
+      (3, 6, 'je sais pas', NULL);
       -- 7e étudiant ne donne pas de réponse
 		
     -- tableaux dépendant de tableaux des groupes 1, 2 ou 3
