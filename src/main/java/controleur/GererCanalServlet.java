@@ -20,7 +20,7 @@ import modele.Canal;
  *
  * @author https://github.com/ilyessehamcherif
  */
-@WebServlet(name = "GererCanalServlet", urlPatterns = {"/creerCanal"})
+@WebServlet(name = "GererCanalServlet", urlPatterns = {"/gererCanal"})
 public class GererCanalServlet extends HttpServlet {
     private static final String VUE = "WEB-INF/creerCanal.jsp";
     private static final String VUE_ERREUR= "WEB-INF/message.jsp";
