@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ReponseSondageServlet", urlPatterns = {"/reponsesSondage"})
-public class ReponseSondageServlet extends HttpServlet {
+@WebServlet(name = "ReponsesSondageServlet", urlPatterns = {"/reponsesSondage"})
+public class ReponsesSondageServlet extends HttpServlet {
 
   private static final String VUE = "WEB-INF/reponsesSondage.jsp";
 
