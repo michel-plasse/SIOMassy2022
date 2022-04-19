@@ -14,114 +14,93 @@ import java.util.List;
 /**
  *
  * @author adem romdhane
- * 
+ *
  */
 public class EFG {
-    private int idEfg;
-    Personne createur;
-    private int idCanal;
-    private List<Groupe> groupes;
-    private String intitule;
-    private LocalDateTime creeA; 
-private List<EFG> liste =new ArrayList<EFG>();
 
-    public List<EFG> getListe() {
-        return liste;
-    }
+  private int idEfg;
+  Personne createur;
+  private int idCanal;
+  private List<Groupe> groupes;
+  private String intitule;
+  private LocalDateTime creeA;
 
-    public void setListe(List<EFG> liste) {
-        this.liste = liste;
-    }
-    public EFG() {
-    }
+  public EFG() {
+    groupes = new ArrayList<Groupe>();
+  }
 
-   public List<Groupe> getGroupes() {
-        return groupes;
-    }
+  public List<Groupe> getGroupes() {
+    return groupes;
+  }
 
-    public void setGroupes(List<Groupe> groupes) {
-        this.groupes = groupes;
-    }
-    public void afficheListe(){
-		for (EFG NouveauEFG:liste)
-			System.out.println(liste);
-	}
+  public void setGroupes(List<Groupe> groupes) {
+    this.groupes = groupes;
+  }
 
-    public EFG(int idEfg, Personne createur, int idCanal, List<Groupe> groupes, String intitule, LocalDateTime creeA) {
-        this.idEfg = idEfg;
-        this.createur = createur;
-        this.idCanal = idCanal;
-        this.groupes = groupes;
-        this.intitule = intitule;
-        this.creeA = creeA;
-    }
+  public EFG(int idEfg, Personne createur, int idCanal, List<Groupe> groupes, String intitule, LocalDateTime creeA) {
+    this.idEfg = idEfg;
+    this.createur = createur;
+    this.idCanal = idCanal;
+    this.groupes = groupes;
+    this.intitule = intitule;
+    this.creeA = creeA;
+  }
 
-    public EFG(int idEfg, Personne createur, int idCanal, String intitule, LocalDateTime creeA) {
-        this.idEfg = idEfg;
-        this.createur = createur;
-        this.idCanal = idCanal;
-        this.intitule = intitule;
-        this.creeA = creeA;
-    }
+  public EFG(int idEfg, Personne createur, int idCanal, String intitule, LocalDateTime creeA) {
+    this.idEfg = idEfg;
+    this.createur = createur;
+    this.idCanal = idCanal;
+    groupes = new ArrayList<Groupe>();
+    this.intitule = intitule;
+    this.creeA = creeA;
+  }
 
-      public EFG(int idEfg, int idCanal, String intitule) {
-        this.idEfg = idEfg;
-        this.createur = createur;
-        this.idCanal = idCanal;
-        this.intitule = intitule;
-     
-    }
-    
-    public int getIdEfg() {
-        return idEfg;
-    }
+  public EFG(int idEfg, int idCanal, String intitule) {
+    this.idEfg = idEfg;
+    this.createur = createur;
+    this.idCanal = idCanal;
+    this.intitule = intitule;
+    groupes = new ArrayList<Groupe>();
+  }
 
-    public void setIdEfg(int idEfg) {
-        this.idEfg = idEfg;
-    }
+  public int getIdEfg() {
+    return idEfg;
+  }
 
-    public Personne getCreateur() {
-        return createur;
-    }
+  public void setIdEfg(int idEfg) {
+    this.idEfg = idEfg;
+  }
 
-    public void setCreateur(Personne createur) {
-        this.createur = createur;
-    }
+  public Personne getCreateur() {
+    return createur;
+  }
 
-   
+  public void setCreateur(Personne createur) {
+    this.createur = createur;
+  }
 
-    public int getIdCanal() {
-        return idCanal;
-    }
+  public int getIdCanal() {
+    return idCanal;
+  }
 
-    public void setIdCanal(int idCanal) {
-        this.idCanal = idCanal;
-    }
+  public void setIdCanal(int idCanal) {
+    this.idCanal = idCanal;
+  }
 
-    public String getIntitule() {
-        return intitule;
-    }
+  public String getIntitule() {
+    return intitule;
+  }
 
-    public void setIntitule(String intitule) {
-        this.intitule = intitule;
-    }
+  public void setIntitule(String intitule) {
+    this.intitule = intitule;
+  }
 
-    public LocalDateTime getCreeA() {
-        return creeA;
-    }
+  public LocalDateTime getCreeA() {
+    return creeA;
+  }
 
-    public void setCreeA(LocalDateTime creeA) {
-        this.creeA = creeA;
-    }
-/* ajouté à partir de efgdao*/
-    public String getEFGId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  public void setCreeA(LocalDateTime creeA) {
+    this.creeA = creeA;
+  }
 
-    public void afficheListe(EFG efgs) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-
- 
 }
