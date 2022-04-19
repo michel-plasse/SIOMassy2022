@@ -78,7 +78,7 @@ public class CreerCanalServlet extends HttpServlet {
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
         */
-        request.setAttribute("message", "pas encore implémenté");
+        request.setAttribute("message", "Pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
