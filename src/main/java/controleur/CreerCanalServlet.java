@@ -1,3 +1,6 @@
+package controleur;
+
+
 import dao.CanalDao;
 import java.io.IOException;
 import java.io.PrintWriter;
