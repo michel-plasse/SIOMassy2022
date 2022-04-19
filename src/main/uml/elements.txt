@@ -19,6 +19,8 @@ CanalDao
 EFGDao
   EFG getById(int idEFG)
   insert(GroupeEfg groupe)
+EvaluationDao
+  List<Evaluation> getByIdFormateur(int idPersonne)
 QuestionnaireDao
   List<Questionnaire> getByIdFormateur(int idPersonne)
   insertEntrainement(int idQuestionnaire, int idCanal)
@@ -33,7 +35,7 @@ SondageDao
   insert(Sondage sondage)
   List<Sondage> getByIdSeance(int idSeance)
   Sondage getById(int idSondage)
-  
+  insertReponse(
 
 canaux.jsp  
 confirmationInscription.jsp

@@ -1,4 +1,4 @@
-<%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,6 +7,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Je suis dans reponse sondage !</h1>
     </body>
 </html>

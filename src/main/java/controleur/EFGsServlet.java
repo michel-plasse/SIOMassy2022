@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package controleur;
 
 import java.io.IOException;
@@ -7,15 +11,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.EFG;
 
 /**
  *
- * @author https://github.com/ilyessehamcherif
+ * @author adem romdhane
  */
-@WebServlet(name = "ParticipationsEtudiantsServlet", urlPatterns = {"/participationsMembresCanal"})
-public class ParticipationsEtudiantsServlet extends HttpServlet {
-    private static final String VUE = "WEB-INF/participationsMembresCanal.jsp";
-    private static final String VUE_ERREUR= "WEB-INF/message.jsp";
+@WebServlet(name = "EFGsServlet", urlPatterns = {"/EFGs"})
+public class EFGsServlet extends HttpServlet {
+    private final static String VUE = "/WEB-INF/EFGs.jsp";
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -28,8 +32,8 @@ public class ParticipationsEtudiantsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Passer directement à la vue
         request.getRequestDispatcher(VUE).forward(request, response);
+        
     }
 
     /**
@@ -43,11 +47,6 @@ public class ParticipationsEtudiantsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        
     }
 
 }

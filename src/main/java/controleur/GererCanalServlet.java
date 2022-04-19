@@ -1,12 +1,20 @@
 package controleur;
 
+
+import dao.CanalDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.Canal;
 
 /**
  *
@@ -29,8 +37,26 @@ public class GererCanalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Passer directement à la vue
-        request.getRequestDispatcher(VUE).forward(request, response);
+        int idCanal = 1;
+        String vue = VUE;
+        // Appeler la DAO
+        Canal canal;
+        try {
+            canal = CanalDao.insert(idCanal);
+            // Ajouter les données à la requête
+            request.setAttribute("canal", canal);
+            request.setAttribute("idCanal", idCanal);
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(GererCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
+            vue = VUE_ERREUR;
+            request.setAttribute("message", "Problème avec la base de données !");
+        }
+        // Passer la main à la vue
+        request.getRequestDispatcher(vue).forward(request, response);
     }
+    
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -44,7 +70,7 @@ public class GererCanalServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Mettre en post-it message
-        request.setAttribute("message", "pas encore implémenté");
+        request.setAttribute("message", "Pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }

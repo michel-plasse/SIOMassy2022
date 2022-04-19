@@ -1,21 +1,29 @@
-<%-- 
-    Document   : membre
-    Created on : 31 mars 2022, 16:54:11
-    Author     : SALL Mouhamadou
---%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="p" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>OK</h1>
-        <form action="Membre" method="post">
-            input
-            <input type="submit" name="" value="test" />
-        </form>
-    </body>
-</html>
+<p:header title="SIO Massy 2022"/>
+
+
+<table>
+    <th colspan="3">${membres.size()} membres</th>
+    <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>E-mail</th>
+    </tr>
+    <c:forEach items="${membres}" var="membre" > 
+        <tr>  
+
+            <td>${membre.prenom}</td> 
+            <td>${membre.nom}</td> 
+            <td>${membre.email}</td>
+        </tr>
+    </c:forEach>
+</table>
+<h1>OK</h1>
+<form action="Membre" method="post">
+    <input type="submit" name="" value="test" />
+</form>
+<p:footer />
+
