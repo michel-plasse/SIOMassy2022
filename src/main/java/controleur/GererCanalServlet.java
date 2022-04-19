@@ -50,7 +50,7 @@ public class GererCanalServlet extends HttpServlet {
         catch (SQLException ex) {
             Logger.getLogger(GererCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
             vue = VUE_ERREUR;
-            request.setAttribute("message", "Pb avec la base de données");
+            request.setAttribute("message", "Problème avec la base de données !");
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
