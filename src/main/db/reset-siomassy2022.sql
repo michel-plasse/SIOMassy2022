@@ -28,7 +28,7 @@ BEGIN
     est_gestionnaire, est_administrateur, url_photo, inscrit_a) VALUES
 			-- 2 formateurs
 			(1, 'Tryphon', 'Tournesol', 'formateur1@gmail.com', 'azerty', '0601020304', 1,
-				0, 0, 'formateur1@gmail.com.jpg', date_effet - INTERVAL 3 MONTH),
+				0, 1, 'formateur1@gmail.com.jpg', date_effet - INTERVAL 3 MONTH),
 			(2, 'Bianca', 'Castafiore', 'formateur2@gmail.com', 'azerty', '0611121314', 1,
 				0, 0, 'formateur2@gmail.com.jpg', date_effet - INTERVAL 3 MONTH),
 			-- 5 etudiants
