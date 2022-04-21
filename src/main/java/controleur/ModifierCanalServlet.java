@@ -92,7 +92,7 @@ public class ModifierCanalServlet extends HttpServlet {
                 request.setAttribute("canalMsg", "Le canal a bien été modifié !");
             }
             catch (SQLException ex) {
-                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModifierCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
                 request.setAttribute("canalMsg", ex.getMessage());
             }
         } else {

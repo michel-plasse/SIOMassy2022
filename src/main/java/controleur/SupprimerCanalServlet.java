@@ -64,7 +64,7 @@ public class SupprimerCanalServlet extends HttpServlet {
                 request.setAttribute("canalMsg", "Le canal a bien été supprimé !");
             }
             catch (SQLException ex) {
-                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SupprimerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
                 request.setAttribute("canalMsg", ex.getMessage());
             }
         } else {

@@ -48,6 +48,7 @@ public class CreerCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int idCanal = 1;
         String vue = VUE; // soyons pessimistes :-)
         boolean isValid = true;
         String nom = request.getParameter("nom");
@@ -58,13 +59,11 @@ public class CreerCanalServlet extends HttpServlet {
         System.out.println("Valide : " + isValid);
         if (isValid) {
             try {
-                System.out.println("Valide !");
-                Canal canal = new Canal(0, nom);
-                CanalDao.insert(canal);
+                CanalDao.insert(idCanal);
                 request.setAttribute("canalMsg", "Le canal a bien été crée !");
             }
             catch (SQLException ex) {
-                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CreerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
                 request.setAttribute("canalMsg", ex.getMessage());
             }
         } else {
