@@ -32,7 +32,7 @@ public class ReponsesSondageServlet extends HttpServlet {
       Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, exc);
       request.setAttribute("message", "Pb de base de données");
       vue = VUE_ERREUR;
-    }
+    }   
     request.getRequestDispatcher(vue).forward(request, response);
   }
 

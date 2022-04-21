@@ -9,12 +9,7 @@ public class SondageDao {
     public static Sondage getByIdSondage(int idSondage) throws SQLException {
       Sondage result = null;
       Connection connection = Database.getConnection();
-      String sql = "SELECT *\n" +
-          "FROM\n" +
-          "    question q\n" +
-          "        INNER JOIN\n" +
-          "    personne p ON q.id_createur = p.id_personne\n" +
-          "WHERE q.id_question = ?";
+      String sql = "SELECT * FROM v_reponse_sondage WHERE id_question = ?";
 
       PreparedStatement stmt = connection.prepareCall(sql);
       stmt.setInt(1, idSondage);
