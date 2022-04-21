@@ -63,5 +63,5 @@ public class EFGServlet extends HttpServlet {
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
-    }
+    }}
     
