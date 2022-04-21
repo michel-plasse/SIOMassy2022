@@ -40,15 +40,17 @@ public class PersonneDao {
         Connection connexion = Database.getConnection();
        
        Statement stmt = connexion.createStatement();
-      String q1 = "insert into userid values(?,?,?,?,?,?)";
-      int x = stmt.executeUpdate(q1);
-      
-      if (x > 0)           
-                System.out.println("Successfully Inserted");           
-            else           
-                System.out.println("Insert Failed");
-             
+      String ql = "insert into personne values(?,?,?,?,?,?)";
+      PreparedStatement stmt = connexion.prepareCall(ql);
+       stmt.setInt(1, user.getId());
+       stmt.setString(2, user.getNom());
+       stmt.setString(3, user.getPrenom());
+       stmt.setString(4, user.getEmail());
+       stmt.setString(5, user.getPwd());
+       stmt.setString(6, user.getTel());
+       
             connexion.close();
        
 }
+   
 }
