@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -64,6 +66,38 @@ public class CanalDao {
         idCanal,
         // rs.getInt("id_canal"),
         rs.getString("nom"));
+        return result;
+    }
+    public static Canal getById(int idCanal) throws SQLException {
+        Canal result = null;
+        Connection connexion = Database.getConnection();
+        String sql = "SELECT * FROM Canal WHERE id_canal =?";
+        PreparedStatement stmt = connexion.prepareCall(sql);
+        stmt.setInt(1, idCanal);
+        ResultSet rs = stmt.executeQuery();
+        //Variabls pour construire l'Canak
+        Canal canl = null; // membre courant (idéfini au début)
+        int idCanaux = 0; // son id (idéfini au début, donc mis à 0)
+        List<Canal> canaux = new ArrayList<Canal>();
+        
+        while (rs.next()) {
+            if (rs.isFirst()) 
+                Canaux  canal = new canal{
+            rs.getInt("id_canal");
+            rs.getString("nom");
+            result = new Canal(idCanal, rs.getInt("id_canal"), mebmres,
+                    rs.getString("nom"));
+            }
+                if (idCanaux != rs.getInt("id_canal")){
+                    canal = new Canal (idCanal, rs.getString("id_canal"), rs.getString("nom"), new ArrayList<Canal>());
+                    idCanal = rs.getInt("id_canal");
+                    mebmres.add(canal);
+                }
+                Canal canal = new Canal(
+                        rs.getInt("id_canal"),
+                        rs.getString("nom"));
+                canal.getCanal().add(canal);
+        }
         return result;
     }
     
