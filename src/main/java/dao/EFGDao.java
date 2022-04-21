@@ -55,8 +55,14 @@ public class EFGDao {
               rs.getString("prenom"),
               rs.getString("nom"));
       groupe.getMembres().add(personne);
+      System.out.println(groupes);
     }
     return result;
+    
   }
-
+  
 }
+  
+
+
+

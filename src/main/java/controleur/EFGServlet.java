@@ -21,13 +21,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modele.EFG;
+import modele.Groupe;
 
 /**
  *
  * @author Formateur
  */
-@WebServlet(name = "EFGServlet", urlPatterns = {"/EFG"})
+@WebServlet(name = "EFGServlet", urlPatterns = {"/EFGindex"})
 public class EFGServlet extends HttpServlet {
 
   private static final String VUE = "WEB-INF/EFG.jsp";
@@ -44,9 +46,15 @@ public class EFGServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    int idEFG = 2;
+    /*int idEFG = 2;*/
+    
+   /* String idefg = request.getParameter("idEFG");*/
+    int idEFG = Integer.parseInt(request.getParameter("idEfg"));
+     /*HttpSession session = request.getSession();
+     request.setAttribute("idEFG", idEFG);*/
     String vue = VUE;
     // Appeler la DAO
+    List<Groupe> groupes = new ArrayList<Groupe>();
     EFG efg = null;
     try {
       efg = EFGDao.getById(idEFG);
