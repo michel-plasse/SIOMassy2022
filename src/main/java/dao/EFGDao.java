@@ -45,7 +45,10 @@ public class EFGDao {
       }
       // Créer un nouveau groupe si le id_groupe change dans le result set
       if (idGroupe != rs.getInt("id_groupe")) {
-        groupe = new Groupe(idEFG, rs.getInt("id_groupe"), null, new ArrayList<Personne>());
+        groupe = new Groupe(
+                idEFG, rs.getInt("id_groupe"), 
+                null,
+                new ArrayList<Personne>());
         idGroupe = rs.getInt("id_groupe");
         groupes.add(groupe);
       }
@@ -55,7 +58,7 @@ public class EFGDao {
               rs.getString("prenom"),
               rs.getString("nom"));
       groupe.getMembres().add(personne);
-      System.out.println(groupes);
+      /*System.out.println(groupes);*/
     }
     return result;
     

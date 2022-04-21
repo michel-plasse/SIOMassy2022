@@ -18,5 +18,5 @@ public class EFGDaoTest {
         assertEquals(2, result.getGroupes().get(0).getMembres().size());
         assertEquals(3, result.getGroupes().get(1).getMembres().size());
     }
-    
+     
 }
