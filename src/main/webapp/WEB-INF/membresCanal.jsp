@@ -22,7 +22,7 @@
     </c:forEach>
 </table>
 <h1>OK</h1>
-<form action="Membre" method="post">
+<form action="membres" method="post">
     <input type="submit" name="" value="test" />
 </form>
 <p:footer />
