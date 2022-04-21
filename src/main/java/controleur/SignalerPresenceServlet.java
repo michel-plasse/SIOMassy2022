@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modele.Personne;
 
 /**
  *
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpSession;
 public class SignalerPresenceServlet extends HttpServlet {
 
     private static final String VUE = "WEB-INF/signalerPresence.jsp";
+    private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,20 +38,27 @@ public class SignalerPresenceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //int idSeance = Integer.parseInt(request.getParameter("idSeance"));
-        int idSeance = 1;
-        int idPersonne = 1;
-        boolean estPresent = true;
-        int niveauParticipation = 1;
-        try {
-            SeanceDao.setPresent(idSeance, idPersonne, estPresent);
-        } catch (SQLException ex) {
-            Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, ex);
+        Personne user = (Personne) request.getSession(true).getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("connexion");
+        } else {
+            String vue = VUE;
+            int idPersonne = user.getId();
+            boolean estPresent = true;
+            try {
+                int idSeance = Integer.parseInt(request.getParameter("idSeance"));
+                request.setAttribute("idSeance", idSeance);
+                //int niveauParticipation = 1;
+                SeanceDao.setPresent(idSeance, idPersonne, estPresent);
+                request.setAttribute("idPersonne", idPersonne);
+                request.setAttribute("estPresent", estPresent);
+            } catch (SQLException ex) {
+                Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("message", "Pb avec la base de données");
+                vue = VUE_ERREUR;
+            }
+            request.getRequestDispatcher(vue).forward(request, response);
         }
-        request.setAttribute("idSeance", idSeance);
-        request.setAttribute("idPersonne", idPersonne);
-        request.getRequestDispatcher(VUE).forward(request, response);
-
     }
 
 }

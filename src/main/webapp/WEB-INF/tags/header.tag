@@ -19,7 +19,7 @@
         <a href="javascript: document.getElementById('resetDbForm').submit()">Réinitialiser
           la BD</a>
         <a href="${context}/canaux">Canaux</a>
-        <a href="${context}/EFGsServlet">Exercice à Faire en Groupe</a>
+        <a href="${context}/EFGs">Exercice à Faire en Groupe</a>
       </nav>
       <nav>
         <c:if test="${sessionScope['user'] != null}">

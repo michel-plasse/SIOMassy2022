@@ -4,14 +4,13 @@
 <p:header title="SIO Massy 2022"/>
 
 
-${idSeance}
+ La personne numero ${idPersonne} dans la seance ${idSeance}
 
 
 
 <form action="signalerPresence" method="post">
-    <label>Seance</label
-    <input type="text" name="idSeance" valeur="1" placeholder="numéro séance" required/>
-    
+    <label>Seance</label></br>
+    <input type="hidden" name="idSeance" value="1" /></br>
     <button type="submit"> Présent</button>
 </form>
 <p:footer />
