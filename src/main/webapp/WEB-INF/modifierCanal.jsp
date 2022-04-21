@@ -5,19 +5,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Créer un canal</title>
+        <title>Modifier le canal</title>
     </head>
     <body>
         
         <p:header title="SIO Massy 2022"/>
         
-        <h1>Création d'un canal</h1>
+        <h1>Modification du canal</h1>
         <form action="GererCanalServlet" method="post">
+            <p>Nom du canal : ${canal.nom}</p>
             <p>
-                Nom du canal : 
+                Nouveau nom du canal : 
                 <input type="text" name="nom">
             </p>
-            <button type="submit">Créer</button>
+            <p>Êtes-vous sûr(e) de vouloir modifier le canal ${canal.nom} ?</p>
+            <button type="submit">Modifier</button>
         </form>
                
         <p:footer />

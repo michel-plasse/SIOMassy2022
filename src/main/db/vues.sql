@@ -20,8 +20,19 @@ FROM
 ORDER BY efg.id_efg, ge.id_groupe, p.nom;
 
 
+DROP VIEW IF EXISTS v_membre_canal;
+CREATE VIEW v_membre_canal AS
+SELECT
+	p.id_personne, p.prenom, p.nom, p.email, p.url_photo,
+  mc.ajoute_a 
+FROM
+	personne p
+		INNER JOIN
+	membre_canal mc ON p.id_personne = mc.id_personne;
 
-CREATE VIEW stat_sur_reponses AS
+
+DROP VIEW IF EXISTS v_stat_sur_reponses;
+CREATE VIEW v_stat_sur_reponses AS
 SELECT t1.*, nb_etudiants, nb_reponses_total, nb_etudiants-nb_reponses_total As nb_non_reponse
 FROM
 (

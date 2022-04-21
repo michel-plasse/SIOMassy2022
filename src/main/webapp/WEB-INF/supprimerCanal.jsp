@@ -5,19 +5,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Créer un canal</title>
+        <title>Supprimer le canal</title>
     </head>
     <body>
         
         <p:header title="SIO Massy 2022"/>
         
-        <h1>Création d'un canal</h1>
+        <h1>Suppression du canal</h1>
         <form action="GererCanalServlet" method="post">
-            <p>
-                Nom du canal : 
-                <input type="text" name="nom">
-            </p>
-            <button type="submit">Créer</button>
+            <p>Nom du canal : ${canal.nom}</p>
+            <p>Êtes-vous sûr(e) de vouloir supprimer le canal ${canal.nom} ?</p>
+            <button type="submit">Supprimer</button>
         </form>
                
         <p:footer />

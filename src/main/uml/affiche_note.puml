@@ -1,22 +1,14 @@
 @startuml
 participant Navigateur
 participant Vue
-
-Navigateur->Controleur: POST/afficher les notes d'une évaluations
-
-Controleur->Controleur:verifier parametres
-
-Controleur->DAO: afficheNoteEvalDao.insert(note)
-
-DAO->SGBD: INSERT INTO afficheNoteEval
-
-SGBD-->DAO: ok ou échec
-
-DAO-->Controleur: ok SQLException
-
-Controleur->Vue:afficheNoteEval.jsp
-
-Vue->Navigateur:afficher note Eval avec erreurs
-
+== Afficher le formulaire ==
+Navigateur -> Controleur: POST /afficheNotes?idEvaluation=...
+Controleur -> Controleur: vérifier que\nidEvaluation est entier
+Controleur -> DAO: afficheNoteDao.insert(idEvaluation)
+DAO -> SGBD: SELECT ...°
+SGBD --> DAO: ok ou échec°
+DAO --> Controleur: List<Note>°
+Controleur -> Vue: afficheNote.jsp
+Vue --> Navigateur: formulaire rempli
 
 @enduml

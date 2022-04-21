@@ -20,8 +20,8 @@ import modele.Canal;
  *
  * @author https://github.com/ilyessehamcherif
  */
-@WebServlet(name = "GererCanalServlet", urlPatterns = {"/gererCanal"})
-public class GererCanalServlet extends HttpServlet {
+@WebServlet(name = "CreerCanalServlet", urlPatterns = {"/creerCanal"})
+public class CreerCanalServlet extends HttpServlet {
     private static final String VUE = "WEB-INF/creerCanal.jsp";
     private static final String VUE_ERREUR= "WEB-INF/message.jsp";
 
@@ -36,11 +36,13 @@ public class GererCanalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher(VUE).forward(request, response);
+        /**
         // Passer directement à la vue
         int idCanal = 1;
         String vue = VUE;
         // Appeler la DAO
-        Canal canal;
+        Canal canal = null;
         try {
             canal = CanalDao.insert(idCanal);
             // Ajouter les données à la requête
@@ -48,12 +50,13 @@ public class GererCanalServlet extends HttpServlet {
             request.setAttribute("idCanal", idCanal);
         } 
         catch (SQLException ex) {
-            Logger.getLogger(GererCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
             vue = VUE_ERREUR;
             request.setAttribute("message", "Problème avec la base de données !");
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
+        */
     }
     
     
@@ -69,8 +72,13 @@ public class GererCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /**
         // Mettre en post-it message
         request.setAttribute("message", "Pas encore implémenté");
+        // Passer la main à la vue
+        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        */
+        request.setAttribute("message", "pas encore implémenté");
         // Passer la main à la vue
         request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
