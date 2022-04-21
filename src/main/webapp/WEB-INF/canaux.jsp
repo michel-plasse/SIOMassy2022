@@ -7,8 +7,7 @@
     display: inline;
   }
 </style>
-<h1>${canal.nom} (#${canal.id})</h1>
-<h1>Gestion des canaux</h1>
+<h1>Canaux</h1>
 <form action="creerCanal" method="post">
   <input type="text" name="nom"/>
   <button type="submit">Créer canal</button>
@@ -16,7 +15,7 @@
 <ul id="canaux">
   <c:forEach items="${canaux}" var="canal">
     <li>
-      ${canal.nom} (#${canal.id})
+      <a href="canal?idCanal=${canal.id}">${canal.nom} (#${canal.id})</a>
       <form action="modifierCanal" method="get">
         <input type="hidden" name="idCanal" value="${canal.id}"/>
         <button type="submit">Modifier</button>
