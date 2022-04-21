@@ -31,6 +31,21 @@ FROM
 	membre_canal mc ON p.id_personne = mc.id_personne;
 
 
+DROP VIEW IF EXISTS v_reponse_sondage;
+CREATE VIEW v_reponse_sondage AS
+SELECT 
+	p.id_personne, p.prenom, p.nom,
+    rq.id_question, rq.libelle AS libelle_donne,
+    oq.id_option_question AS id_option, oq.libelle AS libelle_propose
+FROM 
+	personne p
+		INNER JOIN
+	reponse_question rq ON p.id_personne = rq.id_question
+		LEFT OUTER JOIN
+	option_question oq
+		ON rq.id_question = oq.id_question AND rq.id_option_question = oq.id_option_question;
+
+
 DROP VIEW IF EXISTS v_stat_sur_reponses;
 CREATE VIEW v_stat_sur_reponses AS
 SELECT t1.*, nb_etudiants, nb_reponses_total, nb_etudiants-nb_reponses_total As nb_non_reponse
