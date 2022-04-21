@@ -117,31 +117,31 @@ BEGIN
 			(1, 2, '1/2h'),
       (2, 2, '1h'),
       (3, 2, '1h30');
-		INSERT INTO presence_seance(id_seance, id_personne, niveau_participation) VALUES
+		INSERT INTO presence_seance(id_seance, id_personne, est_present, niveau_participation) VALUES
 			-- 3 séances passées, la 4e en cours
-			(1, 3, NULL),
-      (1, 4, 0),
-      (1, 5, 1),
-      (1, 6, 2),
-      (1, 7, 1),
+			(1, 3, 0, NULL),
+      (1, 4, 1, 0),
+      (1, 5, 1, 1),
+      (1, 6, 1, 2),
+      (1, 7, 1, 1),
       -- 2e séance
-      (2, 3, 2),
-      (2, 4, 1),
-      (2, 5, 2),
-      (2, 6, 1),
-      (2, 7, NULL),
+      (2, 3, 1, 2),
+      (2, 4, 1, 1),
+      (2, 5, 1, 2),
+      (2, 6, 1, 1),
+      (2, 7, 0, NULL),
       -- 3e
-      (3, 3, 2),
-      (3, 4, 1),
-      (3, 5, 1),
-      (3, 6, 2),
-      (3, 7, 2),
+      (3, 3, 1, 2),
+      (3, 4, 1, 1),
+      (3, 5, 1, 1),
+      (3, 6, 1, 2),
+      (3, 7, 1, 2),
       -- séance courante : personne n'a signalé sa présence
-      (4, 3, NULL),
-      (4, 4, NULL),
-      (4, 5, NULL),
-      (4, 6, NULL),
-      (4, 7, NULL);
+      (4, 3, 1, NULL),
+      (4, 4, 1, NULL),
+      (4, 5, 0, NULL),
+      (4, 6, 0, NULL),
+      (4, 7, 0, NULL);
 		INSERT INTO qcm(id_qcm, id_questionnaire, libelle) VALUES
 			-- 2 questions dans les 2 questionnaires (1= Java, 2=fruits et légumes)
       (1, 1, "Chassez l'intrus"), -- portée
