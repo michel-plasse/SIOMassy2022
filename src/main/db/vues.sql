@@ -1,4 +1,38 @@
-CREATE VIEW stat_sur_reponses AS
+DROP VIEW IF EXISTS v_efg_groupes_membres;
+CREATE VIEW v_efg_groupes_membres AS
+SELECT
+    efg.id_efg, efg.intitule, efg.id_canal, efg.cree_a,
+    c.id_personne AS id_createur,
+    c.prenom AS prenom_createur,
+    c.nom AS nom_createur,
+    p.id_personne, p.prenom, p.nom,
+    ge.id_groupe
+FROM
+    efg
+        INNER JOIN
+    personne c ON efg.id_createur = c.id_personne
+        INNER JOIN
+    groupe_efg ge ON efg.id_efg = ge.id_efg
+        INNER JOIN
+    membre_groupe_efg mge ON mge.id_efg = ge.id_efg AND mge.id_groupe = ge.id_groupe
+        INNER JOIN 
+    personne p ON mge.id_personne = p.id_personne
+ORDER BY efg.id_efg, ge.id_groupe, p.nom;
+
+
+DROP VIEW IF EXISTS v_membre_canal;
+CREATE VIEW v_membre_canal AS
+SELECT
+	p.id_personne, p.prenom, p.nom, p.email, p.url_photo,
+  mc.ajoute_a 
+FROM
+	personne p
+		INNER JOIN
+	membre_canal mc ON p.id_personne = mc.id_personne;
+
+
+DROP VIEW IF EXISTS v_stat_sur_reponses;
+CREATE VIEW v_stat_sur_reponses AS
 SELECT t1.*, nb_etudiants, nb_reponses_total, nb_etudiants-nb_reponses_total As nb_non_reponse
 FROM
 (

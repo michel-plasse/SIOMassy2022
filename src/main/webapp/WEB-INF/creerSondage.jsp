@@ -1,17 +1,9 @@
-<%-- 
-    Document   : creerSondage
-    Created on : 5 avr. 2022, 14:33:43
-    Author     : cheicklanikpekoun
---%>
+    <%@taglib prefix="c" uri="http://iava.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="p" tagdir="/WEB-INF/tags/"%>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <p: header title="Creer Sondage"/>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1> C'est bon ça fonctionne ! </h1>
-    </body>
-</html>
+    <form method="post">
+        <h3> veuillez repondre au questionnaire ci-dessous</h3>
+        <button type="submit"> valider </button>
+    </form>

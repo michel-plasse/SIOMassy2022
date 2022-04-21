@@ -6,7 +6,7 @@ participant Vue
 == Soumettre ses données de connexion ==
 Navigateur -> Controleur: GET /sondages?idCanal=...
 Controleur -> Controleur: idCanal entier ?
-Controleur -> Dao: SondageDao.\getByIdCanal(idCanal)
+Controleur -> Dao: SondageDao.\ngetByIdCanal(idCanal)
 Dao -> SGBD: SELECT ...\nFROM question\nWHERE ...
 SGBD --> Dao: lignes
 Dao --> Controleur: List<Sondage>, ou SQLException
