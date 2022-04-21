@@ -29,13 +29,20 @@ public class MembresCanalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Personne membre= new Personne(1, "Mouhamadou", "SALL","sallmouha1@gmail.com",null,null);
+        Personne membre= new Personne(1, "Mouhamadou", "SALL","sallmouha10@gmail.com",null,null);
         List<Personne> membres = new ArrayList<Personne>();
         membres.add(membre);
-        membre= new Personne(1, "Cheik", "Lanick","mohamedcheikhlanick@gmail.com",null,null);
+        membre= new Personne(2, "Cheik", "Lanick","mohamedcheikhlanick@gmail.com",null,null);
+        membres.add(membre);
+        membre= new Personne(3, "Karim", "Amhri", "karim@yohoo.fr", null, null);
         membres.add(membre);
         request.setAttribute("membres" , membres);
         request.getRequestDispatcher(VUE).forward(request, response);
       
+    }
+     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 }
