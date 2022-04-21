@@ -3,10 +3,7 @@ package controleur;
 
 import dao.CanalDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -37,28 +34,7 @@ public class CreerCanalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher(VUE).forward(request, response);
-        /**
-        // Passer directement à la vue
-        int idCanal = 1;
-        String vue = VUE;
-        // Appeler la DAO
-        Canal canal = null;
-        try {
-            canal = CanalDao.insert(idCanal);
-            // Ajouter les données à la requête
-            request.setAttribute("canal", canal);
-            request.setAttribute("idCanal", idCanal);
-        } 
-        catch (SQLException ex) {
-            Logger.getLogger(CreerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
-            vue = VUE_ERREUR;
-            request.setAttribute("message", "Problème avec la base de données !");
-        }
-        // Passer la main à la vue
-        request.getRequestDispatcher(vue).forward(request, response);
-        */
     }
-    
     
 
     /**
@@ -72,15 +48,29 @@ public class CreerCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /**
-        // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        */
-        request.setAttribute("message", "pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        String vue = VUE; // soyons pessimistes :-)
+        boolean isValid = true;
+        String nom = request.getParameter("nom");
+        if (nom == null || nom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Un nom est obligatoire pour la création d'un canal !");
+        }
+        System.out.println("Valide : " + isValid);
+        if (isValid) {
+            try {
+                System.out.println("Valide !");
+                Canal canal = new Canal(0, nom);
+                CanalDao.insert(canal);
+                request.setAttribute("canalMsg", "Le canal a bien été crée !");
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("canalMsg", ex.getMessage());
+            }
+        } else {
+            System.out.println("Invalide !");
+        }
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 
 }
