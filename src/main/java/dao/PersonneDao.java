@@ -1,4 +1,3 @@
-
 package dao;
 
 import modele.Personne;
@@ -13,8 +12,6 @@ import java.sql.Statement;
  * @author michel
  */
 public class PersonneDao {
-
-    
 
   public static Personne getByLoginPassword(String login, String password) throws SQLException {
     Personne result = null;
@@ -36,21 +33,17 @@ public class PersonneDao {
     return result;
   }
 
-    public static void insert(Personne user) throws SQLException {
-        Connection connexion = Database.getConnection();
-       
-       Statement stmt = connexion.createStatement();
-      String ql = "insert into personne values(?,?,?,?,?,?)";
-      PreparedStatement stmt = connexion.prepareCall(ql);
-       stmt.setInt(1, user.getId());
-       stmt.setString(2, user.getNom());
-       stmt.setString(3, user.getPrenom());
-       stmt.setString(4, user.getEmail());
-       stmt.setString(5, user.getPwd());
-       stmt.setString(6, user.getTel());
-       
-            connexion.close();
-       
-}
-   
+  public static void insert(Personne user) throws SQLException {
+    Connection connexion = Database.getConnection();
+    String ql = "insert into personne values(?,?,?,?,?,?)";
+    PreparedStatement stmt = connexion.prepareCall(ql);
+    stmt.setInt(1, user.getId());
+    stmt.setString(2, user.getNom());
+    stmt.setString(3, user.getPrenom());
+    stmt.setString(4, user.getEmail());
+    stmt.setString(5, user.getPwd());
+    stmt.setString(6, user.getTel());
+    connexion.close();
+  }
+
 }
