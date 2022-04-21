@@ -29,7 +29,7 @@ import modele.Groupe;
  *
  * @author Formateur
  */
-@WebServlet(name = "EFGServlet", urlPatterns = {"/EFGindex"})
+@WebServlet(name = "EFGServlet", urlPatterns = {"/EFG"})
 public class EFGServlet extends HttpServlet {
 
     private static final String VUE = "WEB-INF/EFG.jsp";
