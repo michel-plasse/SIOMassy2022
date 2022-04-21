@@ -8,6 +8,7 @@ import dao.SeanceDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modele.Personne;
+import modele.Seance;
 
 /**
  *
@@ -28,36 +30,35 @@ public class SignalerPresenceServlet extends HttpServlet {
     private static final String VUE = "WEB-INF/signalerPresence.jsp";
     private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Passer directement à la vue
-        request.getRequestDispatcher(VUE).forward(request, response);
-    }
-
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//        // Passer directement à la vue
+//        request.getRequestDispatcher(VUE).forward(request, response);
+//    }
+//
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Personne user = (Personne) request.getSession(true).getAttribute("user");
+        HttpSession session = request.getSession(true);
+        Personne user = (Personne) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("connexion");
         } else {
-            String vue = VUE;
             int idPersonne = user.getId();
             boolean estPresent = true;
             try {
+                int idCanal = Integer.parseInt(request.getParameter("idCanal"));
                 int idSeance = Integer.parseInt(request.getParameter("idSeance"));
                 request.setAttribute("idSeance", idSeance);
                 //int niveauParticipation = 1;
                 SeanceDao.setPresent(idSeance, idPersonne, estPresent);
-                request.setAttribute("idPersonne", idPersonne);
-                request.setAttribute("estPresent", estPresent);
+                response.sendRedirect("canal?idCanal=" + idCanal);
             } catch (SQLException ex) {
                 Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, ex);
                 request.setAttribute("message", "Pb avec la base de données");
-                vue = VUE_ERREUR;
+                request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
             }
-            request.getRequestDispatcher(vue).forward(request, response);
         }
     }
 

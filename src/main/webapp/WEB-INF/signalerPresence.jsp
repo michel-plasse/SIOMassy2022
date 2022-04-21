@@ -4,7 +4,7 @@
 <p:header title="SIO Massy 2022"/>
 
 
- La personne numero ${idPersonne} dans la seance ${idSeance}
+<p>  <span style="background-color: greenyellow">présent<span></p>
 
 
 
