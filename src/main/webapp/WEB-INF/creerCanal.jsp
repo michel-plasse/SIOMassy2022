@@ -12,12 +12,18 @@
         <p:header title="SIO Massy 2022"/>
         
         <h1>Création d'un canal</h1>
-        <form action="GererCanalServlet" method="post">
+        <form method="POST">
             <p>
                 Nom du canal : 
-                <input type="text" name="nom">
+                <input type="text" name="nom" value="${param['nom']}"/>
+                ${nomMsg}
             </p>
             <button type="submit">Créer</button>
+            <br>
+            <br>
+            <c:if test="${canalMsg != null}">
+                <div class="erreur">${canalMsg}</div>
+            </c:if>
         </form>
                
         <p:footer />

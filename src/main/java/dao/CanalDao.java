@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,58 +15,31 @@ import java.sql.Statement;
  */
 public class CanalDao {
 
-    public static Canal insert(int idCanal) throws SQLException {
-        Canal result = null;
+    public static void insert(Canal canal) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "INSERT INTO canal(id, nom) VALUES (?,?)";
+        String sql = "INSERT into canal values(?,?)";
         PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, idCanal);
-        stmt.executeUpdate();
-        stmt.execute();
-        ResultSet rs = null;
-        rs = stmt.getGeneratedKeys();
-        rs.next();
-        result = new Canal(
-        idCanal,
-        // rs.getInt("id_canal"),
-        rs.getString("nom"));
-        return result;
+        stmt.setInt(1, canal.getId());
+        stmt.setString(2, canal.getNom());
+        connection.close();
     }
     
-        public static Canal update(int idCanal) throws SQLException {
-        Canal result = null;
+    public static void update(Canal canal) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "UPDATE canal SET nom = ? WHERE id_canal = ?";
+        String sql = "SELECT * FROM canal WHERE id_canal = ?";
         PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, idCanal);
-        stmt.executeUpdate();
-        stmt.execute();
-        ResultSet rs = null;
-        rs = stmt.getGeneratedKeys();
-        rs.next();
-        result = new Canal(
-        idCanal,
-        // rs.getInt("id_canal"),
-        rs.getString("nom"));
-        return result;
+        stmt.setInt(1, canal.getId());
+        stmt.setString(2, canal.getNom());
+        connection.close();
     }
         
-    public static Canal delete(int idCanal) throws SQLException {
-        Canal result = null;
+    public static void delete(Canal canal) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM canal WHERE id_canal = ?";
         PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, idCanal);
-        stmt.executeUpdate();
-        stmt.execute();
-        ResultSet rs = null;
-        rs = stmt.getGeneratedKeys();
-        rs.next();
-        result = new Canal(
-        idCanal,
-        // rs.getInt("id_canal"),
-        rs.getString("nom"));
-        return result;
+        stmt.setInt(1, canal.getId());
+        stmt.setString(2, canal.getNom());
+        connection.close();
     }
     
 }

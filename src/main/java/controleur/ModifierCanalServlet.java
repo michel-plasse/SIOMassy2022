@@ -72,15 +72,33 @@ public class ModifierCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("message", "pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        /**
-        // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        */
+        String vue = VUE; // soyons pessimistes :-)
+        boolean isValid = true;
+        String nom = request.getParameter("nom");
+        if (nom == null || nom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Un nom est obligatoire pour la création d'un canal !");
+        }
+        else if (nom == nom || nom.trim().equals(nom)) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Le nouveau nom du canal ne doit pas être identique à l'ancien nom !");
+        }
+        System.out.println("Valide : " + isValid);
+        if (isValid) {
+            try {
+                System.out.println("Valide !");
+                Canal canal = new Canal(0, nom);
+                CanalDao.update(canal);
+                request.setAttribute("canalMsg", "Le canal a bien été modifié !");
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("canalMsg", ex.getMessage());
+            }
+        } else {
+            System.out.println("Invalide !");
+        }
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 
 }
