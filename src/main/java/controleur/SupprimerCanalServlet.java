@@ -37,26 +37,6 @@ public class SupprimerCanalServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher(VUE).forward(request, response);
-        /**
-        // Passer directement à la vue
-        int idCanal = 1;
-        String vue = VUE;
-        // Appeler la DAO
-        Canal canal = null;
-        try {
-            canal = CanalDao.delete(idCanal);
-            // Ajouter les données à la requête
-            request.setAttribute("canal", canal);
-            request.setAttribute("idCanal", idCanal);
-        } 
-        catch (SQLException ex) {
-            Logger.getLogger(CreerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
-            vue = VUE_ERREUR;
-            request.setAttribute("message", "Problème avec la base de données !");
-        }
-        // Passer la main à la vue
-        request.getRequestDispatcher(vue).forward(request, response);
-        */
     }
     
     
@@ -72,15 +52,25 @@ public class SupprimerCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("message", "pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        /**
-        // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
-        */
+        String vue = VUE; // soyons pessimistes :-)
+        boolean isValid = true;
+        String nom = request.getParameter("nom");
+        System.out.println("Valide : " + isValid);
+        if (isValid) {
+            try {
+                System.out.println("Valide !");
+                Canal canal = new Canal(0, nom);
+                CanalDao.delete(canal);
+                request.setAttribute("canalMsg", "Le canal a bien été supprimé !");
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ConnexionServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("canalMsg", ex.getMessage());
+            }
+        } else {
+            System.out.println("Invalide !");
+        }
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 
 }
