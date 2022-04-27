@@ -2,12 +2,13 @@
 participant Navigateur
 participant Vue
 
-Navigateur -> Controleur: POST /entrainements\navec idQuestionnaire, idCanal
-Controleur -> Controleur: idQuestionnaire\net idCanal entier ?
+Navigateur -> Controleur: GET /entrainements\n avec idQuestionnaire, idSéance
+Controleur -> Controleur: idQuestionnaire\n et idSéance et idCanal entier ?
 Controleur -> DAO: QuestionnaireDao.\ninsertEntrainement(\nidQuestionnaire, idCanal)
-DAO -> SGBD: INSERT INTO entrainement ...
+DAO -> SGBD: SELECT id questionnaire, idSéance, id canal FROM ...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur: ok ou SQLException
-Controleur -> Navigateur: redirect(questionnaires)
-
+Controleur -> vue: questionnaire.jsp
+Vue -> navigateur:avec questionnaire et la séance 
 @enduml
+
