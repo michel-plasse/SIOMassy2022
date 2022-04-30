@@ -4,11 +4,11 @@ participant Vue
 
 Navigateur -> Controleur: GET /entrainements\n avec idQuestionnaire, idSéance
 Controleur -> Controleur: idQuestionnaire\n et idSéance et idCanal entier ?
-Controleur -> DAO: QuestionnaireDao.\ninsertEntrainement(\nidQuestionnaire, idCanal)
+Controleur -> DAO: QuestionnaireLancéDao.\n insertEntrainement(\n idQuestionnaire, idCanal)
 DAO -> SGBD: SELECT id questionnaire, idSéance, id canal FROM ...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur: ok ou SQLException
-Controleur -> vue: questionnaire.jsp
+Controleur -> vue: questionnaireSeance.jsp
 Vue -> navigateur:avec questionnaire et la séance 
 @enduml
 

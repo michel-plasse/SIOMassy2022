@@ -7,37 +7,24 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="p" tagdir="/WEB-INF/tags/"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<p:header title="Questionnaire n° ${questionnaire.id}"/>
-<style>
-    #efg ul {
-        list-style-type: none;
-    }
-    #efg li {}
-</Style>
+<p:header title="Questionnaire n° ${Questionnaire.id}"/>
 
 
-<table id="efg">
+
+<table id="questionDeSeance">
     
-    
+    s.getInt("id_seance"),
+              rs.getInt("s.id_canal"),
+              rs.getInt("q.id_questionnaire"),
+              rs.getString("libelle"),
+              rs.getTime("nb_minutes")
     <thead>
-        <tr><th colspan="4">${efg.intitule} (n° ${efg.id}), créé le ${efg.creeA} par ${efg.createur.prenom} ${efg.createur.nom}</th></tr>
-        <tr><th >Groupes</th><th >Membres</th><th>créateur</th>
+        
+        <tr><th >Séance</th><th >Canal</th><th>Questionnaire</th><<th>Libellé</th><<th>Durée</th>
         </tr>
     </thead>
     <tbody > 
-        <c:forEach var="groupe"  items="${efg.groupes}" >
-            <tr>
-                <td>Groupe n° ${groupe.idGroupe}  </td>
-                <td>
-                    <ul>
-                        <c:forEach items="${groupe.membres}" var="membre" >
-                            <li>${membre.prenom} ${membre.nom}</li>
-                            </c:forEach>
-                    </ul>
-                </td>
-                <<td>"en attente d'attribution"</td>
-            </tr>
-        </c:forEach>
+        <td>${id}</td>   <td>$idCanal}</td>   <td>idQuestionnaire</td>    <td>${libelle}</td>   <td>${nbMinute}</td>  
     </tbody>
 </table>
 <p:footer />
