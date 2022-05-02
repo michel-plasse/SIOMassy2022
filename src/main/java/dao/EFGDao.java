@@ -61,13 +61,22 @@ public class EFGDao {
             /*System.out.println(groupes);*/
         }
         return result;
-
     }
 
     public static List<EFG> getAllByIdCanal(int idCanal) throws SQLException {
-        List<EFG> result = new ArrayList<>();
+        List<EFG> resultat = new ArrayList<>();
         Connection connexion = Database.getConnection();
-        return result;
+        String sql = "SELECT * FROM efg WHERE id_canal = ?";
+        PreparedStatement stmt = connexion.prepareCall(sql);
+        stmt.setInt(1, idCanal);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            resultat.add(new EFG(
+                    rs.getInt("id_efg"),
+                    rs.getInt("id_canal"),
+                    rs.getString("intitule")
+            ));
+        }
+        return resultat;
     }
-
 }

@@ -48,18 +48,17 @@ public class EFGServlet extends HttpServlet {
             throws ServletException, IOException {
 
         //pour tester en attendant l'intégration de choix dans la jsp canal:
-        int idEFG = 1;
-        /* String idefg = request.getParameter("idEFG");*/
-
-        //int idEFG = Integer.parseInt(request.getParameter("idEfg"));
-        /*HttpSession session = request.getSession();
-     request.setAttribute("idEFG", idEFG);*/
+        int idEFG=1;
         String vue = VUE;
-        // Appeler la DAO
         try {
+            idEFG = Integer.parseInt(request.getParameter("idEFG"));
+            HttpSession session = request.getSession();
+            request.setAttribute("idEFG", idEFG);
+            // Appeler la DAO
             EFG efg = EFGDao.getById(idEFG);
             // Ajouter les données à la requête
             request.setAttribute("efg", efg);
+
         } catch (SQLException ex) {
             Logger.getLogger(EFGServlet.class.getName()).log(Level.SEVERE, null, ex);
             vue = VUE_ERREUR;
@@ -69,3 +68,5 @@ public class EFGServlet extends HttpServlet {
         request.getRequestDispatcher(vue).forward(request, response);
     }
 }
+
+

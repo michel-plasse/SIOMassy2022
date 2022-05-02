@@ -4,15 +4,24 @@
 <p:header title="Canal ${canal.nom}"/>
 <h1>${canal.nom} (#${canal.id})</h1>
 <nav id="navCanal">
-  <c:if test="${seance != null}">
-    <form action="signalerPresence" method="post">
-      <input type="hidden" name="idSeance" value="${seance.id}"/>
-      <button type="submit">Je suis présent</button>
-    </form>
-  </c:if>
-  <hr/>
-  <a href="sondages?idCanal=${canal.id}">Sondages</a>
-  <div><a href="reponsesSondage?idSondage=1">Réponses au sondage 1</a> (lien temporaire)</div>
-  <a href="EFGs?idCanal=${canal.id}">EFGs</a>
-  <div><a href="EFG?idCanal=1">EFG 1</a></div>
+    <c:if test="${estPresent}">
+        <div style="color: red">Présent</div>
+    </c:if>
+    <c:if test="${!estPresent}">
+        <form action="signalerPresence" method="post">
+            <input type="hidden" name="idSeance" value="${seance.id}"/>
+            <input type="hidden" name="idCanal" value="${param["idCanal"]}"/>
+            <button type="submit">Je suis présent</button>
+        </form>
+    </c:if>
+    <hr/>
+    <a href="sondages?idCanal=${canal.id}">Sondages</a>
+    <a href="EFGs?idCanal=${canal.id}">EFGs</a>
+    <div><a href="EFG?idEFG=1">EFG 1</a> (lien temporaire)</div>
+    <c:if test="${sessionScope['user'] != null}">
+        <div>
+            <a href="questionnaires?idCanal=${canal.id}">Questionnaires</a> (si je suis formateur)
+        </div>
+    </c:if>
+    <div><a href="membres?idCanal=${canal.id}">Membres du canal</a></div>
 </nav>

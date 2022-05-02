@@ -5,10 +5,6 @@
 <h1>EFGs du canal ${param["idCanal"]}</h1>
 <ol>
     <c:forEach items="${exercices}" var="efg">
-        <li>${efg.intitule}, par ${efg.idEfg}</li>
+        <li><a href="EFG?idEFG=${efg.id}">${efg.intitule}, par ${efg.id}</a></li>
     </c:forEach>
-        <form method="GET">
-             <input type="text" name="idEFG" value="${param['idEFG']}"/>
-            <button type="submit">Choisir</button>
-        </form>
 </ol>

@@ -137,4 +137,11 @@ public class Personne {
         return true;
     }
 
+    public Personne(int id, String prenom, String nom, String email) {
+        this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
+    }
+
 }

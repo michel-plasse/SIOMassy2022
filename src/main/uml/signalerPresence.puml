@@ -13,5 +13,6 @@ Controleur -> DAO: SeanceDao.\nsetPresent(idSeance, idPersonne, true)
 DAO -> SGBD: INSERT INRO presence_seance ...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur:  ok ou SQLException
+Controleur -> Controleur : met la séance en session
 Controleur -> Navigateur: redirect(presences?idSeance=...)
 @enduml
