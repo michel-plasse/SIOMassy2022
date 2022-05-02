@@ -10,7 +10,8 @@ Vue --> Navigateur: formulaire vierge
 == Soumettre ses données d'inscription ==
 Navigateur -> Controleur: POST /inscription\navec nom, prenom,\n email, email2, \nmdp, dmp2
 Controleur -> Controleur: verifier parametres
-Controleur -> DAO: PersonneDao.insert(nom, ...)
+Controleur -> Controleur: Personne personne = new Personne(...)
+Controleur -> DAO: PersonneDao.insert(personne)
 DAO -> SGBD: INSERT INTO personne...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur: ok ou SQLException

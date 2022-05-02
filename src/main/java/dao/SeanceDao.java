@@ -18,9 +18,9 @@ public class SeanceDao {
 
     public static void setPresent(int idSeance, int idPersonne,boolean estPresent) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "Insert Into presence_seance(id_seance, id_personne,niveau_participation)\n"
-                + "VALUES(?, ?, ?)\n"
-                + "ON duplicate key update niveau_participation=? ";
+        String sql = "Insert Into presence_seance(id_seance, id_personne, est_present, niveau_participation)\n"
+                + "VALUES(?, ?, ?, NULL)\n"
+                + "ON duplicate key update est_present=?, niveau_participation=niveau_participation ";
         PreparedStatement stmt = connection.prepareCall(sql);
         stmt.setInt(1, idSeance);
         stmt.setInt(2, idPersonne);

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : saisirNote
-    Created on : 19 avr. 2022, 14:26:30
-    Author     : utilisateur
+    Document   : listedeCanaux
+    Created on : 5 avr. 2022, 14:17:58
+    Author     : Abdillahi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Saisir Les Notes</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Veuillez Saisir Les notes !</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>

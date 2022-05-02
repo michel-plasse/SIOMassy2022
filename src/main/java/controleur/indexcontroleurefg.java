@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package controleur;
 
@@ -15,10 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author utilisateur
+ * @author ak
  */
-@WebServlet(name = "creerEvaluationServlet", urlPatterns = {"/creerEvaluation"})
-public class creerEvaluationServlet extends HttpServlet {
+@WebServlet(name = "indexcontroleurefg", urlPatterns = {"/index2"})
+public class indexcontroleurefg extends HttpServlet {
+
+   
+ private final static String VUE = "/WEB-INF/index2.jsp";
+    private static final String VUE_ERREUR= "WEB-INF/message.jsp";
+  
+   
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -31,7 +36,9 @@ public class creerEvaluationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/creerEvaluation.jsp").forward(request, response);      
+        request.getRequestDispatcher(VUE).forward(request, response);
+      /*EFG efg1 =new EFG();
+               request.setAttribute("Exercices à faire en groupe", efg1);*/
     }
 
     /**
@@ -44,18 +51,9 @@ public class creerEvaluationServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {  
-        this.getServletContext().getRequestDispatcher("/WEB-INF/creerEvaluation.jsp").forward(request, response); 
+            throws ServletException, IOException {
+                request.setAttribute("message", "pas encore implémenté");
+        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

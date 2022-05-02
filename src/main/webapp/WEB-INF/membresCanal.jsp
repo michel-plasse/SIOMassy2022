@@ -14,16 +14,18 @@
     </tr>
     <c:forEach items="${membres}" var="membre" > 
         <tr>  
-
+           
             <td>${membre.prenom}</td> 
             <td>${membre.nom}</td> 
             <td>${membre.email}</td>
         </tr>
     </c:forEach>
 </table>
-<h1>OK</h1>
-<form action="Membre" method="post">
-    <input type="submit" name="" value="test" />
+
+<h2>Supprimer membre dans cette canal</h2>
+<form>
+    <input type="text" name="supprimeMembre" placeholder="Prenom du membre a supprimé"></br> </br>
+    <input type="submit" value="Supprimer membre">
 </form>
 <p:footer />
 
