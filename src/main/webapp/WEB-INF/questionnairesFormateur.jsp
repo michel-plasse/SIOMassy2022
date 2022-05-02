@@ -6,6 +6,11 @@
 <ul>
     <c:forEach items="${questionnaires}" var="questionnaire">
         <li>${questionnaire.libelle} (${questionnaire.nbMinutes} mn),
-        ${questionnaire.nbQuestions} questions</li>
+            ${questionnaire.nbQuestions} questions
+            <form action="creerEntrainement">
+                <input type="hidden" name="idQuestionnaire" value="${questionnaire.id}"/>
+                <button type="submit">Lancer</button>
+            </form>
+        </li>
         </c:forEach>
 </ul>

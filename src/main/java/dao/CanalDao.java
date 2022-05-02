@@ -15,15 +15,13 @@ import java.util.List;
  */
 public class CanalDao {
 
-    /**public static void insert(Canal canal) throws SQLException {
-        Connection connection = Database.getConnection();
-        String sql = "INSERT into canal VALUES(?,?)";
-        PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, canal.getId());
-        stmt.setString(2, canal.getNom());
-        connection.close();
-    }
-    */
+    /**
+     * public static void insert(Canal canal) throws SQLException { Connection
+     * connection = Database.getConnection(); String sql = "INSERT into canal
+     * VALUES(?,?)"; PreparedStatement stmt = connection.prepareCall(sql);
+     * stmt.setInt(1, canal.getId()); stmt.setString(2, canal.getNom());
+     * connection.close(); }
+     */
     public static Canal insert(int idCanal) throws SQLException {
         Canal result = null;
         Connection connection = Database.getConnection();
@@ -36,12 +34,12 @@ public class CanalDao {
         rs = stmt.getGeneratedKeys();
         rs.next();
         result = new Canal(
-        idCanal,
-        // rs.getInt("id_canal"),
-        rs.getString("nom"));
+                idCanal,
+                // rs.getInt("id_canal"),
+                rs.getString("nom"));
         return result;
     }
-    
+
     public static void update(Canal canal) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "SELECT * FROM canal WHERE id_canal = ?";
@@ -50,7 +48,7 @@ public class CanalDao {
         stmt.setString(2, canal.getNom());
         connection.close();
     }
-        
+
     public static void delete(Canal canal) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM canal WHERE id_canal = ?";
@@ -59,5 +57,17 @@ public class CanalDao {
         stmt.setString(2, canal.getNom());
         connection.close();
     }
-    
+
+    public static List<Canal> getAll() throws SQLException {
+        List<Canal> result = new ArrayList<>();
+        Connection connexion = Database.getConnection();
+        String sql = "SELECT * FROM canal";
+        PreparedStatement stmt = connexion.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            result.add(new Canal(rs.getInt("id_canal"), rs.getString("nom")));
+        }
+        return result;
+    }
+
 }
