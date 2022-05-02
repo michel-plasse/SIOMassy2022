@@ -20,11 +20,5 @@ public class EFGDaoTest {
         assertEquals(3, result.getGroupes().get(1).getMembres().size());
     }
 
-    @Test
-    public void testGetAllByIdCanal() throws Exception {
-        System.out.println("getAllByIdCanal");
-        List<EFG> result = EFGDao.getAllByIdCanal(1);
-        assertEquals(2, result.size());
-    }
     
 }

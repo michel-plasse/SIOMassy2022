@@ -1,5 +1,6 @@
 package modele;
 
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,8 +9,20 @@ import java.util.Objects;
  * @author Formateur
  */
 public class Seance {
-  private int id, idCanal;
-  private LocalDateTime debuteA, finitA;
+    private int id, idCanal;
+    private LocalDateTime debuteA, finitA;
+      private int idQuestionnaire;//Besoin pour fonctionnalité lancerQuestionnaire
+      private String libelle;//Besoin pour fonctionnalité lancerQuestionnaire
+      private Time nbMinute;//Besoin pour fonctionnalité lancerQuestionnaire
+      
+  public Seance(int id, int idCanal, int idQuestionnaire, String libelle, Time nbMinute) {//Besoin pour fonctionnalité lancerQuestionnaire
+          this.id = id;
+          this.idCanal = idCanal;
+          this.idQuestionnaire = idQuestionnaire;
+          this.libelle = libelle;
+          this.nbMinute = nbMinute;
+      }
+
 
   public Seance() {
   }

@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class EFG {
 
-  private int idEfg;
+  private int id;
   Personne createur;
   private int idCanal;
   private List<Groupe> groupes;
@@ -38,7 +38,7 @@ public class EFG {
   }
 
   public EFG(int idEfg, Personne createur, int idCanal, List<Groupe> groupes, String intitule, LocalDateTime creeA) {
-    this.idEfg = idEfg;
+    this.id = idEfg;
     this.createur = createur;
     this.idCanal = idCanal;
     this.groupes = groupes;
@@ -47,7 +47,7 @@ public class EFG {
   }
 
   public EFG(int idEfg, Personne createur, int idCanal, String intitule, LocalDateTime creeA) {
-    this.idEfg = idEfg;
+    this.id = idEfg;
     this.createur = createur;
     this.idCanal = idCanal;
     groupes = new ArrayList<Groupe>();
@@ -56,19 +56,19 @@ public class EFG {
   }
 
   public EFG(int idEfg, int idCanal, String intitule) {
-    this.idEfg = idEfg;
+    this.id = idEfg;
     this.createur = createur;
     this.idCanal = idCanal;
     this.intitule = intitule;
     groupes = new ArrayList<Groupe>();
   }
 
-  public int getIdEfg() {
-    return idEfg;
+  public int getId() {
+    return id;
   }
 
-  public void setIdEfg(int idEfg) {
-    this.idEfg = idEfg;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public Personne getCreateur() {
