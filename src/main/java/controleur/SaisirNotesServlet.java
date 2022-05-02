@@ -24,6 +24,9 @@ public class SaisirNotesServlet extends HttpServlet {
         // Passer directement à la vue
         int idEvaluation = 1;
         List<Note> notes = new ArrayList<>();
+        // En dur pour l'instant
+        notes.add(new Note(1, 3, "prenom", "nom", 10));
+        notes.add(new Note(1, 4, "prenom2", "nom2", 12));
         request.setAttribute("idEvaluation", idEvaluation);
         request.setAttribute("notes", notes);
         request.getRequestDispatcher(VUE).forward(request, response);
@@ -37,9 +40,11 @@ public class SaisirNotesServlet extends HttpServlet {
             throws ServletException, IOException {
         // Mettre en post-it message
         request.setAttribute("message", "pas encore implémenté");
-        
+         System.out.println("note :" + request.getParameter("note"));
         // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        //request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation=" 
+                + request.getParameter("idEvaluation"));
     }
     
     

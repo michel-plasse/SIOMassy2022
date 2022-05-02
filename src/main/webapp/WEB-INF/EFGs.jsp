@@ -7,4 +7,8 @@
     <c:forEach items="${exercices}" var="efg">
         <li>  <a href="EFG?idEFG=${efg.idEfg}">${efg.intitule}, par ${efg.idEfg}</a> 
     </c:forEach>
+        <form method="GET">
+             <input type="text" name="idEFG" value="${param['idEFG']}"/>
+            <button type="submit">Choisir</button>
+        </form>
 </ol>
