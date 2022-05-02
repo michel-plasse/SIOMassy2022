@@ -327,7 +327,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `presence_seance` (
   `id_seance` INT NOT NULL,
   `id_personne` INT(11) NOT NULL,
-  `est_present` TINYINT NOT NULL DEFAULT 0,
   `niveau_participation` TINYINT NULL COMMENT '0 = pas, 1=peu, 2=beaucoup, null=absent',
   PRIMARY KEY (`id_seance`, `id_personne`),
   INDEX `fk_seance_personne_personne1_idx` (`id_personne` ASC),

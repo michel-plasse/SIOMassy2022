@@ -1,4 +1,28 @@
-DROP VIEW IF EXISTS v_efg_groupes_membres;
+/* Vue commentée car elle ne compile pas, des colonnes n'existent pas. De plus, il y a un GROUP BY
+qui n'a rien à faire là car il n'y a pas d'aggrégation
+
+-- Karim
+DROP VIEW IF EXISTS v_questionnaire_seance; 
+CREATE VIEW v_questionnaire_seance AS
+SELECT 
+    s.id_seance,  
+    s.id_canal, 
+    q.id_questionnaire, 
+    q.libelle, 
+    nb_minutes,
+    debute_a,
+    finit_a
+FROM seance s 
+        INNER Join entrainement e 
+    on e.id_canal=s.id_canal 
+        INNER JOIN
+    questionnaire q 
+    on q.id_questionnaire= e.id_questionnaire 
+GROUP BY s.id_seance;
+*/
+
+
+DROP VIEW IF EXISTS v_efg_groupes_membres;/*Karim*/
 CREATE VIEW v_efg_groupes_membres AS
 SELECT
     efg.id_efg, efg.intitule, efg.id_canal, efg.cree_a,
@@ -97,3 +121,19 @@ FROM
         question q
   GROUP BY q.id_canal, rq.id_question
 ) t3 ON t1.id_question = t3.id_question AND t2.id_canal = t3.id_canal;
+
+
+
+/* Pour saisir ou afficher les notes des étudiants dans une évaluation
+(Abdallah) */
+CREATE VIEW v_note_etudiant AS
+SELECT p.id_personne, p.prenom, p.nom, e.id_evaluation, ne.note
+FROM 
+	personne p
+		INNER JOIN
+	membre_canal mc ON p.id_personne = mc.id_personne
+		INNER JOIN
+	evaluation e ON mc.id_canal = e.id_canal
+		LEFT OUTER JOIN
+	note_evaluation ne ON e.id_evaluation = ne.id_evaluation AND p.id_personne = ne.id_etudiant
+ORDER BY e.id_evaluation, p.nom, p.prenom;

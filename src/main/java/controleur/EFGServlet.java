@@ -21,7 +21,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modele.EFG;
+import modele.Groupe;
 
 /**
  *
@@ -30,8 +32,8 @@ import modele.EFG;
 @WebServlet(name = "EFGServlet", urlPatterns = {"/EFG"})
 public class EFGServlet extends HttpServlet {
 
-  private static final String VUE = "WEB-INF/EFG.jsp";
-  private static final String VUE_ERREUR = "WEB-INF/message.jsp";
+    private static final String VUE = "WEB-INF/EFG.jsp";
+    private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -44,12 +46,14 @@ public class EFGServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*int idEFG = 2;*/
 
-         /* String idefg = request.getParameter("idEFG");*/
-        int idEFG = Integer.parseInt(request.getParameter("idEFG"));
+        //pour tester en attendant l'intégration de choix dans la jsp canal:
+        int idEFG = 1;
+        /* String idefg = request.getParameter("idEFG");*/
+
+        //int idEFG = Integer.parseInt(request.getParameter("idEfg"));
         /*HttpSession session = request.getSession();
-        request.setAttribute("idEFG", idEFG);*/
+     request.setAttribute("idEFG", idEFG);*/
         String vue = VUE;
         // Appeler la DAO
         try {
@@ -63,5 +67,5 @@ public class EFGServlet extends HttpServlet {
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
-    }}
-    
+    }
+}

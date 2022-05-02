@@ -12,7 +12,6 @@
   </c:if>
   <hr/>
   <a href="sondages?idCanal=${canal.id}">Sondages</a>
-  <div><a href="reponsesSondage?idSondage=1">Réponses au sondage 1</a> (lien temporaire)</div>
   <a href="EFGs?idCanal=${canal.id}">EFGs</a>
   <div><a href="EFG?idEFG=1">EFG 1</a> (lien temporaire)</div>
   <c:if test="${sessionScope['user'] != null}">

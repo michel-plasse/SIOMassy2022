@@ -6,10 +6,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 import modele.EFG;
 import modele.Groupe;
+
 import modele.Personne;
 
 /**
@@ -43,7 +45,10 @@ public class EFGDao {
             }
             // Créer un nouveau groupe si le id_groupe change dans le result set
             if (idGroupe != rs.getInt("id_groupe")) {
-                groupe = new Groupe(idEFG, rs.getInt("id_groupe"), null, new ArrayList<Personne>());
+                groupe = new Groupe(
+                        idEFG, rs.getInt("id_groupe"),
+                        null,
+                        new ArrayList<Personne>());
                 idGroupe = rs.getInt("id_groupe");
                 groupes.add(groupe);
             }
@@ -53,6 +58,7 @@ public class EFGDao {
                     rs.getString("prenom"),
                     rs.getString("nom"));
             groupe.getMembres().add(personne);
+            /*System.out.println(groupes);*/
         }
         return result;
     }
@@ -73,5 +79,4 @@ public class EFGDao {
         }
         return resultat;
     }
-
 }
