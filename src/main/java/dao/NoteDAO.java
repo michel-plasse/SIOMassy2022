@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import modele.Canal;
 import modele.Note;
 
@@ -36,24 +38,11 @@ public class NoteDAO {
 //        return result;
 //    }
     
-    /*
-    public static void update(Canal canal) throws SQLException {
-        Connection connection = Database.getConnection();
-        String sql = "SELECT * FROM canal WHERE id_canal = ?";
-        PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, canal.getId());
-        stmt.setString(2, canal.getNom());
-        connection.close();
+    public List<Note> getNotesByIdEvaluation(int idEvaluation) throws SQLException {
+        ArrayList<Note> result = new ArrayList<>();
+        Connection connexion = Database.getConnection();
+        String sql = "SELECT * FROM v_note_evaluation WHERE id_evaluation=?";
+        return result;
     }
-        
-    public static void delete(Canal canal) throws SQLException {
-        Connection connection = Database.getConnection();
-        String sql = "DELETE FROM canal WHERE id_canal = ?";
-        PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, canal.getId());
-        stmt.setString(2, canal.getNom());
-        connection.close();
-    }
-    */
-
+    
 }

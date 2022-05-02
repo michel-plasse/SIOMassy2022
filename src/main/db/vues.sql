@@ -115,3 +115,19 @@ FROM
         question q
   GROUP BY q.id_canal, rq.id_question
 ) t3 ON t1.id_question = t3.id_question AND t2.id_canal = t3.id_canal;
+
+
+
+/* Pour saisir ou afficher les notes des étudiants dans une évaluation
+(Abdallah) */
+CREATE VIEW v_note_etudiant AS
+SELECT p.id_personne, p.prenom, p.nom, e.id_evaluation, ne.note
+FROM 
+	personne p
+		INNER JOIN
+	membre_canal mc ON p.id_personne = mc.id_personne
+		INNER JOIN
+	evaluation e ON mc.id_canal = e.id_canal
+		LEFT OUTER JOIN
+	note_evaluation ne ON e.id_evaluation = ne.id_evaluation AND p.id_personne = ne.id_etudiant
+ORDER BY e.id_evaluation, p.nom, p.prenom;

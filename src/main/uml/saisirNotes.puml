@@ -6,7 +6,7 @@ participant Vue
 == Afficher le formulaire ==
 Navigateur -> Controleur: GET /saisirNotes?idEvaluation=...
 Controleur -> Controleur: vérifier que\nidEvaluation est entier
-Controleur -> DAO: EvaluationDao.getNotes(idEvaluation)
+Controleur -> DAO: EvaluationDao.\ngetNotesByIdEvaluation(idEvaluation)
 DAO -> SGBD: SELECT ...
 SGBD --> DAO: lignes
 DAO --> Controleur: List<Note>
