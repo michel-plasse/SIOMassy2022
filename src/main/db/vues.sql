@@ -1,7 +1,8 @@
 -- Karim
 DROP VIEW IF EXISTS v_questionnaire_seance; 
 CREATE VIEW v_questionnaire_seance AS
-SELECT 
+INSERT INTO
+SE 
     s.id_seance,  
     s.id_canal, 
     q.id_questionnaire, 

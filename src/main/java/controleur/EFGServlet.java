@@ -51,7 +51,7 @@ public class EFGServlet extends HttpServlet {
         int idEFG=1;
         String vue = VUE;
         try {
-            //idEFG = Integer.parseInt(request.getParameter("idEFG"));
+            idEFG = Integer.parseInt(request.getParameter("idEFG"));
             HttpSession session = request.getSession();
             request.setAttribute("idEFG", idEFG);
             // Appeler la DAO

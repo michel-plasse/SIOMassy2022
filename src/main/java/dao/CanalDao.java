@@ -59,6 +59,18 @@ public class CanalDao {
         connection.close();
     }
 
+    public static List<Canal> getAll() throws SQLException {
+        List<Canal> result = new ArrayList<>();
+        Connection connexion = Database.getConnection();
+        String sql = "SELECT * FROM canal";
+        PreparedStatement stmt = connexion.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            result.add(new Canal(rs.getInt("id_canal"), rs.getString("nom")));
+        }
+        return result;
+    }
+
     public static List<Personne> getMembresByIdCanal(int idCanal) throws SQLException {
         ArrayList<Personne> result = new ArrayList<>();
         Connection connection = Database.getConnection();
