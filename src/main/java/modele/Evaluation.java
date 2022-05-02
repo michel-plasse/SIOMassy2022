@@ -5,6 +5,8 @@
  * and open the template in the editor.
  */
 package modele;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Date;
 /**
  *
@@ -13,9 +15,20 @@ import java.util.Date;
 public class Evaluation {
     
     private String intitule;
-    private Date date =new Date();
-    private int duree;
-    private String idCanal;
+    private LocalDateTime passeA;
+    private Duration duree;
+    private int id, idCanal, idCreateur;
+    private boolean estCorrige;
+
+    public Evaluation() {
+    }
+
+    public Evaluation(String intitule, int idCreateur) {
+        this.intitule = intitule;
+        this.idCreateur = idCreateur;
+    }
+    
+    
 
     public String getIntitule() {
         return intitule;
@@ -25,31 +38,52 @@ public class Evaluation {
         this.intitule = intitule;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getPasseA() {
+        return passeA;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPasseA(LocalDateTime passeA) {
+        this.passeA = passeA;
     }
 
-    public int getDuree() {
+    public Duration getDuree() {
         return duree;
     }
 
-    public void setDuree(int duree) {
+    public void setDuree(Duration duree) {
         this.duree = duree;
     }
 
-    public String getIdCanal() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdCanal() {
         return idCanal;
     }
 
-    public void setIdCanal(String idCanal) {
+    public void setIdCanal(int idCanal) {
         this.idCanal = idCanal;
     }
-    
-    
-    
+
+    public int getIdCreateur() {
+        return idCreateur;
+    }
+
+    public void setIdCreateur(int idCreateur) {
+        this.idCreateur = idCreateur;
+    }
+
+    public boolean isEstCorrige() {
+        return estCorrige;
+    }
+
+    public void setEstCorrige(boolean estCorrige) {
+        this.estCorrige = estCorrige;
+    }
     
 }
