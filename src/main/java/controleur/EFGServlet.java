@@ -46,11 +46,11 @@ public class EFGServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //pour tester en attendant l'intégration de choix dans la jsp canal:
         int idEFG = 1;
         /* String idefg = request.getParameter("idEFG");*/
-        
+
         //int idEFG = Integer.parseInt(request.getParameter("idEfg"));
         /*HttpSession session = request.getSession();
      request.setAttribute("idEFG", idEFG);*/

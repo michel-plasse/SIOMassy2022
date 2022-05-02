@@ -1,7 +1,13 @@
 DROP VIEW IF EXISTS v_questionnaire_seance;/*Karim*/
 CREATE VIEW v_questionnaire_seance AS
 SELECT 
-    id_seance,  s.id_canal, q.id_questionnaire, libelle, nb_minutes 
+    s.id_seance,  
+    s.id_canal, 
+    q.id_questionnaire, 
+    q.libelle, 
+    nb_minutes,
+    debute_a,
+    finit_a
 FROM seance s 
         INNER Join entrainement e 
     on e.id_canal=s.id_canal 

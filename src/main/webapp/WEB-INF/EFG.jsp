@@ -8,14 +8,10 @@
     }
     #efg li {}
 </Style>
-
-
-<table id="efg">
-    
-    
+<table id="efg">   
     <thead>
-        <tr><th colspan="4">${efg.intitule} (n° ${efg.id}), créé le ${efg.creeA} par ${efg.createur.prenom} ${efg.createur.nom}</th></tr>
-        <tr><th >Groupes</th><th >Membres</th><th>créateur</th>
+        <tr><th colspan="4">${efg.intitule}, (n° ${efg.id}), <br>créé le: ${efg.creeA}, par ${efg.createur.prenom} ${efg.createur.nom}</th></tr>
+        <tr><th>Groupes</th><th>Membres</th><th>créateur</th>
         </tr>
     </thead>
     <tbody > 
