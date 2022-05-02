@@ -1,4 +1,25 @@
-DROP VIEW IF EXISTS v_efg_groupes_membres;
+-- Karim
+DROP VIEW IF EXISTS v_questionnaire_seance; 
+CREATE VIEW v_questionnaire_seance AS
+SELECT 
+    s.id_seance,  
+    s.id_canal, 
+    q.id_questionnaire, 
+    q.libelle, 
+    nb_minutes,
+    debute_a,
+    finit_a
+FROM seance s 
+        INNER Join entrainement e 
+    on e.id_canal=s.id_canal 
+        INNER JOIN
+    questionnaire q 
+    on q.id_questionnaire= e.id_questionnaire 
+ORDER BY s.id_seance;
+
+
+
+DROP VIEW IF EXISTS v_efg_groupes_membres;/*Karim*/
 CREATE VIEW v_efg_groupes_membres AS
 SELECT
     efg.id_efg, efg.intitule, efg.id_canal, efg.cree_a,
@@ -29,6 +50,40 @@ FROM
 	personne p
 		INNER JOIN
 	membre_canal mc ON p.id_personne = mc.id_personne;
+
+
+/* Données du sondage (tableau question) + nom/prénom de son créateur
+  + réponses des membres du canal associé au sondage,
+  y compris quand ils n'ont pas encore répondu (elles valent alors NULL).
+  Nous distinguons le libellé écrit par le membre qui répond (libelle_donne)
+  des options proposées par l'auteur du sondage (libelle_propose), et en
+  faisons la synthèse dans libell_reponse.
+*/
+DROP VIEW IF EXISTS v_reponse_sondage;
+CREATE VIEW v_reponse_sondage AS
+SELECT 
+	q.id_question, q.id_canal, q.libelle AS libelle_question, q.id_type_question,
+	q.id_createur, c.prenom AS prenom_createur, c.nom AS nom_createur,
+  p.id_personne, p.prenom, p.nom,
+  IFNULL(rq.libelle, oq.libelle) AS libelle_reponse,
+  rq.id_option_question, 
+  rq.libelle AS libelle_donne,
+  oq.libelle AS libelle_propose
+FROM 
+	personne p
+		INNER JOIN
+  membre_canal mc ON p.id_personne = mc.id_personne
+		INNER JOIN
+	question q ON mc.id_canal = q.id_canal
+		INNER JOIN
+	personne c ON q.id_createur = c.id_personne
+		LEFT OUTER JOIN
+	reponse_question rq ON q.id_question = rq.id_question AND p.id_personne = rq.id_personne
+		LEFT OUTER JOIN
+	option_question oq ON rq.id_question = oq.id_question 
+		AND rq.id_option_question = oq.id_option_question
+ORDER BY q.id_question, p.nom, p.prenom;
+
 
 
 DROP VIEW IF EXISTS v_stat_sur_reponses;
@@ -63,3 +118,19 @@ FROM
         question q
   GROUP BY q.id_canal, rq.id_question
 ) t3 ON t1.id_question = t3.id_question AND t2.id_canal = t3.id_canal;
+
+
+
+/* Pour saisir ou afficher les notes des étudiants dans une évaluation
+(Abdallah) */
+CREATE VIEW v_note_etudiant AS
+SELECT p.id_personne, p.prenom, p.nom, e.id_evaluation, ne.note
+FROM 
+	personne p
+		INNER JOIN
+	membre_canal mc ON p.id_personne = mc.id_personne
+		INNER JOIN
+	evaluation e ON mc.id_canal = e.id_canal
+		LEFT OUTER JOIN
+	note_evaluation ne ON e.id_evaluation = ne.id_evaluation AND p.id_personne = ne.id_etudiant
+ORDER BY e.id_evaluation, p.nom, p.prenom;
