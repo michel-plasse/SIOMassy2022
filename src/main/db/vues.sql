@@ -1,25 +1,3 @@
--- Karim
-DROP VIEW IF EXISTS v_questionnaire_seance; 
-CREATE VIEW v_questionnaire_seance AS
-INSERT INTO
-SE 
-    s.id_seance,  
-    s.id_canal, 
-    q.id_questionnaire, 
-    q.libelle, 
-    nb_minutes,
-    debute_a,
-    finit_a
-FROM seance s 
-        INNER Join entrainement e 
-    on e.id_canal=s.id_canal 
-        INNER JOIN
-    questionnaire q 
-    on q.id_questionnaire= e.id_questionnaire 
-ORDER BY s.id_seance;
-
-
-
 DROP VIEW IF EXISTS v_efg_groupes_membres;/*Karim*/
 CREATE VIEW v_efg_groupes_membres AS
 SELECT
