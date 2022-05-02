@@ -6,9 +6,7 @@ package controleur;
 
 import dao.SeanceDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,25 +16,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modele.Personne;
-import modele.Seance;
 
-/**
- *
- * @author SALL Mouhamadou
- */
+
+
 @WebServlet(name = "SignalerPresenceServlet", urlPatterns = {"/signalerPresence"})
 public class SignalerPresenceServlet extends HttpServlet {
 
     private static final String VUE = "WEB-INF/signalerPresence.jsp";
     private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        // Passer directement à la vue
-//        request.getRequestDispatcher(VUE).forward(request, response);
-//    }
-//
+  @Override   protected void doGet(HttpServletRequest request, HttpServletResponse response)
+           throws ServletException, IOException {
+      // Passer directement à la vue
+      request.getRequestDispatcher(VUE).forward(request, response);
+   }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -10,5 +10,5 @@ package modele;
  * @author utilisateur
  */
 public class Note {
-    
+
 }
