@@ -5,6 +5,6 @@
 <h1>EFGs du canal ${param["idCanal"]}</h1>
 <ol>
     <c:forEach items="${exercices}" var="efg">
-        <li>${efg.intitule}, par ${efg.idEfg}</li>
+        <li>  <a href="EFG?idEFG=${efg.idEfg}">${efg.intitule}, par ${efg.idEfg}</a> 
     </c:forEach>
 </ol>
