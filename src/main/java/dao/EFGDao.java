@@ -64,4 +64,10 @@ public class EFGDao {
 
     }
 
+    public static List<EFG> getAllByIdCanal(int idCanal) throws SQLException {
+        List<EFG> result = new ArrayList<>();
+        Connection connexion = Database.getConnection();
+        return result;
+    }
+
 }
