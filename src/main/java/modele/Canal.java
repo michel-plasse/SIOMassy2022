@@ -25,13 +25,12 @@ public class Canal {
     public Canal(String nom) {
         this.nom = nom;
     }
-    
+
     public Canal(int id) {
         this.id = id;
     }
 
     public Canal() {
-        
     }
 
     public int getId() {
@@ -49,7 +48,7 @@ public class Canal {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

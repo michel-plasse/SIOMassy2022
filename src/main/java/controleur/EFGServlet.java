@@ -21,7 +21,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modele.EFG;
+import modele.Groupe;
 
 /**
  *
@@ -30,35 +32,41 @@ import modele.EFG;
 @WebServlet(name = "EFGServlet", urlPatterns = {"/EFG"})
 public class EFGServlet extends HttpServlet {
 
-  private static final String VUE = "WEB-INF/EFG.jsp";
-  private static final String VUE_ERREUR = "WEB-INF/message.jsp";
+    private static final String VUE = "WEB-INF/EFG.jsp";
+    private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
-  /**
-   * Handles the HTTP <code>GET</code> method.
-   *
-   * @param request servlet request
-   * @param response servlet response
-   * @throws ServletException if a servlet-specific error occurs
-   * @throws IOException if an I/O error occurs
-   */
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-          throws ServletException, IOException {
-    int idEFG = 1;
-    String vue = VUE;
-    // Appeler la DAO
-    EFG efg;
-    try {
-      efg = EFGDao.getById(idEFG);
-      // Ajouter les données à la requête
-      request.setAttribute("efg", efg);
-      request.setAttribute("idEFG", idEFG);
-    } catch (SQLException ex) {
-      Logger.getLogger(EFGServlet.class.getName()).log(Level.SEVERE, null, ex);
-      vue = VUE_ERREUR;
-      request.setAttribute("message", "Pb avec la base de données");
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        //pour tester en attendant l'intégration de choix dans la jsp canal:
+        int idEFG=1;
+        String vue = VUE;
+        try {
+            idEFG = Integer.parseInt(request.getParameter("idEFG"));
+            HttpSession session = request.getSession();
+            request.setAttribute("idEFG", idEFG);
+            // Appeler la DAO
+            EFG efg = EFGDao.getById(idEFG);
+            // Ajouter les données à la requête
+            request.setAttribute("efg", efg);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EFGServlet.class.getName()).log(Level.SEVERE, null, ex);
+            vue = VUE_ERREUR;
+            request.setAttribute("message", "Pb avec la base de données");
+        }
+        // Passer la main à la vue
+        request.getRequestDispatcher(vue).forward(request, response);
     }
-    // Passer la main à la vue
-    request.getRequestDispatcher(vue).forward(request, response);
-  }
 }
+
+

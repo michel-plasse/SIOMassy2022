@@ -4,14 +4,13 @@
 <p:header title="SIO Massy 2022"/>
 
 
-${idSeance}
+<h1>  <span style="background-color: green">Présent<span></h1>
 
 
 
-<form action="signalerPresence" method="post">
-    <label>Seance</label
-    <input type="text" name="idSeance" valeur="1" placeholder="numéro séance" required/>
-    
+<!--<form action="signalerPresence" method="post">
+    <label>Seance</label></br>
+    <input type="hidden" name="idSeance" value="1" /></br>
     <button type="submit"> Présent</button>
-</form>
+</form>-->
 <p:footer />

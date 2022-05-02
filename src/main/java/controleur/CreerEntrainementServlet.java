@@ -1,24 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controleur;
 
+import dao.CanalDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modele.Canal;
 
 /**
  *
- * @author utilisateur
+ * @author ak
  */
-@WebServlet(name = "creerEvaluationServlet", urlPatterns = {"/creerEvaluation"})
-public class creerEvaluationServlet extends HttpServlet {
+@WebServlet(name = "CreerEntrainementServlet", urlPatterns = {"/creerEntrainement"})
+public class CreerEntrainementServlet extends HttpServlet {
+
+    private static final String VUE = "WEB-INF/creerEntrainement.jsp";
+    private static final String VUE_ERREUR = "WEB-INF/message.jsp";
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -31,7 +35,19 @@ public class creerEvaluationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/creerEvaluation.jsp").forward(request, response);      
+        String vue = VUE_ERREUR;
+        try {
+            int idQuestionnaire = Integer.parseInt(request.getParameter("idQuestionnaire"));
+            List<Canal> canaux = CanalDao.getAll();
+            request.setAttribute("canaux", canaux);
+            vue = VUE;
+        } catch (NumberFormatException ex) {
+            request.setAttribute("message", "idQuestionnaire doit être un entier");
+        } catch (SQLException ex) {
+            Logger.getLogger(CreerEntrainementServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("message", "PB base de données. Voir journal");
+        }
+        request.getRequestDispatcher(vue).forward(request, response);
     }
 
     /**
@@ -44,8 +60,7 @@ public class creerEvaluationServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {  
-        this.getServletContext().getRequestDispatcher("/WEB-INF/creerEvaluation.jsp").forward(request, response); 
+            throws ServletException, IOException {
     }
 
     /**

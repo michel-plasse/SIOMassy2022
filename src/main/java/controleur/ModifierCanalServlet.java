@@ -20,9 +20,9 @@ import modele.Canal;
  *
  * @author https://github.com/ilyessehamcherif
  */
-@WebServlet(name = "GererCanalServlet", urlPatterns = {"/creerCanal"})
-public class GererCanalServlet extends HttpServlet {
-    private static final String VUE = "WEB-INF/creerCanal.jsp";
+@WebServlet(name = "ModifierCanalServlet", urlPatterns = {"/modifierCanal"})
+public class ModifierCanalServlet extends HttpServlet {
+    private static final String VUE = "WEB-INF/modifierCanal.jsp";
     private static final String VUE_ERREUR= "WEB-INF/message.jsp";
 
     /**
@@ -36,24 +36,27 @@ public class GererCanalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher(VUE).forward(request, response);
+        /**
         // Passer directement à la vue
         int idCanal = 1;
         String vue = VUE;
         // Appeler la DAO
-        Canal canal;
+        Canal canal = null;
         try {
-            canal = CanalDao.insert(idCanal);
+            canal = CanalDao.update(idCanal);
             // Ajouter les données à la requête
             request.setAttribute("canal", canal);
             request.setAttribute("idCanal", idCanal);
         } 
         catch (SQLException ex) {
-            Logger.getLogger(GererCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
             vue = VUE_ERREUR;
             request.setAttribute("message", "Problème avec la base de données !");
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
+        */
     }
     
     
@@ -69,10 +72,33 @@ public class GererCanalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Mettre en post-it message
-        request.setAttribute("message", "Pas encore implémenté");
-        // Passer la main à la vue
-        request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
+        String vue = VUE; // soyons pessimistes :-)
+        boolean isValid = true;
+        String nom = request.getParameter("nom");
+        if (nom == null || nom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Un nom est obligatoire pour la création d'un canal !");
+        }
+        else if (nom == nom || nom.trim().equals(nom)) {
+            isValid = false;
+            request.setAttribute("nomMsg", "Le nouveau nom du canal ne doit pas être identique à l'ancien nom !");
+        }
+        System.out.println("Valide : " + isValid);
+        if (isValid) {
+            try {
+                System.out.println("Valide !");
+                Canal canal = new Canal(0, nom);
+                CanalDao.update(canal);
+                request.setAttribute("canalMsg", "Le canal a bien été modifié !");
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(ModifierCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
+                request.setAttribute("canalMsg", ex.getMessage());
+            }
+        } else {
+            System.out.println("Invalide !");
+        }
+        request.getRequestDispatcher(VUE).forward(request, response);
     }
 
 }

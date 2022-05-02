@@ -30,14 +30,6 @@ public class Personne {
         this.pwd = pwd;
     }
 
-    public Personne(String prenom, String nom, String email, String tel, String pwd) {
-        this.prenom = prenom;
-        this.nom = nom;
-        this.email = email;
-        this.tel = tel;
-        this.pwd = pwd;
-    }
-
     public Personne(int id, String prenom, String nom) {
         this.id = id;
         this.prenom = prenom;
@@ -143,6 +135,13 @@ public class Personne {
             return false;
         }
         return true;
+    }
+
+    public Personne(int id, String prenom, String nom, String email) {
+        this.id = id;
+        this.prenom = prenom;
+        this.nom = nom;
+        this.email = email;
     }
 
 }

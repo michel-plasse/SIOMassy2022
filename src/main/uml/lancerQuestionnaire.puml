@@ -2,12 +2,22 @@
 participant Navigateur
 participant Vue
 
-Navigateur -> Controleur: POST /entrainements\navec idQuestionnaire, idCanal
-Controleur -> Controleur: idQuestionnaire\net idCanal entier ?
-Controleur -> DAO: QuestionnaireDao.\ninsertEntrainement(\nidQuestionnaire, idCanal)
+Navigateur -> Controleur: GET /creerEntrainements\n avec idQuestionnaire
+Controleur -> Controleur: idQuestionnaire\n entier ?
+Controleur -> Dao: CanalDao.getAll()
+Dao -> Controleur: List<Canal>
+Controleur -> Vue: creerEntrainement.jsp
+Vue -> Navigateur: formulaire\nanavec liste déroulante\ndes canaux
+== POST ==
+Controleur -> DAO: Entrainemen
+Navigateur -> Controleur: POST creerEntrainement\navec idCnal, idQuestionnaire
+Controleur -> Controleur: idQuestionnaire et idCanal\n entiers ?
+Controleur -> Controleur: instancie un Entrainement
+Controleur -> Dao: EntrainementDao.\n insert(entrainement)
 DAO -> SGBD: INSERT INTO entrainement ...
 SGBD --> DAO: ok ou échec
 DAO --> Controleur: ok ou SQLException
-Controleur -> Navigateur: redirect(questionnaires)
-
+Controleur -> vue: message.jsp
+Vue -> navigateur: message
 @enduml
+
