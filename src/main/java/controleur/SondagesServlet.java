@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.Personne;
+import modele.Reponse;
 import modele.Sondage;
 
 /**
@@ -46,5 +47,19 @@ public class SondagesServlet extends HttpServlet {
         // Passer la main à la vue
         request.getRequestDispatcher(VUE).forward(request, response);
     }
-
+      
+     @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        // Données d'abord en dur
+       int idQuestion=1;
+       int idOption=1;
+       String libelle;
+       
+        
+        // Les fournir a la vue
+//        request.setAttribute("sondages", sondages);
+        // Passer la main à la vue
+        request.getRequestDispatcher(VUE).forward(request, response);
+    }
 }
