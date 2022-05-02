@@ -14,7 +14,7 @@ FROM seance s
         INNER JOIN
     questionnaire q 
     on q.id_questionnaire= e.id_questionnaire 
-GROUP BY s.id_seance;
+ORDER BY s.id_seance;
 
 DROP VIEW IF EXISTS v_efg_groupes_membres;/*Karim*/
 CREATE VIEW v_efg_groupes_membres AS
