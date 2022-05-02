@@ -24,11 +24,12 @@ public class EvaluationDao {
         ArrayList<Evaluation> result = new ArrayList<>();
         //Evaluation result = null;
         Connection connection = Database.getConnection();
-        String sql = "SELECT id_evaluation, intitule, id_createur FROM `evaluation` WHERE id_createur= ?";
+        String sql = "SELECT id_evaluation, intitule, id_createur FROM evaluation"
+                + " WHERE id_createur=?";
         PreparedStatement stmt = connection.prepareCall(sql);
         stmt.setInt(1, idCreateur);
         ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
+        while (rs.next()) {
             result.add(new Evaluation(
                     rs.getString("intitule"),
                     rs.getInt("id_createur")

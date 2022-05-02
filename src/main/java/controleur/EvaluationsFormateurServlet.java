@@ -24,25 +24,25 @@ import modele.Evaluation;
  *
  * @author utilisateur
  */
-@WebServlet(name = "evaluationFormateurServlet", urlPatterns = {"/evaluationFormateur"})
-public class EvaluationFormateurServlet extends HttpServlet {
+@WebServlet(name = "evaluationFormateurServlet", urlPatterns = {"/evaluationsFormateur"})
+public class EvaluationsFormateurServlet extends HttpServlet {
 
     private static final String VUE = "WEB-INF/evaluations.jsp";
     private static final String VUE_ERREUR = "WEB-INF/message.jsp";
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String vue = VUE;
         int idUser = 1;
-            List<Evaluation> evalutions;
+        List<Evaluation> evaluations;
         try {
-            evalutions = EvaluationDao.getById(idUser);
-            request.setAttribute("evalutions", evalutions);
+            evaluations = EvaluationDao.getById(idUser);
+            System.out.println("nb :" + evaluations.size() );
+            request.setAttribute("evaluations", evaluations);
             request.setAttribute("idUser", idUser);
         } catch (SQLException ex) {
-            Logger.getLogger(EvaluationFormateurServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EvaluationsFormateurServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "Probleme avec la base de donnée");
             vue = VUE_ERREUR;
         }
