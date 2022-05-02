@@ -5,6 +5,6 @@
 <h1>Sondages</h1>
 <ol>
     <c:forEach items="${sondages}" var="sondage">
-        <li>${sondage.libelle}, par ${sondage.createur.prenom}</li>
+      <li><a href="reponsesSondage?idSondage=${sondage.idSondage}">${sondage.libelle}, par ${sondage.createur.prenom}</a></li>
     </c:forEach>
 </ol>
