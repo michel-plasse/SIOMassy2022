@@ -9,7 +9,7 @@
     <tr>
       <td>${reponse.prenom}</td>
       <td>${reponse.nom}</td>
-      <td>
+      <td>  
         <c:if test="${reponse.libelle == null}">
           -
         </c:if>

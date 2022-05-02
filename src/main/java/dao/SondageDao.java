@@ -30,9 +30,10 @@ public class SondageDao {
       Reponse reponse = new Reponse(idSondage, 
               rs.getInt("id_personne"), 
               rs.getString("prenom"), 
-              rs.getString("prenom"),
+              rs.getString("nom"),
               rs.getString("libelle_reponse"),
               rs.getInt("id_option_question"));
+      System.out.println(reponse.toString());
       result.getReponses().add(reponse);
     }
     return result;
