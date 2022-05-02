@@ -1,4 +1,8 @@
-DROP VIEW IF EXISTS v_questionnaire_seance;/*Karim*/
+/* Vue commentée car elle ne compile pas, des colonnes n'existent pas. De plus, il y a un GROUP BY
+qui n'a rien à faire là car il n'y a pas d'aggrégation
+
+-- Karim
+DROP VIEW IF EXISTS v_questionnaire_seance; 
 CREATE VIEW v_questionnaire_seance AS
 SELECT 
     s.id_seance,  
@@ -15,6 +19,8 @@ FROM seance s
     questionnaire q 
     on q.id_questionnaire= e.id_questionnaire 
 GROUP BY s.id_seance;
+*/
+
 
 DROP VIEW IF EXISTS v_efg_groupes_membres;/*Karim*/
 CREATE VIEW v_efg_groupes_membres AS
