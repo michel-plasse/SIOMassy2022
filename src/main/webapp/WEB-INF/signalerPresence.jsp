@@ -4,7 +4,7 @@
 <p:header title="SIO Massy 2022"/>
 
 
-<h1>  <span style="background-color: green">Présent<span></h1>
+<h1>  <span style="background-color: green">Votre présent a bien été notifié<span></h1>
 
 
 

@@ -1,3 +1,8 @@
+
+
+
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -6,6 +11,7 @@ package controleur;
 
 import dao.SeanceDao;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +44,7 @@ public class SignalerPresenceServlet extends HttpServlet {
         Personne user = (Personne) session.getAttribute("user");
         if (user == null) {
             response.sendRedirect("connexion");
+            
         } else {
             int idPersonne = user.getId();
             boolean estPresent = true;
@@ -47,6 +54,7 @@ public class SignalerPresenceServlet extends HttpServlet {
                 request.setAttribute("idSeance", idSeance);
                 //int niveauParticipation = 1;
                 SeanceDao.setPresent(idSeance, idPersonne, estPresent);
+                
                 response.sendRedirect("canal?idCanal=" + idCanal);
             } catch (SQLException ex) {
                 Logger.getLogger(SignalerPresenceServlet.class.getName()).log(Level.SEVERE, null, ex);

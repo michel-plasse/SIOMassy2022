@@ -67,13 +67,15 @@ public class CanalDao {
                 + "membre_canal mc\n"
                 + "INNER JOIN \n"
                 + "personne p ON mc.id_personne = p.id_personne\n"
-                + "WHERE id_canal=?";
+                + "WHERE id_canal=? \n"
+                + "ORDER BY p.nom";
         PreparedStatement stmt = connection.prepareCall(sql);
         stmt.setInt(1, idCanal);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             // Dans tous les cas lister les membres du canal;
             result.add(new Personne(idCanal,
+                   
                     rs.getString("prenom"),
                     rs.getString("nom"),
                     rs.getString("email")

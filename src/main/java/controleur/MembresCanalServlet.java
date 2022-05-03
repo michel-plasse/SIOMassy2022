@@ -3,6 +3,7 @@ package controleur;
 import dao.CanalDao;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,7 +38,7 @@ public class MembresCanalServlet extends HttpServlet {
         membres.add(membre);
         request.setAttribute("membres" , membres);*/
         String vue = VUE;
-        int idCanal=1;
+        int idCanal = 1;
         HttpSession session = request.getSession();
         // Appeller la Dao
         try {
@@ -54,17 +55,5 @@ public class MembresCanalServlet extends HttpServlet {
         //response.sendRedirect("membresCanal.jsp");
         request.getRequestDispatcher(vue).forward(request, response);
     }
-    
-    
-    
-    
-    
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String supprime = request.getParameter("supprimeMembre");
-        
-        request.getRequestDispatcher(VUE).forward(request, response);
-    }
+
 }
