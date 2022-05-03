@@ -3,10 +3,7 @@ package controleur;
 import dao.CanalDao;
 import modele.Canal;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CanalDeleteServlet", urlPatterns = {"/supprimer-canal"})
 public class CanalDeleteServlet extends HttpServlet {
-    private String VUE_CANAL = "WEB-INF/supprimerCanal.jsp";
+    private String VUE_UPDATECANAL = "WEB-INF/supprimerCanal.jsp";
 
     /**
     * Handles the HTTP <code>GET</code> method.
@@ -44,7 +41,7 @@ public class CanalDeleteServlet extends HttpServlet {
             Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("canal", canal);
-        request.getRequestDispatcher(VUE_CANAL).forward(request, response);
+        request.getRequestDispatcher(VUE_UPDATECANAL).forward(request, response);
     }
 
     /**
@@ -57,18 +54,21 @@ public class CanalDeleteServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-		String nom = request.getParameter("nom");
-                try {
-			CanalDao.delete(new Canal(1,  nom));
-		} catch (SQLException ex) {
-
-		}
-           response.sendRedirect("canaux");
+    throws ServletException, IOException {
+        Canal canal = null;
+        int idCanal = 0;
+        try {
+            idCanal = Integer.parseInt(request.getParameter("idCanal"));
+            CanalDao.delete(idCanal);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("canaux");
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short description   of the servlet.
      *
      * @return a String containing servlet description
      */
