@@ -7,7 +7,7 @@
     display: inline;
   }
 </style>
-<h1>Canaux</h1>
+<h1>Tous les canaux</h1>
 <form  method="post">
   <input type="text" name="nom"/>
   <button type="submit">Créer canal</button>
