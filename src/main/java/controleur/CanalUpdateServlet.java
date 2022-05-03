@@ -1,9 +1,7 @@
 package controleur;
 
 import dao.CanalDao;
-import modele.Seance;
 import modele.Canal;
-import java.time.LocalDateTime;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -19,9 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hamcherif.ilyesse@gmail.com
  */
-@WebServlet(name = "CanauxServlet", urlPatterns = {"/canaux"})
-public class CanalServlet extends HttpServlet {
-  private String VUE_CANAUX = "WEB-INF/canaux.jsp";
+@WebServlet(name = "CanalUpdateServlet", urlPatterns = {"/modifier-canal"})
+public class CanalUpdateServlet extends HttpServlet {
+    private String VUE_SCANAL = "WEB-INF/modifierCanal.jsp";
 
     /**
     * Handles the HTTP <code>GET</code> method.
@@ -31,21 +29,20 @@ public class CanalServlet extends HttpServlet {
     * @throws ServletException if a servlet-specific error occurs
     * @throws IOException if an I/O error occurs
     */
-   @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        Seance seance = new Seance(1, 1, LocalDateTime.now().minusHours(1), LocalDateTime.now().plusHours(2));
-        int memberId = 1;
-        List<Canal> canaux = null;
+            throws ServletException, IOException {
+        Canal canal = null;
+        int idCanal = 0;
         try {
-            canaux = CanalDao.getAll();
+            idCanal = Integer.parseInt(request.getParameter("idCanal"));
+            canal = CanalDao.getById(idCanal);
         }
-          catch (SQLException ex) {
+        catch (SQLException ex) {
             Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.setAttribute("canaux", canaux);
-        request.setAttribute("seance", seance);
-        request.getRequestDispatcher(VUE_CANAUX).forward(request, response);
+        request.setAttribute("canal", canal);
+        request.getRequestDispatcher(VUE_SCANAL).forward(request, response);
     }
 
     /**
@@ -58,14 +55,17 @@ public class CanalServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        String nom = request.getParameter("nom");
+            throws ServletException, IOException {
+        int memberId = 1;
+        List<Canal> canaux = null;
         try {
-                CanalDao.insert(new Canal(1,  nom));
+            canaux = CanalDao.getAll();
         }
         catch (SQLException ex) {
+            Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("canaux");
+        request.setAttribute("canaux", canaux);
+        request.getRequestDispatcher(VUE_SCANAL).forward(request, response);
     }
 
     /**
@@ -76,5 +76,9 @@ public class CanalServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
+    }
+
+    private int ParseInt(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
