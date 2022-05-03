@@ -16,7 +16,7 @@
             <p>
                 Nom du canal : 
                 <input type="text" name="nom" value="${param['nom']}"/>
-                ${nomMsg}
+                <div class="erreur">${nomMsg}</div>
             </p>
             <button type="submit">Créer</button>
             <br>
