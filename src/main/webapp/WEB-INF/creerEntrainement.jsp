@@ -11,5 +11,23 @@
 <script src="./libs/jquery/1.10.1/jquery.min.js"></script>
 
 <p:header title="Questionnaire n° "/>
-créer entrainement
+Ici on crée un entrainement
+
+<h1>Questionaires du canal ${param["idQuestionnaire"]}</h1>
+la ou se trouve l'attendu
+
+<div>${param[idQuestionnaire].idQuestionnaire.id}</div>
+           <div> ${param[idQuestionnaire]}</div>  <div> ${param[idQuestionnaire.IdCanal]}</div>
+            Fin de l'attendu
+          <br><br><br>  
+            
+         <br>   id questionnaire: 1     
+       <br>id Créateur: 1
+      <br> Libellé: Base de Java
+      <br> Nombre de mnutes: 10
+      <br> Créé le 2022-05-02 17:20:03
+    
+
 <p:footer />
+
+

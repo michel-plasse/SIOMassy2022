@@ -7,10 +7,10 @@ Controleur -> Controleur: idQuestionnaire\n entier ?
 Controleur -> Dao: CanalDao.getAll()
 Dao -> Controleur: List<Canal>
 Controleur -> Vue: creerEntrainement.jsp
-Vue -> Navigateur: formulaire\nanavec liste déroulante\ndes canaux
+Vue -> Navigateur: formulaire\navec liste déroulante\ndes canaux
 == POST ==
-Controleur -> DAO: Entrainemen
-Navigateur -> Controleur: POST creerEntrainement\navec idCnal, idQuestionnaire
+Controleur -> DAO: Entrainement
+Navigateur -> Controleur: POST creerEntrainement\navec idCanal, idQuestionnaire
 Controleur -> Controleur: idQuestionnaire et idCanal\n entiers ?
 Controleur -> Controleur: instancie un Entrainement
 Controleur -> Dao: EntrainementDao.\n insert(entrainement)

@@ -48,8 +48,8 @@ public class EFGServlet extends HttpServlet {
             throws ServletException, IOException {
 
         //pour tester en attendant l'intégration de choix dans la jsp canal:
-        int idEFG=1;
-        String vue = VUE;
+        int idEFG;
+        String vue = VUE_ERREUR;
         try {
             idEFG = Integer.parseInt(request.getParameter("idEFG"));
             HttpSession session = request.getSession();
@@ -58,15 +58,25 @@ public class EFGServlet extends HttpServlet {
             EFG efg = EFGDao.getById(idEFG);
             // Ajouter les données à la requête
             request.setAttribute("efg", efg);
+            vue = VUE;
+        }
+        catch (NumberFormatException ex) {
+            request.setAttribute("message", "idefg doit être un entier");
 
         } catch (SQLException ex) {
             Logger.getLogger(EFGServlet.class.getName()).log(Level.SEVERE, null, ex);
-            vue = VUE_ERREUR;
+            
             request.setAttribute("message", "Pb avec la base de données");
+            
         }
         // Passer la main à la vue
         request.getRequestDispatcher(vue).forward(request, response);
     }
+     /**
+     *Le controleur permet d'afficher les EFG en les triant par ordre  croissant de leur id EFG et par membres au sein de chaque groupe
+     *
+     * @return Controleur d'affichage d'un EFG, des groupes et des membres.
+     */
 }
 
 

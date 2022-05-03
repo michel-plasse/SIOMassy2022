@@ -16,7 +16,10 @@ import modele.Personne;
 
 /**
  *
- * @author ak
+ * @author Ammari karim alias ak dans GitHub
+ * Cette DAO a une utilité double a savoir:
+ * _ Pour la fonctionnalité Lister les EFGs
+ * _ Pour la fonctionnalité "Le participant affiche un EFG, en listant ses groupes et leurs membres" 
  *
  */
 public class EFGDao {

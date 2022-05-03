@@ -70,7 +70,9 @@ public class CanalDao {
         }
         return result;
     }
-
+/**
+ * 
+ */
     public static List<Personne> getMembresByIdCanal(int idCanal) throws SQLException {
         ArrayList<Personne> result = new ArrayList<>();
         Connection connection = Database.getConnection();
