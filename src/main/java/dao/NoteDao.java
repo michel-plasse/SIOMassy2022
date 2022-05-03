@@ -18,7 +18,7 @@ import modele.Note;
  *
  * @author utilisateur
  */
-public class NoteDAO {
+public class NoteDao {
     
 //    public static Note insert(int idEvaluation) throws SQLException {
 //        Canal result = null;
@@ -38,7 +38,7 @@ public class NoteDAO {
 //        return result;
 //    }
     
-    public List<Note> getNotesByIdEvaluation(int idEvaluation) throws SQLException {
+    public static List<Note> getNotesByIdEvaluation(int idEvaluation) throws SQLException {
         ArrayList<Note> result = new ArrayList<>();
         Connection connexion = Database.getConnection();
         String sql = "SELECT * FROM v_note_evaluation WHERE id_evaluation=?";

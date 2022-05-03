@@ -59,7 +59,7 @@ public class CreerCanalServlet extends HttpServlet {
         System.out.println("Valide : " + isValid);
         if (isValid) {
             try {
-                CanalDao.insert(idCanal);
+                CanalDao.insert(new Canal(idCanal, nom));
                 request.setAttribute("canalMsg", "Le canal a bien été crée !");
             }
             catch (SQLException ex) {
