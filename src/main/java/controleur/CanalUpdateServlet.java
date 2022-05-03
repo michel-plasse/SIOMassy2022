@@ -4,7 +4,6 @@ import dao.CanalDao;
 import modele.Canal;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CanalUpdateServlet", urlPatterns = {"/modifier-canal"})
 public class CanalUpdateServlet extends HttpServlet {
-    private String VUE_SCANAL = "WEB-INF/modifierCanal.jsp";
+    private String VUE_UPDATECANAL = "WEB-INF/modifierCanal.jsp";
 
     /**
     * Handles the HTTP <code>GET</code> method.
@@ -31,7 +30,7 @@ public class CanalUpdateServlet extends HttpServlet {
     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         Canal canal = null;
         int idCanal = 0;
         try {
@@ -42,7 +41,7 @@ public class CanalUpdateServlet extends HttpServlet {
             Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("canal", canal);
-        request.getRequestDispatcher(VUE_SCANAL).forward(request, response);
+        request.getRequestDispatcher(VUE_UPDATECANAL).forward(request, response);
     }
 
     /**
@@ -55,17 +54,14 @@ public class CanalUpdateServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int memberId = 1;
-        List<Canal> canaux = null;
+    throws ServletException, IOException {
+        String nom = request.getParameter("nom");
         try {
-            canaux = CanalDao.getAll();
+            CanalDao.update(new Canal(1, nom));
         }
         catch (SQLException ex) {
-            Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.setAttribute("canaux", canaux);
-        request.getRequestDispatcher(VUE_SCANAL).forward(request, response);
+        response.sendRedirect("canaux");
     }
 
     /**
