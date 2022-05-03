@@ -8,7 +8,7 @@
   }
 </style>
 <h1>Canaux</h1>
-<form action="creerCanal" method="post">
+<form  method="post">
   <input type="text" name="nom"/>
   <button type="submit">Créer canal</button>
 </form>
@@ -20,10 +20,8 @@
         <input type="hidden" name="idCanal" value="${canal.id}"/>
         <button type="submit">Modifier</button>
       </form>
-      <form action="supprimerCanal" method="get">
-        <input type="hidden" name="idCanal" value="${canal.id}"/>
-        <button type="submit">Supprimer</button>
-      </form>
+        <a  href="supprimer-canal?idCanal=${canal.id}">Supprimer</a>
+
     </li>
   </c:forEach>
 </ul>
