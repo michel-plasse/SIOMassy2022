@@ -4,10 +4,10 @@
 <p:header title="Mes évaluations"/>
 <h1>Mes évaluations</h1>
 <c:forEach items="${evaluations}" var="evaluation">
-    <div>
-        ${evaluation.intitule}
+    <div>       ${evaluation.intitule}
         ${evaluation.idCreateur}
     </div>
 </c:forEach>
 </body>
 </html>
+    

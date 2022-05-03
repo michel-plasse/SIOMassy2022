@@ -19,12 +19,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modele.Evaluation;
+import modele.Personne;
 
 /**
  *
  * @author utilisateur
  */
-@WebServlet(name = "evaluationFormateurServlet", urlPatterns = {"/evaluationsFormateur"})
+@WebServlet(name = "evaluationFormateurServlet", urlPatterns = {"/evaluations"})
 public class EvaluationsFormateurServlet extends HttpServlet {
 
     private static final String VUE = "WEB-INF/evaluations.jsp";
@@ -34,13 +35,15 @@ public class EvaluationsFormateurServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String vue = VUE;
-        int idUser = 1;
+        int idCreateur;
+          int idUser = Integer.parseInt(request.getParameter("idCreateur"));
+        Personne user = (Personne) request.getSession(true).getAttribute("user");
         List<Evaluation> evaluations;
         try {
             evaluations = EvaluationDao.getById(idUser);
             System.out.println("nb :" + evaluations.size() );
             request.setAttribute("evaluations", evaluations);
-            request.setAttribute("idUser", idUser);
+            //request.setAttribute("idUser", idUser);
         } catch (SQLException ex) {
             Logger.getLogger(EvaluationsFormateurServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "Probleme avec la base de donnée");

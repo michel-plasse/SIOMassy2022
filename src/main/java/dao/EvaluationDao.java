@@ -20,7 +20,8 @@ import modele.Personne;
  */
 public class EvaluationDao {
 
-    public static List<Evaluation> getById(int idCreateur) throws SQLException {
+  
+   public static List<Evaluation> getById(int idCreateur) throws SQLException {
         ArrayList<Evaluation> result = new ArrayList<>();
         //Evaluation result = null;
         Connection connection = Database.getConnection();
