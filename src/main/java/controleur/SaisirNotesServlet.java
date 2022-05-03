@@ -47,6 +47,10 @@ public class SaisirNotesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
+        int idEvaluation =Integer.parseInt(request.getParameter("idEvaluation"));
+        int note= Integer.parseInt(request.getParameter("note"));
+        System.out.println("je suis dans le doPost");
         // Mettre en post-it message
         request.setAttribute("message", "pas encore implémenté");
         System.out.println("note :" + request.getParameter("note"));

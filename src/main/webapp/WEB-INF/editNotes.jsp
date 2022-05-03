@@ -17,10 +17,10 @@
         <tr>
             <td>${note.prenom} ${note.nom}</td>
             <td>
-                <form method="POST">
-                    <input type="hidden" name="idEvaluation" value="note.idEvaluation}"/>
-                    <input type="hidden" name="idEtudiant" value="note.idEtudiant}"/>
-                    <input type="text" size="6" name="note" value="${note.note}"/>
+                <form action="saisirNotes" method="POST">
+                    <input type="hidden" name="idEvaluation" value="${note.idEvaluation}"/>
+                    <input type="hidden" name="idEtudiant" value="${note.idEtudiant}"/>
+                    <input type="text" size="6" name="note" />
                     <button type="submit">OK</button>
                 </form>
             </td>
