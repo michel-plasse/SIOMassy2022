@@ -6,24 +6,30 @@
     input {
         width: 6em;
     }
-</style>
+
+    #efg ol {
+        list-style-type: none;
+    }
+    #efg li {}
+</Style>
 <h1>Evaluation n° ${idEvaluation}</h1>
 <table>
     <tr>
         <th>Etudiant</th>
         <th>Note</th>
     </tr>
-    <c:forEach items="${notes}" var="note">
         <tr>
-            <td>${note.prenom} ${note.nom}</td>
-            <td>
+               
+                   <c:forEach items="${notes}" var="note">
+                       <td> ${note.idEtudiant}=> ${note.prenom} ${note.nom}</td>
+                <td>
                 <form action="saisirNotes" method="POST">
                     <input type="hidden" name="idEvaluation" value="${note.idEvaluation}"/>
                     <input type="hidden" name="idEtudiant" value="${note.idEtudiant}"/>
-                    <input type="text" size="6" name="note" />
+                    <input type="text" size="6" name="note" value="${note.note}"/>
                     <button type="submit">OK</button>
                 </form>
             </td>
         </tr>
-    </c:forEach>
+                   </c:forEach>
 </table>

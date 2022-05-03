@@ -24,7 +24,8 @@ public class SaisirNotesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // choix de l'évaluation
-        int idEvaluation = 2;
+        String vue = VUE;
+        int idEvaluation = 1;
         List<Note> notes;
         // En dur pour l'instant
         notes = new ArrayList<>();
@@ -41,15 +42,30 @@ public class SaisirNotesServlet extends HttpServlet {
         request.setAttribute("idEvaluation", idEvaluation);
         request.setAttribute("notes", notes);
         request.getRequestDispatcher(VUE).forward(request, response);
-        String vue = VUE;
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
-        int idEvaluation =Integer.parseInt(request.getParameter("idEvaluation"));
-        int note= Integer.parseInt(request.getParameter("note"));
+        //int idEvaluation =Integer.parseInt(request.getParameter("idEvaluation"));
+        // note= Integer.parseInt(request.getParameter("note"));
+        String note= request.getParameter("note");
+        request.setAttribute("note", note);
+        request.setAttribute("idEtudiant", idEtudiant);
+      //  request.setAttribute("idEvaluation", idEvaluation);
+        try {
+         //   NoteDao.update(note, idEtudiant, idEvaluation);
+             NoteDao.update(note, idEtudiant,2);
+        } catch (SQLException ex) {
+            Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.getRequestDispatcher("/message.jsp").forward(request, response);
+        }
+        
+        
+        
+        
         System.out.println("je suis dans le doPost");
         // Mettre en post-it message
         request.setAttribute("message", "pas encore implémenté");
@@ -57,6 +73,8 @@ public class SaisirNotesServlet extends HttpServlet {
         // Passer la main à la vue
         response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
                 + request.getParameter("idEvaluation"));
+        
+        //request.getRequestDispatcher("/accueil.jsp").forward(request, response);
     }
 
 }
