@@ -1,15 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="p" tagdir="/WEB-INF/tags/"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<p:header title="Canal ${canal.nom}"/>
+<p:header title="Modifier le canal ${canal.nom}"/>
         
 <h1>Modification du canal</h1>
-<form method="POST">
+<form method="post">
     <p>Nom du canal : ${canal.nom}</p>
-    <p>
-        Nouveau nom du canal : 
-        <input type="text" name="nom">
-    </p>
+    <input type="text" name="nom"/>
+    <br>
+    <br>
     <p>Êtes-vous sûr(e) de vouloir modifier le canal "${canal.nom}" ?</p>
     <button type="submit">Modifier</button>
     <br>
