@@ -2,13 +2,13 @@
 participant Navigateur
 participant Vue
 == Afficher le formulaire ==
-Navigateur -> Controleur: POST /afficheNotes?idEvaluation=...
+Navigateur -> Controleur: GET /saisirNotes?idEvaluation=...
 Controleur -> Controleur: vérifier que\nidEvaluation est entier
-Controleur -> DAO: afficheNoteDao.insert(idEvaluation)
-DAO -> SGBD: SELECT ...°
-SGBD --> DAO: ok ou échec°
-DAO --> Controleur: List<Note>°
-Controleur -> Vue: afficheNote.jsp
+Controleur -> DAO: EvaluationDao.\ngetNotesByIdEvaluation(idEvaluation)
+DAO -> SGBD: SELECT ...
+SGBD --> DAO: lignes
+DAO --> Controleur: List<Note>
+Controleur -> Vue: AfficheNote.jsp
 Vue --> Navigateur: formulaire rempli
 
 @enduml
