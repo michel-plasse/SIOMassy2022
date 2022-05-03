@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controleur;
 
 import modele.Seance;
@@ -20,32 +15,30 @@ import modele.Canal;
 
 /**
  *
- * @author Formateur
+ * @author hamcherif.ilyesse@gmail.com
  */
 @WebServlet(name = "CanauxServlet", urlPatterns = {"/canaux"})
 public class CanauxServlet extends HttpServlet {
 
-  private static final String VUE = "WEB-INF/canaux.jsp";
+    private static final String VUE = "WEB-INF/canaux.jsp";
 
-  /**
-   * Handles the HTTP <code>GET</code> method.
-   *
-   * @param request servlet request
-   * @param response servlet response
-   * @throws ServletException if a servlet-specific error occurs
-   * @throws IOException if an I/O error occurs
-   */
-  @Override
-  protected void doGet(HttpServletRequest request,
-          HttpServletResponse response)
-          throws ServletException, IOException {
-    // D'abord en dur (il faudra chercher les données via la Dao)
-    List<Canal> canaux = new ArrayList<>();
-    canaux.add(new Canal(1, "SIO 2021 projet"));
-    canaux.add(new Canal(2, "SIO 2021 java"));
-    canaux.add(new Canal(3, "CDA 2021"));
-    request.setAttribute("canaux", canaux);
-    request.getRequestDispatcher(VUE).forward(request, response);
-  }
-
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        // D'abord en dur (il faudra chercher les données via la Dao)
+        List<Canal> canaux = new ArrayList<>();
+        canaux.add(new Canal(1, "SIO 2021 projet"));
+        canaux.add(new Canal(2, "SIO 2021 java"));
+        canaux.add(new Canal(3, "CDA 202"));
+        request.setAttribute("canaux", canaux);
+        request.getRequestDispatcher(VUE).forward(request, response);
+    }
 }
