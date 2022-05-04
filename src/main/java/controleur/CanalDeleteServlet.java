@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CanalDeleteServlet", urlPatterns = {"/supprimer-canal"})
 public class CanalDeleteServlet extends HttpServlet {
-    private String VUE_UPDATECANAL = "WEB-INF/supprimerCanal.jsp";
+    private String VUE_DELETECANAL = "WEB-INF/supprimerCanal.jsp";
 
     /**
     * Handles the HTTP <code>GET</code> method.
@@ -30,7 +30,7 @@ public class CanalDeleteServlet extends HttpServlet {
     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+    throws ServletException, IOException {
         Canal canal = null;
         int idCanal = 0;
         try {
@@ -41,7 +41,7 @@ public class CanalDeleteServlet extends HttpServlet {
             Logger.getLogger(CanauxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("canal", canal);
-        request.getRequestDispatcher(VUE_UPDATECANAL).forward(request, response);
+        request.getRequestDispatcher(VUE_DELETECANAL).forward(request, response);
     }
 
     /**
