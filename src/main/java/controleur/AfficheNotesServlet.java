@@ -24,7 +24,7 @@ public class AfficheNotesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // choix de l'évaluation
-        int idEvaluation = 2;
+        int idEvaluation = 1;
         List<Note> notes;
         // En dur pour l'instant
         notes = new ArrayList<>();
@@ -40,7 +40,7 @@ public class AfficheNotesServlet extends HttpServlet {
         }
         request.setAttribute("idEvaluation", idEvaluation);
         request.setAttribute("notes", notes);
-        request.getRequestDispatcher(VUE).forward(request, response);
+        request.getRequestDispatcher("WEB-INF/afficheNote.jsp").forward(request, response);
         String vue = VUE;
     }
 

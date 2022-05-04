@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <p:header title="Saisir Les Notes"/>
 <style>
-    input {
+    input { 
         width: 6em;
     }
 
@@ -21,7 +21,7 @@
         <tr>
                
                    <c:forEach items="${notes}" var="note">
-                       <td> ${note.idEtudiant}=> ${note.prenom} ${note.nom}</td>
+                       <td> ${note.prenom} ${note.nom}</td>
                 <td>
                 <form action="saisirNotes" method="POST">
                     <input type="hidden" name="idEvaluation" value="${note.idEvaluation}"/>

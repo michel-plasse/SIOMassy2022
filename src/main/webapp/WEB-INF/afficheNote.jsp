@@ -19,4 +19,10 @@
             <td> ${note.note}</td>
         </tr>
     </c:forEach>
+   
 </table>
+<form>
+        <a href ="saisirNotes?idEvaluation=${note.idEvaluation}">Saisir/Modifier les note</a>
+</form>
+ 
+     
