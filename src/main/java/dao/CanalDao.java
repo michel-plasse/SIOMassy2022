@@ -67,14 +67,10 @@ public class CanalDao {
   public static boolean delete(int idCanal) throws SQLException {
     boolean ok = false;
     Connection connection = Database.getConnection();
-    try {
       String sql = "DELETE FROM canal WHERE id_canal = ?;";
       PreparedStatement stmt = connection.prepareCall(sql);
       stmt.setInt(1, idCanal);
       ok = stmt.execute();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
     return ok;
   }
 
