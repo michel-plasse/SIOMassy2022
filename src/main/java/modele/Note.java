@@ -11,12 +11,14 @@ package modele;
  * @author utilisateur
  */
 public class Note {
-    private int note;
+    /* je créer mes variable en priver*/
+    private String note;
     private int idEvaluation;
     private int idEtudiant;
     private String prenom, nom;
 
-    public Note(int idEvaluation, int idEtudiant, String prenom, String nom, int note) {
+    /* Constructeur*/
+    public Note(int idEvaluation, int idEtudiant, String prenom, String nom, String note) {
         this.note = note;
         this.idEvaluation = idEvaluation;
         this.idEtudiant = idEtudiant;
@@ -25,12 +27,12 @@ public class Note {
     }
 
     
-    /** Note entre 0 et 20 */
-    public int getNote() {
+    /** Getters et les Setters */
+    public String getNote() {
         return note;
     }
 
-    public void setNote(int note) {
+    public void setNote(String note) {
         this.note = note;
     }
 

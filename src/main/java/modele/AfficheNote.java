@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modele;
 
 
-/**
- *
- * @author utilisateur
- */
+
 public class AfficheNote {
+    /* Je créer mes variables*/
     private String note;
     private int idEvaluation;
     private int idEtudiant;
     private String prenom, nom;
 
+    /* Constructeur*/
     public AfficheNote(int idEvaluation, int idEtudiant, String prenom, String nom, String note) {
         this.note = note;
         this.idEvaluation = idEvaluation;
@@ -25,7 +19,7 @@ public class AfficheNote {
     }
 
     
-    /** Note entre 0 et 20 */
+    /** Getters et Setters */
     public String getNote() {
         return note;
     }

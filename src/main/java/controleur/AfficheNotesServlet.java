@@ -28,16 +28,17 @@ public class AfficheNotesServlet extends HttpServlet {
         List<Note> notes;
         // En dur pour l'instant
         notes = new ArrayList<>();
-       
+       //
         try {
             notes = NoteDao.getNotesByIdEvaluation(idEvaluation);
             System.out.println("nb de notes " + notes.size());
             request.setAttribute("idEvaluation", idEvaluation);
             request.setAttribute("notes", notes);
-
+         //
         }catch (SQLException ex) {
            Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //
         request.setAttribute("idEvaluation", idEvaluation);
         request.setAttribute("notes", notes);
         request.getRequestDispatcher("WEB-INF/afficheNote.jsp").forward(request, response);

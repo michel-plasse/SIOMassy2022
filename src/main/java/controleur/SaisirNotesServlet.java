@@ -50,17 +50,17 @@ public class SaisirNotesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String vue = VUE;
-
+        
         //String note= request.getParameter("note");
         try {
             int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
             int idEvaluation = Integer.parseInt(request.getParameter("idEvaluation"));
-            int note = Integer.parseInt(request.getParameter("note"));
-
+            String note = request.getParameter("note");
+           
             request.setAttribute("note", note);
             request.setAttribute("idEtudiant", idEtudiant);
             request.setAttribute("idEvaluation", idEvaluation);
-            NoteDao.update(note, idEtudiant, idEvaluation);
+            NoteDao.update("note", idEtudiant, idEvaluation);
             response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
                     + request.getParameter("idEvaluation"));
         } catch (SQLException ex) {
@@ -81,8 +81,6 @@ public class SaisirNotesServlet extends HttpServlet {
     }
 
 }
-// Faire un bouton Affiche Note dans canal.jsp
-//Faire un bouton Modifier note dans afficheNote.jsp
 // Faire un bouton Evaluation 1 dans affiche note 
 // Faire un bouton Evaluation 2 dans affiche note 
 // Faire un bouton Evaluation 3 dans affiche note 
