@@ -26,7 +26,7 @@ public class AfficheNoteDao {
                     rs.getInt("id_personne"),
                     rs.getString("prenom"),
                     rs.getString("nom"),
-                    rs.getString("note")));
+                    rs.getInt("note")));
             /*System.out.println(groupes);*/
         }
         return result;

@@ -16,6 +16,7 @@
     <c:forEach items="${notes}" var="note">
         <tr>
             <td>${note.prenom} ${note.nom}</td>
+            <td> ${note.note}</td>
             <td>
                 <form action="saisirNotes" method="POST">
                     <input type="hidden" name="idEvaluation" value="${note.idEvaluation}"/>
