@@ -5,6 +5,11 @@ import modele.Personne;
 import java.sql.*;
 import modele.Reponse;
 
+/**
+* Author Cheick Lanikpekoun
+* SondageDao recupere la avec la requette sql select.... les reponse au sondage depuis la bdd
+*/
+
 public class SondageDao {
 
   public static Sondage getByIdSondage(int idSondage) throws SQLException {
@@ -27,6 +32,10 @@ public class SondageDao {
                 rs.getString("libelle_question"),
                 createur);
       }
+
+/**
+* Instancie le contenu des reponse à uin sondage avec id_personne, prenom, nom, libelle_reponse .....
+*/
       Reponse reponse = new Reponse(idSondage, 
               rs.getInt("id_personne"), 
               rs.getString("prenom"), 
