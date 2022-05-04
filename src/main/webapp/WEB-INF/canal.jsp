@@ -23,6 +23,9 @@
             <a href="questionnaires?idCanal=${canal.id}">Questionnaires</a> (si je suis formateur)
         </div>
     </c:if>
+    <div>
+         <a href ="AfficheNote?idEvaluation=${note.idEvaluation}"> Afficher Les Notes</a>
+    </div>
     <div><a href="membres?idCanal=${canal.id}">Membres du canal</a></div>
     <div><a href="evaluations?idCreateur=${param["idCanal"]}">Evaluations</a></div>
 </nav>

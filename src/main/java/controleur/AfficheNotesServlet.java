@@ -40,7 +40,7 @@ public class AfficheNotesServlet extends HttpServlet {
         }
         request.setAttribute("idEvaluation", idEvaluation);
         request.setAttribute("notes", notes);
-        request.getRequestDispatcher(VUE).forward(request, response);
+        request.getRequestDispatcher("WEB-INF/afficheNote.jsp").forward(request, response);
         String vue = VUE;
     }
 
