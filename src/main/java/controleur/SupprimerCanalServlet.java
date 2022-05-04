@@ -57,16 +57,16 @@ public class SupprimerCanalServlet extends HttpServlet {
         String nom = request.getParameter("nom");
         System.out.println("Valide : " + isValid);
         if (isValid) {
-            try {
-                System.out.println("Valide !");
-                Canal canal = new Canal(0, nom);
-                CanalDao.delete(canal);
-                request.setAttribute("canalMsg", "Le canal a bien été supprimé !");
-            }
-            catch (SQLException ex) {
-                Logger.getLogger(SupprimerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
-                request.setAttribute("canalMsg", ex.getMessage());
-            }
+//            try {
+//                System.out.println("Valide !");
+//                Canal canal = new Canal(0, nom);
+//                CanalDao.delete(canal);
+//                request.setAttribute("canalMsg", "Le canal a bien été supprimé !");
+//            }
+//            catch (SQLException ex) {
+//                Logger.getLogger(SupprimerCanalServlet.class.getName()).log(Level.SEVERE, null, ex);
+//                request.setAttribute("canalMsg", ex.getMessage());
+//            }
         } else {
             System.out.println("Invalide !");
         }
