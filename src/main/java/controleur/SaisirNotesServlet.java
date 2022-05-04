@@ -68,16 +68,9 @@ public class SaisirNotesServlet extends HttpServlet {
             request.setAttribute("message", "Probleme avec la base de données");
             request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
         }
-        /*
-        System.out.println("je suis dans le doPost");
-        // Mettre en post-it message
-        request.setAttribute("message", "pas encore implémenté");
-        System.out.println("note :" + request.getParameter("note"));
         // Passer la main à la vue*/
         response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
                 + request.getParameter("idEvaluation"));
-
-        //request.getRequestDispatcher("/accueil.jsp").forward(request, response);
     }
 
 }

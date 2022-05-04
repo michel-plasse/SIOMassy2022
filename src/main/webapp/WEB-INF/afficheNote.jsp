@@ -3,6 +3,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <p:header title="Afficher Les Notes"/>
 <style>
+    
+    .Design {
+        color: blueviolet;
+    }
     input {
         width: 6em;
     }
@@ -22,5 +26,7 @@
         
 </table>
 <form>
-        <a href ="saisirNotes?idEvaluation=${note.idEvaluation}">Saisir/Modifier les note</a>
+        <a href ="saisirNotes?idEvaluation=${note.idEvaluation}" class="Design">
+            <i class="fa-solid fa-pen-to-square" > Saisir/Modifier les note</i> 
+        </a>
 </form>
