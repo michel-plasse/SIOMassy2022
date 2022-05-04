@@ -35,25 +35,27 @@ public class NoteDao {
                     rs.getInt("id_personne"),
                     rs.getString("prenom"),
                     rs.getString("nom"),
-                    rs.getString("note")));
+                    rs.getInt("note")));
             /*System.out.println(groupes);*/
         }
         return result;
     }
 
-    public static Note update(String note, int idEtudiant, int idEvaluation) throws SQLException {
+    public static Note update(int note, int idEtudiant, int idEvaluation) throws SQLException {
         //Canal result = null;
         Note notes=null;
                 Connection connection = Database.getConnection();
-        String sql = "UPDATE note_evaluation SET note=? WHERE id_etudiant=? and id_evaluation=?";
+        //String sql = "UPDATE note_evaluation SET note=? WHERE id_etudiant=? and id_evaluation=?";
+        String sql = "INSERT INTO note_evaluation(id_etudiant, id_evaluation, note) VALUES(?,?,?)\n"
+                + " ON DUPLICATE KEY UPDATE note=?";
         PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setString(1, note);
+        stmt.setInt(1, note);
         stmt.setInt(2, idEtudiant);
         stmt.setInt(3, idEvaluation);
-        stmt.executeUpdate();
+        //stmt.executeUpdate();
         stmt.execute();
-        ResultSet rs = null;
-        rs = stmt.getGeneratedKeys();
+        /*  ResultSet rs = null;
+        //rs = stmt.getGeneratedKeys();
         // rs = stmt.executeQuery();
         if(rs.next() ){
             notes = new Note(
@@ -62,10 +64,10 @@ public class NoteDao {
             rs.getInt("idEtudiant"),
             rs.getString("prenom"),
             rs.getString("nom"),
-            rs.getString("note")
+            rs.getInt("note")
             );
-        };
-        return notes;
+        };*/
+        return null;
+    
     }
-
 }

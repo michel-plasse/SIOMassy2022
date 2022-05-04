@@ -29,59 +29,54 @@ public class SaisirNotesServlet extends HttpServlet {
         List<Note> notes;
         // En dur pour l'instant
         notes = new ArrayList<>();
-       
+
         try {
             notes = NoteDao.getNotesByIdEvaluation(idEvaluation);
             System.out.println("nb de notes " + notes.size());
             request.setAttribute("idEvaluation", idEvaluation);
             request.setAttribute("notes", notes);
 
-        }catch (SQLException ex) {
-           Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("idEvaluation", idEvaluation);
-        
+
         request.setAttribute("notes", notes);
         request.getRequestDispatcher(VUE).forward(request, response);
-        
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String vue = VUE;
-        int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
-        int idEvaluation =Integer.parseInt(request.getParameter("idEvaluation"));
-        // note= Integer.parseInt(request.getParameter("note"));
-        String note= request.getParameter("note");
-        request.setAttribute("note", note);
-        request.setAttribute("idEtudiant", idEtudiant);
-        request.setAttribute("idEvaluation", idEvaluation);
+
+        //String note= request.getParameter("note");
         try {
-            NoteDao.update("note", idEtudiant, idEvaluation);
-            // NoteDao.update(note, idEtudiant,2);
-             response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
-                + request.getParameter("idEvaluation"));
-            // System.out.println("je suis dans le doPost");
+            int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
+            int idEvaluation = Integer.parseInt(request.getParameter("idEvaluation"));
+            int note = Integer.parseInt(request.getParameter("note"));
+
             request.setAttribute("note", note);
-        request.setAttribute("idEtudiant", idEtudiant);
-        request.setAttribute("idEvaluation", idEvaluation);
+            request.setAttribute("idEtudiant", idEtudiant);
+            request.setAttribute("idEvaluation", idEvaluation);
+            NoteDao.update(note, idEtudiant, idEvaluation);
+            response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
+                    + request.getParameter("idEvaluation"));
         } catch (SQLException ex) {
             Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
+            request.setAttribute("message", "Probleme avec la base de données");
             request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
         }
-        
-        
-        
-        
+        /*
         System.out.println("je suis dans le doPost");
         // Mettre en post-it message
         request.setAttribute("message", "pas encore implémenté");
         System.out.println("note :" + request.getParameter("note"));
-        // Passer la main à la vue
+        // Passer la main à la vue*/
         response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
                 + request.getParameter("idEvaluation"));
-        
+
         //request.getRequestDispatcher("/accueil.jsp").forward(request, response);
     }
 

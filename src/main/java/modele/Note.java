@@ -11,12 +11,12 @@ package modele;
  * @author utilisateur
  */
 public class Note {
-    private String note;
+    private int note;
     private int idEvaluation;
     private int idEtudiant;
     private String prenom, nom;
 
-    public Note(int idEvaluation, int idEtudiant, String prenom, String nom, String note) {
+    public Note(int idEvaluation, int idEtudiant, String prenom, String nom, int note) {
         this.note = note;
         this.idEvaluation = idEvaluation;
         this.idEtudiant = idEtudiant;
@@ -26,11 +26,11 @@ public class Note {
 
     
     /** Note entre 0 et 20 */
-    public String getNote() {
+    public int getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(int note) {
         this.note = note;
     }
 
