@@ -38,10 +38,10 @@ public class CanalDao {
     stmt.setInt(1, idCanal);
     ResultSet rs = stmt.executeQuery();
     if (rs.next()) {
-      canal = new Canal(
-              rs.getInt("id_canal"),
-              rs.getString("nom")
-      );
+        canal = new Canal(
+            rs.getInt("id_canal"),
+            rs.getString("nom")
+        );
     }
     return canal;
   }
