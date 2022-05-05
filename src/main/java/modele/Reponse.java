@@ -3,7 +3,7 @@ package modele;
 import java.util.Objects;
 
 /**
- *
+ *  
  */
 public class Reponse {
   private int idQuestion, idPersonne, idOptionQuestion;
@@ -16,6 +16,7 @@ public class Reponse {
     this.prenom = prenom;
     this.nom = nom;
     this.libelle = libelle;
+
   }
 
   public int getIdQuestion() {

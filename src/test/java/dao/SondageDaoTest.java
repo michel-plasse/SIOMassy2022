@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author michel
+ * @author cheick LANIKPEKOUN
  */
 public class SondageDaoTest {
   
