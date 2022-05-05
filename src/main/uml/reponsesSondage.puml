@@ -1,0 +1,16 @@
+@startuml
+participant Navigateur
+participant Vue
+
+== Afficher sondage == 
+
+Navigateur -> Controleur: GET /reponsesSondage?idSondage=...
+Controleur -> Controleur: idSondage entier ?
+Controleur -> DAO: SondageDao.\ngetById(idSondage)
+DAO -> SGBD: SELECT compliqué
+SGBD --> DAO: lignes ou exception
+DAO --> Controleur: Sondage ou SQLException
+Controleur -> Vue: sondage.jsp
+Vue --> Navigateur: réponses du sondage
+ 
+@enduml

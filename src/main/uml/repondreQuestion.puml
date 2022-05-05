@@ -1,0 +1,17 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: POST /repondreQuestion\navec idQuestion, idOption, libelle
+Controleur -> Controleur: idQuestion entier ?
+Controleur -> Controleur: idOption entier ou absent ?
+Controleur -> Controleur: soit idOption soit libelle present ?
+Controleur -> Controleur: récupère idUser en session
+Controleur -> Controleur: instancie reponse
+Controleur -> DAO: SondageDao.\ninsereReponse(reponse)
+DAO -> SGBD: INSERT ... 
+SGBD --> DAO: ok ou échec
+DAO --> Controleur: ok ou SQLException
+Controleur -> Vue: message.jsp
+Vue -> Navigateur: affiche la réponse donnée
+@enduml
