@@ -107,7 +107,7 @@ public class CreerEntrainementServlet extends HttpServlet {
         request.setAttribute("entrainement", entrainement);
        
         System.out.println("Création du questionaire");
-        entrainement= EntrainementDao.Update(entrainement);
+       // entrainement= EntrainementDao.Update(entrainement);
         // Mettre en post-it message
         Questionnaire q;
           q=EntrainementDao.getById(idQuestionnaire,idCanal);
