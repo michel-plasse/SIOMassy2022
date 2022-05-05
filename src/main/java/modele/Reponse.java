@@ -3,11 +3,21 @@ package modele;
 import java.util.Objects;
 
 /**
- *  
+ *  j'ai ajouté un attribut heure de type LOCALDATIME
  */
+
 public class Reponse {
   private int idQuestion, idPersonne, idOptionQuestion;
   private String prenom, nom, libelle;
+
+/**
+ * @param idQuestion est un reel qui indique le numero de question.
+ * @param idPersonne est un reels qui indique le numero de la personne.
+ * @param prenom est un chaine de caratere qui indique le prenom.
+ * @param nom   est un chaine de caractere qui indique le nom.
+ * @param libelle est un chaine de caractere qui indique le libelle
+ * @param idoptionQuestion est un numero qui indique que le numero d'option
+*/
 
   public Reponse(int idQuestion, int idPersonne, String prenom, String nom, String libelle, int idOptionQuestion) {
     this.idQuestion = idQuestion;
@@ -16,7 +26,6 @@ public class Reponse {
     this.prenom = prenom;
     this.nom = nom;
     this.libelle = libelle;
-
   }
 
   public int getIdQuestion() {

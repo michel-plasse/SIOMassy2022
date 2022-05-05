@@ -7,6 +7,9 @@ import modele.Reponse;
 
 public class SondageDao {
 
+ /*
+    J'ai rajouté le getInstand de heure dans heure
+*/
   public static Sondage getByIdSondage(int idSondage) throws SQLException {
     Sondage result = null;
     Connection connection = Database.getConnection();
