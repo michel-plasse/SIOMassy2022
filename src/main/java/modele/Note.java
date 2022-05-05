@@ -20,6 +20,7 @@ public class Note {
     /* Constructeur*/
     public Note(int idEvaluation, int idEtudiant, String prenom, String nom, String note) {
         this.note = note;
+     
         this.idEvaluation = idEvaluation;
         this.idEtudiant = idEtudiant;
         this.prenom = prenom;

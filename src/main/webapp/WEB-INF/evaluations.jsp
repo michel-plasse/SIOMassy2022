@@ -4,7 +4,7 @@
 <p:header title="Mes évaluations"/>
 <style>
     .Design {
-        color: blueviolet;
+        color: orangered;
     }
 </style>
 <h1>Mes évaluations</h1>

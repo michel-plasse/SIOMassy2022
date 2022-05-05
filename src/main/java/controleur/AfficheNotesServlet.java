@@ -24,7 +24,7 @@ public class AfficheNotesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // choix de l'évaluation
-        int idEvaluation = 1;
+        int idEvaluation = 2;
         List<Note> notes;
         // En dur pour l'instant
         notes = new ArrayList<>();

@@ -1,4 +1,3 @@
-
 package dao;
 
 import java.sql.Connection;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import modele.Canal;
 import modele.Note;
-
 
 public class NoteDao {
 
@@ -33,38 +31,26 @@ public class NoteDao {
         }
         return result;
     }
+
     /**
-     * 
+     *
      * @param note
      * @param idEtudiant
      * @param idEvaluation
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public static Note update(String note, int idEtudiant, int idEvaluation) throws SQLException {
-       
+    public static void update(String note, int idEtudiant, int idEvaluation) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "INSERT INTO note_evaluation(id_etudiant, id_evaluation, note) VALUES(?,?,?) ON DUPLICATE KEY UPDATE note=?";
+        String sql = "INSERT INTO note_evaluation(id_etudiant, id_evaluation, note) VALUES(?,?,?) ON DUPLICATE KEY UPDATE note=? ";
         PreparedStatement stmt = connection.prepareCall(sql);//
-        stmt.setString(1, "note");
-        stmt.setInt(2, idEtudiant);
-        stmt.setInt(3, idEvaluation);
+        //system.out.println
+        stmt.setInt(1, idEtudiant);
+        stmt.setInt(2, idEvaluation);
+        stmt.setString(3, note);
+        stmt.setString(4, note);
         stmt.executeUpdate();//excute la requete 
-        stmt.execute();
-        ResultSet rs = null;
-        rs = stmt.getGeneratedKeys();
-        rs = stmt.executeQuery();
-        if(rs.next() ){ 
-            Note notes = new Note( // instancier les notes 
-                    
-            rs.getInt("idEvaluation"),
-            rs.getInt("idEtudiant"),
-            rs.getString("prenom"),
-            rs.getString("nom"),
-            rs.getString("note")
-            );
-        };
-        return null;
-    
+        //stmt.execute();
+        //stmt.executeUpdate();
     }
 }

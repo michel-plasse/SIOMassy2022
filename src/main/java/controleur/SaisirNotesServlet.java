@@ -35,6 +35,7 @@ public class SaisirNotesServlet extends HttpServlet {
             System.out.println("nb de notes " + notes.size());
             request.setAttribute("idEvaluation", idEvaluation);
             request.setAttribute("notes", notes);
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,6 +43,7 @@ public class SaisirNotesServlet extends HttpServlet {
         request.setAttribute("idEvaluation", idEvaluation);
 
         request.setAttribute("notes", notes);
+       
         request.getRequestDispatcher(VUE).forward(request, response);
 
     }
@@ -50,27 +52,30 @@ public class SaisirNotesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String vue = VUE;
-        
+
         //String note= request.getParameter("note");
         try {
             int idEtudiant = Integer.parseInt(request.getParameter("idEtudiant"));
             int idEvaluation = Integer.parseInt(request.getParameter("idEvaluation"));
             String note = request.getParameter("note");
-           
+      
+
             request.setAttribute("note", note);
+           
             request.setAttribute("idEtudiant", idEtudiant);
             request.setAttribute("idEvaluation", idEvaluation);
-            NoteDao.update("note", idEtudiant, idEvaluation);
+            NoteDao.update(note, idEtudiant, idEvaluation);
+            System.out.print("------------------------------" + request.getRequestURL().toString());
             response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
                     + request.getParameter("idEvaluation"));
         } catch (SQLException ex) {
+            System.out.print(ex);
             Logger.getLogger(SaisirNotesServlet.class.getName()).log(Level.SEVERE, null, ex);
-            request.setAttribute("message", "Probleme avec la base de données");
+            request.setAttribute("message", "Probleme hjfdklsmfùdsavec la base de données");
             request.getRequestDispatcher(VUE_ERREUR).forward(request, response);
         }
         // Passer la main à la vue*/
-        response.sendRedirect(request.getRequestURL().toString() + "?idEvaluation="
-                + request.getParameter("idEvaluation"));
+
     }
 
 }

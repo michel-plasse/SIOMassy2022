@@ -5,7 +5,7 @@
 <style>
     
     .Design {
-        color: blueviolet;
+        color: orangered;
     }
     input {
         width: 6em;
