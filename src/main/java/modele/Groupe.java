@@ -4,6 +4,7 @@
  */
 package modele;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ public class Groupe {
       private int idEFG, idGroupe;
       private  Personne createur;
       private List<Personne> membres;
+      private LocalDateTime creeA;
 
     public Groupe(int idEFG, int idGroupe, Personne createur, List<Personne> membres) {
         this.idEFG = idEFG;
@@ -28,8 +30,24 @@ public class Groupe {
         this.membres = membres;
     }
 
+    public LocalDateTime getCreeA() {
+        return creeA;
+    }
+
+    public void setCreeA(LocalDateTime creeA) {
+        this.creeA = creeA;
+    }
+
     public Personne getCreateur() {
         return createur;
+    }
+
+    public Groupe(int idEFG, int idGroupe, Personne createur, List<Personne> membres, LocalDateTime creeA) {
+        this.idEFG = idEFG;
+        this.idGroupe = idGroupe;
+        this.createur = createur;
+        this.membres = membres;
+        this.creeA = creeA;
     }
 
     public void setCreateur(Personne createur) {

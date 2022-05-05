@@ -7,8 +7,10 @@
     <c:forEach items="${questionnaires}" var="questionnaire">
         <li>${questionnaire.libelle} (${questionnaire.nbMinutes} mn),
             ${questionnaire.nbQuestions} questions
-            <form action="creerEntrainement">
+            <form action="creerEntrainement" method="post">
                 <input type="hidden" name="idQuestionnaire" value="${questionnaire.id}"/>
+                <input type="hidden" name="idCanal" value="${param["idCanal"]}"/>
+                <input type="hidden" name="id" value="${questionnaire.id}"/>
                 <button type="submit">Lancer</button>
             </form>
         </li>
