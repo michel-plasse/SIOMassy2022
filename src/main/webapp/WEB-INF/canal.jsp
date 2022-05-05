@@ -18,6 +18,7 @@
     <a href="sondages?idCanal=${canal.id}">Sondages</a>
     <a href="EFGs?idCanal=${canal.id}">EFGs</a>
     <div><a href="EFG?idEFG=1">EFG 1</a> (lien temporaire)</div>
+    <a href="modifierParticipations">Modifier les participations</a>
     <c:if test="${sessionScope['user'] != null}">
         <div>
             <a href="questionnaires?idCanal=${canal.id}">Questionnaires</a> (si je suis formateur)

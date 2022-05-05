@@ -28,4 +28,19 @@ public class SeanceDao {
         stmt.setInt(4, (estPresent) ? 1 : 0);
         stmt.execute();
     }
+
+  public static void setParticipation(int idSeance, int idPersonne, int niveauParticipation) throws SQLException {
+        Connection connection = Database.getConnection();
+        String sql = "Insert Into presence_seance(id_seance, id_personne, niveau_participation)\n"
+                + "VALUES(?, ?, ?)\n"
+                + "ON duplicate key update niveau_participation=?";
+        PreparedStatement stmt = connection.prepareCall(sql);
+        stmt.setInt(1, idSeance);
+        stmt.setInt(2, idPersonne);
+        stmt.setInt(3, niveauParticipation);
+        stmt.setInt(4, niveauParticipation);
+        stmt.executeUpdate();
+        connection.close();
+    }
+    
 }
