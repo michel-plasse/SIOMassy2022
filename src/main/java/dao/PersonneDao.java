@@ -35,14 +35,14 @@ public class PersonneDao {
 
   public static void insert(Personne user) throws SQLException {
     Connection connexion = Database.getConnection();
-    String ql = "insert into personne values(?,?,?,?,?,?)";
+    String ql = "insert into personne(prenom, nom, email, tel, pwd) values(?,?,?,?,?)";
     PreparedStatement stmt = connexion.prepareCall(ql);
-    stmt.setInt(1, user.getId());
+    stmt.setString(1, user.getPrenom());
     stmt.setString(2, user.getNom());
-    stmt.setString(3, user.getPrenom());
-    stmt.setString(4, user.getEmail());
+    stmt.setString(3, user.getEmail());
+    stmt.setString(4, user.getTel());
     stmt.setString(5, user.getPwd());
-    stmt.setString(6, user.getTel());
+    stmt.executeUpdate();
     connexion.close();
   }
 

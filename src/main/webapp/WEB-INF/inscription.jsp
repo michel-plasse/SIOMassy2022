@@ -28,8 +28,12 @@
     <input type="text" name="confEmail" value="${param['confEmail']}"/>
     ${confEmailMsg}
     <br/>
-    <button type="submit">S'inscrire</button>
     <br/>
+     Tel :
+    <input type="text" name="tel" value="${param['tel']}"/>
+    ${telMsg}
+    <br/>
+    <button type="submit">S'inscrire</button>
     <c:if test="${inscriptionMsg != null}">
         <div class="erreur">${inscriptionMsg}</div>
     </c:if>
