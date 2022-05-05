@@ -4,6 +4,9 @@
  */
 package modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ak
@@ -13,7 +16,31 @@ public class Entrainement {
     int id;
     int idQuestionnaire;
     int idCanal;
+    private List<Questionnaire> questionnaire;
 
+    public Entrainement() {
+    questionnaire = new ArrayList<Questionnaire>();
+  }
+
+    public List<Questionnaire> getQuestionnaire() {
+        return questionnaire;
+    }
+
+    public void setQuestionnaire(List<Questionnaire> questionnaire) {
+        this.questionnaire = questionnaire;
+    }
+
+    public Entrainement(List<Questionnaire> questionnaire) {
+        this.questionnaire = questionnaire;
+    }
+
+    public Entrainement(int id, int idQuestionnaire, int idCanal, List<Questionnaire> questionnaire) {
+        this.id = id;
+        this.idQuestionnaire = idQuestionnaire;
+        this.idCanal = idCanal;
+        this.questionnaire = questionnaire;
+    }
+    
     public int getId() {
         return id;
     }
@@ -42,6 +69,11 @@ public class Entrainement {
         this.id = id;
         this.idQuestionnaire = idQuestionnaire;
         this.idCanal = idCanal;
+    }
+
+    public void  getSize() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  
     }
     
 }
