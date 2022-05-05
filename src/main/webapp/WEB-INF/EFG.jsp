@@ -17,7 +17,7 @@
     <tbody > 
         <c:forEach var="groupe"  items="${efg.groupes}" >
             <tr>
-                <td>Groupe n° ${groupe.idGroupe}  </td>
+                <td>Groupe n° ${groupe.idGroupe}  , ${groupe.creeA}</td>
                 <td>
                     <ul>
                         <c:forEach items="${groupe.membres}" var="membre" >
