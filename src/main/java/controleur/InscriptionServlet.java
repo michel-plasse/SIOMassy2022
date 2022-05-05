@@ -63,6 +63,7 @@ public class InscriptionServlet extends HttpServlet {
         String confPwd = request.getParameter("confPwd");
         String email = request.getParameter("email");
         String confEmail = request.getParameter("confEmail");
+        String tel = request.getParameter("tel");
         if (nom == null || nom.trim().equals("")) {
             isValid = false;
             request.setAttribute("nomMsg", "Nom obligatoire");
@@ -89,11 +90,15 @@ public class InscriptionServlet extends HttpServlet {
                 System.out.println("email = '" + email + "' conf='" +confEmail + "'");
         request.setAttribute("confEmailMsg", "Doit être identique au email");
         }
+        if (tel == null || nom.trim().equals("")) {
+            isValid = false;
+            request.setAttribute("telMsg", "Tel obligatoire");
+        }
         System.out.println("valide : " + isValid);
         if (isValid) {
             try {
                 System.out.println("valide");
-                Personne user = new Personne(0, prenom, nom, email, null, pwd);
+                Personne user = new Personne(0, prenom, nom, email, tel, pwd);
                 PersonneDao.insert(user);
                 request.setAttribute("inscriptionMsg", "Vous êtes inscrit");
             }
