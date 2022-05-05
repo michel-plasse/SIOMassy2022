@@ -1,4 +1,4 @@
-/*
+/*karim	
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modele.Personne;
+import modele.Seance;
 
 /**
  *
@@ -16,16 +17,25 @@ import modele.Personne;
  */
 public class SeanceDao {
 
-    public static void setPresent(int idSeance, int idPersonne,boolean estPresent) throws SQLException {
-        Connection connection = Database.getConnection();
-        String sql = "Insert Into presence_seance(id_seance, id_personne,niveau_participation)\n"
-                + "VALUES(?, ?, ?)\n"
-                + "ON duplicate key update niveau_participation=? ";
-        PreparedStatement stmt = connection.prepareCall(sql);
-        stmt.setInt(1, idSeance);
-        stmt.setInt(2, idPersonne);
-        stmt.setInt(3, (estPresent) ? 1 : 0);
-        stmt.setInt(4, (estPresent) ? 1 : 0);
-        stmt.execute();
-    }
+
+
+public static Seance getByIdSeance(int idSeance) throws SQLException {
+    Seance result = null;
+    Connection connection = Database.getConnection();
+    String sql = "SELECT * FROM seance WHERE id_seance = ?";
+
+    PreparedStatement stmt = connection.prepareCall(sql);
+    stmt.setInt(1, idSeance);
+    ResultSet rs = stmt.executeQuery();
+    if (rs.next()) {
+      
+        Seance seance = new Seance(
+                rs.getInt("id_seance"), 
+                rs.getInt("id_canal"),             
+               rs.getTimestamp("debute_a").toLocalDateTime(),
+                rs.getTimestamp("fini_a")
+                
+        )
+    
+    return result;
 }

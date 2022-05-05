@@ -1,6 +1,7 @@
 package modele;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -33,6 +34,8 @@ public class Seance {
     this.debuteA = debuteA;
     this.finitA = finitA;
   }
+
+    
 
   public int getId() {
     return id;
