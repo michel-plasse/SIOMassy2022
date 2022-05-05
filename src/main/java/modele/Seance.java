@@ -9,15 +9,17 @@ import java.util.Objects;
  * @author Formateur
  */
 public class Seance {
-    private int id, idCanal;
+    private int id, idCanal, idPersonne, niveauParticipation;
     private LocalDateTime debuteA, finitA;
       private int idQuestionnaire;//Besoin pour fonctionnalité lancerQuestionnaire
       private String libelle;//Besoin pour fonctionnalité lancerQuestionnaire
       private Time nbMinute;//Besoin pour fonctionnalité lancerQuestionnaire
       
-  public Seance(int id, int idCanal, int idQuestionnaire, String libelle, Time nbMinute) {//Besoin pour fonctionnalité lancerQuestionnaire
+  public Seance(int id, int idCanal, int idPersonne, int niveauParticipation, int idQuestionnaire, String libelle, Time nbMinute) {//Besoin pour fonctionnalité lancerQuestionnaire
           this.id = id;
           this.idCanal = idCanal;
+          this.idPersonne = idPersonne;
+          this.niveauParticipation = niveauParticipation;
           this.idQuestionnaire = idQuestionnaire;
           this.libelle = libelle;
           this.nbMinute = nbMinute;
@@ -26,6 +28,21 @@ public class Seance {
 
   public Seance() {
   }
+  
+    public Seance(int id, int idPersonne, int niveauParticipation) {//Besoin pour fonctionnalité Participations étudiants
+        this.id = id;
+        this.idPersonne = idPersonne;
+        this.niveauParticipation = niveauParticipation;
+    }
+    
+    public Seance(int id) {//Besoin pour fonctionnalité Participations étudiants
+        this.id = id;
+    }
+    
+    public Seance(int id, int niveauParticipation) {//Besoin pour fonctionnalité Participations étudiants
+        this.id = id;
+        this.niveauParticipation = niveauParticipation;
+    }
 
   public Seance(int id, int idCanal, LocalDateTime debuteA, LocalDateTime finitA) {
     this.id = id;
@@ -48,6 +65,22 @@ public class Seance {
 
   public void setIdCanal(int idCanal) {
     this.idCanal = idCanal;
+  }
+  
+  public int getIdPersonne() {
+    return idPersonne;
+  }
+
+  public void setIdPersonne(int idPersonne) {
+    this.idPersonne = idPersonne;
+  }
+  
+  public int getNiveauParticipation() {
+    return niveauParticipation;
+  }
+
+  public void setNiveauParticipation(int niveauParticipation) {
+    this.niveauParticipation = niveauParticipation;
   }
 
   public LocalDateTime getDebuteA() {

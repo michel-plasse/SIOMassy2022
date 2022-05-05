@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import modele.Personne;
+import java.util.ArrayList;
+import java.util.List;
+import modele.Canal;
+import modele.Seance;
 
 /**
  *
@@ -28,4 +31,62 @@ public class SeanceDao {
         stmt.setInt(4, (estPresent) ? 1 : 0);
         stmt.execute();
     }
+    
+    public static Seance getById(int idSeance) throws SQLException {
+        Seance seance = null;
+        Connection connection = Database.getConnection();
+        String sql = "SELECT id_seance FROM seance WHERE id_canal=?";
+        PreparedStatement stmt = connection.prepareCall(sql);
+        stmt.setInt(1, idSeance);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            seance = new Seance(
+                rs.getInt("id_seance")
+            );
+        }
+        return seance;
+    }
+    
+    public static List<Seance> getAll() throws SQLException {
+        List<Seance> result = new ArrayList<Seance>();
+        Connection connection = Database.getConnection();
+        String sql = "SELECT * FROM seance";
+        PreparedStatement stmt = connection.prepareCall(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+          result.add(new Seance(rs.getInt("id_seance")));
+        }
+        return result;
+    }
+    
+    public static Seance niveauParticipation(int niveauParticipation) throws SQLException {
+        Seance seance = null;
+        Connection connection = Database.getConnection();
+        String sql = "SELECT id_seance, niveau_participation FROM presence_seance WHERE id_seance=?";
+        PreparedStatement stmt = connection.prepareCall(sql);
+        stmt.setInt(1, niveauParticipation);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            seance = new Seance(
+                    rs.getInt("id_seance"),
+                    rs.getInt("niveau_participation")
+            );
+        }
+        return seance;
+    }
+
+    /*public static Seance getById(int idSeance) throws SQLException {
+        Seance seance = null;
+        Connection connection = Database.getConnection();
+        String sql = "SELECT id_seance FROM seance WHERE id_seance=?";
+        PreparedStatement stmt = connection.prepareCall(sql);
+        stmt.setInt(1, idSeance);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            seance = new Seance(
+                rs.getInt("id_seance"),
+            );
+        }
+        return seance;
+    }*/
 }
